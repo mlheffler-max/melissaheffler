@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/peopleoverprocess", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/peopleoverprocess", "destination": "/portfolio.html" },
+    { "source": "/peopleoverprocess/", "destination": "/portfolio.html" }
+  ]
+}

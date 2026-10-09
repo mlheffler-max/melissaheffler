@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Melissa Heffler, talent acquisition and candidate experience. Walk through an interview as the candidate.">
+<meta property="og:title" content="You're the Candidate · Melissa Heffler">
+<meta property="og:description" content="Two minutes. You're the candidate. See the tools I built along the way.">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
+<title>You're the Candidate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an interview-day agenda. Each section is a time slot the viewer moves through as the candidate; the tools appear where they'd feel them. */
+:root{
+  --paper:#F6F6F8; --surface:#FFFFFF; --ink:#17161C; --muted:#64636F; --line:#E1E0E8;
+  --accent:#2F3BD1; --accent-soft:#E9EAFB; --ok:#1F7A4D; --ok-soft:#E3F2EA; --warn:#A85A10; --warn-soft:#FBEEDF;
+  --display:"Gloock", "Bodoni Moda", Georgia, serif;
+  --body:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#111116; --surface:#1A1A21; --ink:#EDECF3; --muted:#9A99A8; --line:#2C2C36;
+  --accent:#8E97FF; --accent-soft:#23254A; --ok:#5CC491; --ok-soft:#173326; --warn:#F0A65C; --warn-soft:#3A2814; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#111116; --surface:#1A1A21; --ink:#EDECF3; --muted:#9A99A8; --line:#2C2C36;
+  --accent:#8E97FF; --accent-soft:#23254A; --ok:#5CC491; --ok-soft:#173326; --warn:#F0A65C; --warn-soft:#3A2814; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding-inline:20px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-0.01em;text-wrap:balance;margin:0}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-inline:-20px;padding:12px 20px}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.bar nav{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+.bar nav a{color:var(--muted);text-decoration:none;white-space:nowrap}
+.bar nav a:hover{color:var(--ink)}
+.who{font-family:var(--display);font-size:19px;white-space:nowrap}
+
+/* hero */
+.hero{padding-block:72px 56px;display:grid;gap:28px}
+.hero h1{font-size:clamp(46px,9vw,104px);line-height:.95}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .lede{font-size:clamp(18px,2.2vw,21px);max-width:34em;color:var(--muted)}
+.hero .lede b{color:var(--ink);font-weight:500}
+.start{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;max-width:520px}
+.start input{flex:1 1 220px;min-width:0;font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.btn{border:0;border-radius:10px;padding:14px 20px;background:var(--ink);color:var(--paper);font-weight:500}
+.btn:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.small{padding:9px 14px;font-size:14px}
+
+/* slots */
+.slot{display:grid;grid-template-columns:120px minmax(0,1fr);gap:32px;padding-block:64px;border-top:1px solid var(--line)}
+.time{position:sticky;top:76px;align-self:start;display:grid;gap:6px}
+.time .t{font-family:var(--mono);font-size:22px;color:var(--ink)}
+.slot-head{display:grid;gap:14px;margin-bottom:32px;max-width:40em}
+.slot-head h2{font-size:clamp(32px,4.6vw,50px);line-height:1.04}
+.slot-head p{color:var(--muted)}
+.slot-head p b{color:var(--ink);font-weight:500}
+.split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
+.note{display:grid;gap:14px;font-size:15.5px;color:var(--muted)}
+.note h3{font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.note ul{margin:0;padding-left:18px;display:grid;gap:6px}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.panel-body{padding:18px 16px;display:grid;gap:14px}
+
+/* request builder */
+.field{display:grid;gap:5px}
+.field span{font-size:12.5px;color:var(--muted)}
+.field .v{padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--paper)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.idle{background:var(--accent-soft);color:var(--accent)}
+
+/* calendar */
+.cal{display:grid;grid-template-columns:44px minmax(0,1fr);position:relative}
+.hours{display:grid;grid-template-rows:repeat(5,56px)}
+.hours div{font-family:var(--mono);font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:3px}
+.grid{position:relative;display:grid;grid-template-rows:repeat(5,56px)}
+.grid div{border-top:1px solid var(--line)}
+.ev{position:absolute;left:6px;right:6px;border-radius:8px;padding:7px 10px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:13.5px;line-height:1.3;transition:top .6s cubic-bezier(.2,.8,.2,1),opacity .4s,transform .4s}
+.ev b{display:block;font-weight:600}
+.ev small{color:var(--muted)}
+.ev.moved{background:var(--warn-soft);border-left-color:var(--warn)}
+.ev.pre{opacity:0;transform:translateY(8px)}
+
+/* email */
+.mail-tabs{display:flex;gap:6px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 12px;font-size:13px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.mail-meta{display:grid;gap:3px;font-size:13.5px;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line)}
+.mail-meta b{color:var(--ink);font-weight:500}
+.mail{padding:22px 18px;display:grid;gap:16px;font-size:15.5px}
+.mail .hi{font-family:var(--display);font-size:28px;line-height:1.1}
+.agenda{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.agenda div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid var(--line);font-size:14.5px}
+.agenda div:first-child{border-top:0}
+.agenda .mono{color:var(--muted);padding-top:2px}
+.prep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.prep div{background:var(--paper);border-radius:10px;padding:12px;font-size:13.5px}
+.prep b{display:block;font-size:14px;margin-bottom:2px}
+.plain{font-family:var(--mono);font-size:13.5px;white-space:pre-wrap;color:var(--muted);line-height:1.6}
+
+/* log + dashboard */
+.log{font-family:var(--mono);font-size:12.5px;display:grid;gap:0}
+.log div{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;padding:9px 0;border-top:1px dashed var(--line);align-items:center}
+.log div:first-child{border-top:0}
+.log .new{animation:flash 1.4s ease}
+@keyframes flash{from{background:var(--warn-soft)}to{background:transparent}}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
+.kpi{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.kpi .n{font-family:var(--display);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .k{font-size:12.5px;color:var(--muted)}
+.charts{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1px;background:var(--line)}
+.chart{background:var(--surface);padding:16px;display:grid;gap:10px;min-width:0}
+.chart svg{width:100%;height:auto;display:block}
+.hbar{display:grid;gap:10px}
+.hbar div{display:grid;grid-template-columns:78px minmax(0,1fr) 40px;gap:10px;align-items:center;font-size:13.5px}
+.hbar i{display:block;height:10px;border-radius:5px;background:var(--accent)}
+.hbar .num{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
+.sample{font-family:var(--mono);font-size:11px;color:var(--muted);padding:10px 16px;border-top:1px solid var(--line)}
+
+/* digest */
+.digest{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+.digest section{background:var(--surface);padding:16px;display:grid;gap:6px;align-content:start}
+.digest h4{margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.digest p{font-size:14.5px}
+
+/* offer */
+.offer{background:var(--ink);color:var(--paper);border-radius:18px;padding:clamp(24px,5vw,56px);display:grid;gap:28px}
+.offer h2{font-size:clamp(36px,6vw,68px);line-height:1}
+.offer .label{color:color-mix(in srgb,var(--paper) 60%,var(--ink))}
+.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink))}
+.terms div{padding:16px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink));display:grid;gap:4px;padding-right:20px}
+.terms .v{font-size:17px}
+.offer .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.offer .btn{background:var(--paper);color:var(--ink)}
+.offer .btn:hover{background:var(--accent);color:var(--paper)}
+.addr{font-family:var(--mono);font-size:14px;user-select:all}
+.sig{font-family:var(--display);font-size:26px;font-style:italic}
+footer{padding-block:40px 56px;color:var(--muted);font-size:13.5px}
+
+@media (max-width:820px){
+  .slot{grid-template-columns:1fr;gap:18px;padding-block:48px}
+  .time{position:static;display:flex;gap:12px;align-items:baseline}
+  .split,.charts{grid-template-columns:1fr}
+  .bar nav{display:none}
+}
+@media (max-width:520px){
+  .row2,.prep,.digest,.terms,.kpis{grid-template-columns:1fr}
+  .hero{padding-block:48px 40px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap">
+  <span class="who">Melissa Heffler</span>
+  <nav class="label" aria-label="Sections">
+    <a href="#apply">Apply</a><a href="#scheduled">Scheduled</a><a href="#confirmed">Confirmed</a><a href="#rescheduled">Rescheduled</a><a href="#team">Team</a><a href="#offer">Offer</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="label">Talent Acquisition · Candidate Experience</span>
+    <h1>You're the <em>candidate</em> now.</h1>
+    <p class="lede">I'm Melissa. I run the part of hiring people actually feel: the scheduling, the emails, the "wait, what time is it again?" <b>Instead of telling you about it, I'd rather put you through it.</b> Takes about two minutes.</p>
+    <form class="start" id="startForm">
+      <label for="nameInput" class="label" style="flex-basis:100%">First, what should I call you?</label>
+      <input id="nameInput" type="text" autocomplete="given-name" placeholder="Your first name" maxlength="24">
+      <button class="btn" type="submit">Start my interview</button>
+    </form>
+  </section>
+
+  <!-- 1 -->
+  <section class="slot" id="apply">
+    <div class="time"><span class="t">09:00</span><span class="label">Apply</span></div>
+    <div>
+      <div class="slot-head">
+        <h2>You applied. Someone has to find a time.</h2>
+        <p>This is where most processes get messy. Your recruiter has your availability in their inbox, three interviewers have three different calendars, and nobody wants you on a 14-person reply-all. So <b>the recruiter fills out one request, and it lands with me.</b></p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <div class="panel-top"><span class="label">Interview Request Builder</span><span class="pill idle">Draft</span></div>
+          <div class="panel-body">
+            <div class="row2">
+              <label class="field"><span>Candidate</span><div class="v" data-name-full>Alex Rivera</div></label>
+              <label class="field"><span>Role</span><div class="v">Senior Product Designer</div></label>
+            </div>
+            <div class="row2">
+              <label class="field"><span>Stage</span><div class="v">Final panel</div></label>
+              <label class="field"><span>Format</span><div class="v">Video, 45 min each</div></label>
+            </div>
+            <div class="field"><span>Panel</span><div class="chips"><span class="chip">Priya S. · Design Lead</span><span class="chip">Marcus T. · PM</span><span class="chip">Dana K. · Eng Manager</span></div></div>
+            <div class="field"><span>Candidate availability</span><div class="v">Tue or Wed, before 1pm ET</div></div>
+            <a class="btn small" href="#scheduled" style="justify-self:start;text-decoration:none">Send to scheduling ↓</a>
+          </div>
+        </div>
+        <div class="note">
+          <h3>What I built</h3>
+          <p>A request builder recruiters fill out once. It drafts the email to me, logs the request, and kicks off everything below. No hunting through threads.</p>
+          <ul><li>One intake, every time</li><li>Candidates and interviewers never share an email</li><li>Every request is logged, so nothing gets lost</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slot" id="scheduled">
+    <div class="time"><span class="t">09:20</span><span class="label">Scheduled</span></div>
+    <div>
+      <div class="slot-head">
+        <h2>Your panel just got built.</h2>
+        <p>Three interviews, back to back, with a buffer so nobody runs late into the next one. Each interviewer gets their own invite with your resume and their focus area. <b>You get one clean confirmation.</b></p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <div class="panel-top"><span class="label" id="calDay">Tuesday</span><button class="btn ghost small" id="buildBtn" type="button">Build it again</button></div>
+          <div class="panel-body">
+            <div class="cal">
+              <div class="hours"><div>9 AM</div><div>10 AM</div><div>11 AM</div><div>12 PM</div><div>1 PM</div></div>
+              <div class="grid" id="calGrid"><div></div><div></div><div></div><div></div><div></div>
+                <div class="ev" data-ev="0" style="top:28px;height:42px"><b>Priya S. · Portfolio review</b><small>9:30–10:15</small></div>
+                <div class="ev" data-ev="1" style="top:84px;height:42px"><b>Marcus T. · Product thinking</b><small>10:30–11:15</small></div>
+                <div class="ev" data-ev="2" style="top:140px;height:42px"><b>Dana K. · Collaboration</b><small>11:30–12:15</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          <h3>What I built</h3>
+          <p>The event build. It takes the request, creates each interview on the right calendars with the right details, and adds the right video link. No more copying and pasting the same details into five invites.</p>
+          <p>I count volume the honest way: every interviewer on a panel is one interview. That's how I land at <b style="color:var(--ink)">1,500+ a year</b>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slot" id="confirmed">
+    <div class="time"><span class="t">09:21</span><span class="label">Confirmed</span></div>
+    <div>
+      <div class="slot-head">
+        <h2>Check your inbox.</h2>
+        <p>This is the email that sets the tone for your whole day. Flip between the two. <b>Same information. Very different feeling.</b></p>
+      </div>
+      <div class="panel" style="max-width:720px">
+        <div class="panel-top">
+          <div class="mail-tabs" role="tablist" aria-label="Email version">
+            <button class="tab" role="tab" id="tabAfter" aria-selected="true" type="button">Mine</button>
+            <button class="tab" role="tab" id="tabBefore" aria-selected="false" type="button">The usual</button>
+          </div>
+          <span class="pill ok">Delivered</span>
+        </div>
+        <div class="mail-meta">
+          <span><b>To:</b> <span data-name-full>Alex Rivera</span></span>
+          <span><b>Subject:</b> <span id="subj">You're confirmed, <span data-name>Alex</span>. Here's your day.</span></span>
+        </div>
+        <div id="mailAfter" class="mail">
+          <div class="hi">See you <span class="dayword">Tuesday</span>, <span data-name>Alex</span>.</div>
+          <p>Your final panel for Senior Product Designer is locked in. Three conversations, 45 minutes each, with short breaks in between. Everything you need is below. Nothing you need is buried in a thread.</p>
+          <div class="agenda">
+            <div><span class="mono">9:30 AM ET</span><span><b>Priya S.</b>, Design Lead · Walk us through one project you're proud of</span></div>
+            <div><span class="mono">10:30 AM ET</span><span><b>Marcus T.</b>, Product Manager · How you'd tackle a real problem</span></div>
+            <div><span class="mono">11:30 AM ET</span><span><b>Dana K.</b>, Eng Manager · How you work with engineers</span></div>
+          </div>
+          <div class="prep">
+            <div><b>One link</b>Same video room all morning.</div>
+            <div><b>Bring</b>Your portfolio, ready to share.</div>
+            <div><b>Questions?</b>Reply here. A real person answers.</div>
+          </div>
+        </div>
+        <div id="mailBefore" class="mail" hidden>
+<p class="plain">Hello,
+
+Please see below for your interview details. Calendar invitations will be sent separately.
+
+Date: 10/13
+Interviewers: P. Shah, M. Torres, D. Kim
+Time: 9:30am-12:15pm
+
+Please let us know if you have any questions.
+
+Thank you,
+Recruiting Team</p>
+        </div>
+      </div>
+      <div class="note" style="max-width:720px;margin-top:20px">
+        <p>I built a branded confirmation email builder and a companion calendar invite tool. Recruiters plug in the details and it renders correctly in Outlook. People are nervous before interviews. Small things like knowing who you're meeting and why help a lot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slot" id="rescheduled">
+    <div class="time"><span class="t">Mon</span><span class="label">Rescheduled</span></div>
+    <div>
+      <div class="slot-head">
+        <h2>Then life happens.</h2>
+        <p>Someone gets sick or a launch slips. Reschedules are where candidate experience usually falls apart, and where most teams stop counting. <b>I count every one.</b> Go ahead, break something.</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <div class="panel-top"><span class="label">Change log</span><button class="btn small" id="reschedBtn" type="button">Marcus can't make it</button></div>
+          <div class="panel-body">
+            <div class="log" id="log">
+              <div><span>09:20</span><span>Panel scheduled · 3 interviews</span><span class="pill ok">Logged</span></div>
+              <div><span>09:21</span><span>Confirmation sent to candidate</span><span class="pill ok">Logged</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="note">
+          <h3>What I built</h3>
+          <p>A tracker that reads my calendar and logs every schedule and reschedule on its own. A moved panelist counts as a new interview request, because it's real work and it's another email in the candidate's inbox.</p>
+          <p>That data is what turned "reschedules feel high" into a case leadership could act on.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:28px">
+        <div class="panel-top"><span class="label">Scheduling Command Center</span><span class="pill idle">Last 8 weeks</span></div>
+        <div class="kpis">
+          <div class="kpi"><span class="n" id="kVol">246</span><span class="k">Interviews scheduled</span></div>
+          <div class="kpi"><span class="n" id="kRes">14%</span><span class="k">Reschedule rate</span></div>
+          <div class="kpi"><span class="n">1.4 days</span><span class="k">Request to confirmed</span></div>
+        </div>
+        <div class="charts">
+          <div class="chart"><span class="label">Interviews per week</span><svg id="weekly" viewBox="0 0 360 170" role="img" aria-label="Interviews per week, sample data"></svg></div>
+          <div class="chart"><span class="label">Reschedule rate by team</span><div class="hbar" id="teams"></div></div>
+        </div>
+        <div class="sample">Sample data for illustration. Real dashboards and numbers stay with the company that owns them.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slot" id="team">
+    <div class="time"><span class="t">Fri</span><span class="label">Team</span></div>
+    <div>
+      <div class="slot-head">
+        <h2>You never see this part.</h2>
+        <p>A good candidate experience depends on the team behind it knowing what's coming. Every week I sent our specialists a digest: what's ahead, what's broken, what's getting fixed. I also ran All-Hands and Town Halls for the functions I supported. <b>It's not glamorous, and it's half the job.</b></p>
+      </div>
+      <div class="panel" style="max-width:820px">
+        <div class="panel-top"><span class="label">The Weekly · Specialist Digest</span><span class="mono" style="color:var(--muted)" id="digestDate">Friday</span></div>
+        <div class="digest">
+          <section><h4>Coming up</h4><p>Two hiring events next week. Panel rooms are booked, and interviewer prep goes out Monday.</p></section>
+          <section><h4>Worth knowing</h4><p>The new background check builder is live. Same flow as the interview request builder.</p></section>
+          <section><h4>Roadblocks</h4><p>Reschedules on one team are running high. I'm meeting with their recruiter to figure out why.</p></section>
+          <section><h4>On the way</h4><p>Reschedule tracking by job level, so we can see where panels slip and why.</p></section>
+        </div>
+        <div class="sample">Illustrative issue, written for this page.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="slot" id="offer">
+    <div class="time"><span class="t">Today</span><span class="label">Offer</span></div>
+    <div>
+      <div class="offer">
+        <span class="label">Offer letter · Prepared for <span data-name>Alex</span></span>
+        <h2>So that's the job. I'd like to do it for you.</h2>
+        <div class="terms">
+          <div><span class="label">Background</span><span class="v">NFL, MLB, AOL, and Gap Inc. More than ten years on the people side of the business.</span></div>
+          <div><span class="label">Volume</span><span class="v">1,500+ interviews scheduled a year across Product, Design and Tech.</span></div>
+          <div><span class="label">How I build</span><span class="v">Every tool on this page, built with AI. No engineering queue required.</span></div>
+          <div><span class="label">How I work</span><span class="v">People over process. The process exists to make the person's day better.</span></div>
+        </div>
+        <div class="cta">
+          <button class="btn" id="copyBtn" type="button">Copy my email</button>
+          <span class="addr" id="addr">mlheffler@gmail.com</span>
+        </div>
+        <span class="sig">Melissa</span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap">The candidates, interviewers and numbers here are made up. The tools are real, and so is the email above.</footer>
+
+<script>
+(function(){
+  // dates: next Tuesday from today
+  const now=new Date();
+  const tue=new Date(now); tue.setDate(now.getDate()+((9-now.getDay())%7||7));
+  const fmtLong=d=>d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  document.getElementById('calDay').textContent=fmtLong(tue);
+  document.querySelectorAll('.dayword').forEach(e=>e.textContent=tue.toLocaleDateString('en-US',{weekday:'long'}));
+  const fri=new Date(now); fri.setDate(now.getDate()+((5-now.getDay()+7)%7));
+  document.getElementById('digestDate').textContent=fri.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  const plain=document.querySelector('#mailBefore .plain');
+  plain.textContent=plain.textContent.replace('10/13',(tue.getMonth()+1)+'/'+tue.getDate());
+
+  // name personalization
+  const input=document.getElementById('nameInput');
+  function setName(n){
+    const first=(n||'').trim().split(/\s+/)[0];
+    const name=first?first.charAt(0).toUpperCase()+first.slice(1):'Alex';
+    document.querySelectorAll('[data-name]').forEach(e=>e.textContent=name);
+    document.querySelectorAll('[data-name-full]').forEach(e=>e.textContent=first?name:'Alex Rivera');
+  }
+  try{const saved=localStorage.getItem('cj-name'); if(saved){input.value=saved; setName(saved);}}catch(e){}
+  input.addEventListener('input',()=>setName(input.value));
+  document.getElementById('startForm').addEventListener('submit',e=>{
+    e.preventDefault(); setName(input.value);
+    try{localStorage.setItem('cj-name',input.value.trim())}catch(err){}
+    document.getElementById('apply').scrollIntoView({behavior:'smooth'});
+  });
+
+  // build animation
+  const evs=[...document.querySelectorAll('.ev')];
+  document.getElementById('buildBtn').addEventListener('click',()=>{
+    evs.forEach(e=>e.classList.add('pre'));
+    evs.forEach((e,i)=>setTimeout(()=>e.classList.remove('pre'),250+i*280));
+  });
+
+  // email tabs
+  const tA=document.getElementById('tabAfter'),tB=document.getElementById('tabBefore');
+  const mA=document.getElementById('mailAfter'),mB=document.getElementById('mailBefore');
+  const subj=document.getElementById('subj'); const subjHTML=subj.innerHTML;
+  function show(after){
+    tA.setAttribute('aria-selected',after);tB.setAttribute('aria-selected',!after);
+    mA.hidden=!after;mB.hidden=after;
+    if(after){subj.innerHTML=subjHTML; setName(input.value);} else subj.textContent='Interview Confirmation';
+  }
+  tA.onclick=()=>show(true); tB.onclick=()=>show(false);
+
+  // reschedule
+  const btn=document.getElementById('reschedBtn'),log=document.getElementById('log');
+  let moved=false;
+  btn.addEventListener('click',()=>{
+    const ev=evs[1];
+    if(!moved){
+      ev.style.top='196px'; ev.classList.add('moved');
+      ev.querySelector('small').textContent='12:30–1:15 · moved';
+      const t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
+      log.insertAdjacentHTML('beforeend',
+        `<div class="new"><span>${t}</span><span>Marcus T. moved to 12:30 · +1 interview request</span><span class="pill warn">Reschedule</span></div>
+         <div class="new"><span>${t}</span><span>Updated confirmation sent to candidate</span><span class="pill ok">Logged</span></div>`);
+      document.getElementById('kVol').textContent='247';
+      document.getElementById('kRes').textContent='15%';
+      btn.textContent='Put it back'; moved=true;
+    }else{
+      ev.style.top='84px'; ev.classList.remove('moved');
+      ev.querySelector('small').textContent='10:30–11:15';
+      log.querySelectorAll('.new').forEach(n=>n.remove());
+      document.getElementById('kVol').textContent='246';
+      document.getElementById('kRes').textContent='14%';
+      btn.textContent="Marcus can't make it"; moved=false;
+    }
+  });
+
+  // weekly chart
+  const data=[28,34,31,40,36,24,29,24], max=45;
+  const svg=document.getElementById('weekly'), W=360,H=170,L=26,B=24,T=8;
+  const step=(W-L)/data.length, bw=step*0.56; let s='';
+  [0,15,30,45].forEach(v=>{const y=H-B-(v/max)*(H-B-T);
+    s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="1"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="10" font-family="IBM Plex Mono,monospace" fill="var(--muted)">${v}</text>`;});
+  data.forEach((v,i)=>{const h=(v/max)*(H-B-T), x=L+i*step+(step-bw)/2, y=H-B-h, last=i===data.length-1;
+    s+=`<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="3" fill="${last?'var(--accent)':'var(--accent-soft)'}"/>`;
+    s+=`<text x="${x+bw/2}" y="${H-8}" text-anchor="middle" font-size="10" font-family="IBM Plex Mono,monospace" fill="var(--muted)">W${i+1}</text>`;
+    if(last) s+=`<text x="${x+bw/2}" y="${y-5}" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--ink)">${v}</text>`;});
+  svg.innerHTML=s;
+
+  // team bars
+  const teams=[['Product',12],['Design',9],['Tech',19],['Corporate',11]];
+  document.getElementById('teams').innerHTML=teams.map(([t,v])=>
+    `<div><span>${t}</span><span><i style="width:${v/20*100}%;${v>15?'background:var(--warn)':''}"></i></span><span class="num">${v}%</span></div>`).join('');
+
+  // copy email
+  document.getElementById('copyBtn').addEventListener('click',async e=>{
+    const a=document.getElementById('addr').textContent;
+    try{await navigator.clipboard.writeText(a); e.target.textContent='Copied';}
+    catch(err){const r=document.createRange(); r.selectNodeContents(document.getElementById('addr')); const sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); e.target.textContent='Selected, press copy';}
+    setTimeout(()=>e.target.textContent='Copy my email',2200);
+  });
+})();
+</script>
+
+</body>
+</html>
