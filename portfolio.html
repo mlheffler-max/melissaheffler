@@ -3,496 +3,1300 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Melissa Heffler, talent acquisition and candidate experience. Walk through an interview as the candidate.">
-<meta property="og:title" content="You're the Candidate · Melissa Heffler">
-<meta property="og:description" content="Two minutes. You're the candidate. See the tools I built along the way.">
-<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
-<title>You're the Candidate</title>
+<meta name="description" content="Melissa Heffler. Corporate, made human. For the people on both sides of the offer.">
+<meta property="og:title" content="Melissa Heffler · People over process">
+<meta property="og:description" content="Corporate, made human. For the people on both sides of the offer.">
+<style>body{margin:0}img{max-width:100%}</style>
+<title>Melissa Heffler</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..800;1,62..125,400..700&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Layout: an interview-day agenda. Each section is a time slot the viewer moves through as the candidate; the tools appear where they'd feel them. */
+/* Layout: three tabs under a sticky header. Nude and noir: bone ground, near-black type, nude-rose accent, bold expanded uppercase headlines with one italic serif accent. Older note: a magazine issue. Cover, editor's letter, four features, a principles spread, an interactive feature, a career timeline, back page. */
 :root{
-  --paper:#F6F6F8; --surface:#FFFFFF; --ink:#17161C; --muted:#64636F; --line:#E1E0E8;
-  --accent:#2F3BD1; --accent-soft:#E9EAFB; --ok:#1F7A4D; --ok-soft:#E3F2EA; --warn:#A85A10; --warn-soft:#FBEEDF;
-  --display:"Gloock", "Bodoni Moda", Georgia, serif;
-  --body:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --paper:#F6F2EC; --surface:#FBF9F6; --ink:#141210; --muted:#6E655D; --line:#E3D9CD;
+  --accent:#9F5C4A; --blush:#F1E2DC; --accent-inv:#E3B5A6; --sand:#E6DCCF; --ok:#3E6B4E; --ok-soft:#E5EFE6; --warn:#A0561F; --warn-soft:#F7E9DC;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --paper:#111116; --surface:#1A1A21; --ink:#EDECF3; --muted:#9A99A8; --line:#2C2C36;
-  --accent:#8E97FF; --accent-soft:#23254A; --ok:#5CC491; --ok-soft:#173326; --warn:#F0A65C; --warn-soft:#3A2814; color-scheme:dark}}
+  --paper:#141210; --surface:#1D1A17; --ink:#F3EDE6; --muted:#A9A097; --line:#34302B;
+  --accent:#E0AE9F; --accent-inv:#9F5C4A; --blush:#3A2A25; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#111116; --surface:#1A1A21; --ink:#EDECF3; --muted:#9A99A8; --line:#2C2C36;
-  --accent:#8E97FF; --accent-soft:#23254A; --ok:#5CC491; --ok-soft:#173326; --warn:#F0A65C; --warn-soft:#3A2814; color-scheme:dark}
+  --paper:#141210; --surface:#1D1A17; --ink:#F3EDE6; --muted:#A9A097; --line:#34302B;
+  --accent:#E0AE9F; --accent-inv:#9F5C4A; --blush:#3A2A25; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding-inline:20px;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1040px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-0.01em;text-wrap:balance;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:24px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
 p{margin:0}
-.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
-.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.kicker.a{color:var(--accent)}
 button{font:inherit;cursor:pointer}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rule{border:0;border-top:1px solid var(--ink);margin:0}
 
-/* top bar */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-inline:-20px;padding:12px 20px}
-.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.bar nav{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
-.bar nav a{color:var(--muted);text-decoration:none;white-space:nowrap}
-.bar nav a:hover{color:var(--ink)}
-.who{font-family:var(--display);font-size:19px;white-space:nowrap}
+/* masthead + cover */
+.mast{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px 14px;border-bottom:1px solid var(--ink)}
+.mast nav{display:flex;gap:20px;flex-wrap:wrap}
+.mast nav a{color:var(--ink);text-decoration:none}
+.mast nav a:hover{color:var(--accent)}
+.cover{padding-block:40px 56px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;align-items:end;border-bottom:1px solid var(--line)}
+.cover h1{font-size:clamp(72px,14vw,188px);line-height:.86;letter-spacing:-.025em}
+.cover h1 i{display:block;color:var(--accent);padding-left:.55em}
+.cover .deck{display:grid;gap:22px;padding-bottom:12px}
+.cover .deck p{font-family:var(--display);font-size:clamp(20px,2.2vw,25px);line-height:1.35}
+.byline{display:flex;flex-wrap:wrap;gap:8px 18px}
 
-/* hero */
-.hero{padding-block:72px 56px;display:grid;gap:28px}
-.hero h1{font-size:clamp(46px,9vw,104px);line-height:.95}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.hero .lede{font-size:clamp(18px,2.2vw,21px);max-width:34em;color:var(--muted)}
-.hero .lede b{color:var(--ink);font-weight:500}
-.start{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;max-width:520px}
-.start input{flex:1 1 220px;min-width:0;font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
-.btn{border:0;border-radius:10px;padding:14px 20px;background:var(--ink);color:var(--paper);font-weight:500}
-.btn:hover{background:var(--accent)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn.small{padding:9px 14px;font-size:14px}
+/* letter */
+.letter{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding-block:72px;border-bottom:1px solid var(--line)}
+.letter .side{display:grid;gap:10px;align-content:start}
+.letter .side h2{font-size:34px;line-height:1.05}
+.letter .body{display:grid;gap:18px;max-width:38em;font-size:18.5px}
+.letter .body p:first-child::first-letter{font-family:var(--display);float:left;font-size:4.4em;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
+.sig{font-family:var(--display);font-style:italic;font-size:30px}
 
-/* slots */
-.slot{display:grid;grid-template-columns:120px minmax(0,1fr);gap:32px;padding-block:64px;border-top:1px solid var(--line)}
-.time{position:sticky;top:76px;align-self:start;display:grid;gap:6px}
-.time .t{font-family:var(--mono);font-size:22px;color:var(--ink)}
-.slot-head{display:grid;gap:14px;margin-bottom:32px;max-width:40em}
-.slot-head h2{font-size:clamp(32px,4.6vw,50px);line-height:1.04}
-.slot-head p{color:var(--muted)}
-.slot-head p b{color:var(--ink);font-weight:500}
-.split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
-.note{display:grid;gap:14px;font-size:15.5px;color:var(--muted)}
-.note h3{font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
-.note ul{margin:0;padding-left:18px;display:grid;gap:6px}
+/* contents / features */
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-block:64px 28px}
+.section-head h2{font-size:clamp(40px,6vw,72px);line-height:1}
+.section-head p{max-width:30em;color:var(--muted)}
+.feature{display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.05fr);gap:36px;padding-block:52px;border-top:1px solid var(--ink)}
+.feature .num{font-family:var(--display);font-size:56px;line-height:.9;color:var(--accent)}
+.feature .lead{display:grid;gap:16px;align-content:start}
+.feature .lead h3{font-size:clamp(30px,3.6vw,42px);line-height:1.05}
+.feature .lead .k{font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.feature .lead p{color:var(--muted)}
+.list{list-style:none;margin:0;padding:0;display:grid;align-content:start}
+.list li{padding:13px 0;border-top:1px solid var(--line);display:grid;gap:2px}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list b{font-weight:600}
+.list span{color:var(--muted);font-size:15.5px}
+.side-stack{display:grid;gap:22px;align-content:start;min-width:0}
 
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
-.panel-body{padding:18px 16px;display:grid;gap:14px}
-
-/* request builder */
-.field{display:grid;gap:5px}
-.field span{font-size:12.5px;color:var(--muted)}
-.field .v{padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--paper)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
-.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+/* specimen cards */
+.spec{background:var(--surface);border:1px solid var(--line)}
+.spec-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line)}
+.spec-body{padding:16px}
+.spec-note{font-family:var(--mono);font-size:11px;color:var(--muted);padding:9px 16px;border-top:1px solid var(--line)}
+.pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
 .pill.ok{background:var(--ok-soft);color:var(--ok)}
 .pill.warn{background:var(--warn-soft);color:var(--warn)}
-.pill.idle{background:var(--accent-soft);color:var(--accent)}
+.pill.idle{background:var(--blush);color:var(--accent)}
+.pull{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.6vw,30px);line-height:1.25;border-left:2px solid var(--accent);padding-left:18px}
 
-/* calendar */
-.cal{display:grid;grid-template-columns:44px minmax(0,1fr);position:relative}
-.hours{display:grid;grid-template-rows:repeat(5,56px)}
-.hours div{font-family:var(--mono);font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:3px}
-.grid{position:relative;display:grid;grid-template-rows:repeat(5,56px)}
-.grid div{border-top:1px solid var(--line)}
-.ev{position:absolute;left:6px;right:6px;border-radius:8px;padding:7px 10px;background:var(--accent-soft);border-left:3px solid var(--accent);font-size:13.5px;line-height:1.3;transition:top .6s cubic-bezier(.2,.8,.2,1),opacity .4s,transform .4s}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
+.kpi{background:var(--surface);padding:12px 14px;display:grid;gap:2px}
+.kpi .n{font-family:var(--display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.kpi .k{font-size:12px;color:var(--muted)}
+.chart{padding:14px 16px;display:grid;gap:8px;border-top:1px solid var(--line)}
+.chart svg{width:100%;height:auto;display:block}
+.hbar{display:grid;gap:9px}
+.hbar div{display:grid;grid-template-columns:78px minmax(0,1fr) 40px;gap:10px;align-items:center;font-size:13.5px}
+.hbar i{display:block;height:8px;background:var(--accent)}
+.hbar .v{font-family:var(--mono);font-size:12px;text-align:right;font-variant-numeric:tabular-nums}
+
+.digest{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+.digest section{background:var(--surface);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.digest h4{margin:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.digest p{font-size:14px;line-height:1.5}
+
+/* principles */
+.principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;gap:0;border-top:1px solid var(--ink)}
+.principle{padding:28px 28px 32px 0;border-bottom:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.principle h3{font-size:27px;line-height:1.12}
+.principle p{color:var(--muted);font-size:16px}
+.principle.hero{grid-column:span 2;padding-block:36px;border-bottom:1px solid var(--ink)}
+.principle.hero h3{font-size:clamp(44px,7vw,84px);line-height:.95}
+.principle.hero h3 i{color:var(--accent)}
+.principle.hero p{max-width:40em;font-size:18px;color:var(--ink)}
+
+/* experience */
+.exp{margin-top:72px;background:var(--ink);color:var(--paper);margin-inline:-24px;padding:72px 24px}
+.exp .wrap{display:grid;gap:36px}
+.exp .kicker{color:color-mix(in srgb,var(--paper) 62%,var(--ink))}
+.exp h2{font-size:clamp(44px,7vw,88px);line-height:.95}
+.exp h2 i{color:var(--accent-inv)}
+.exp-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+.exp-intro p{font-size:18px;color:color-mix(in srgb,var(--paper) 80%,var(--ink))}
+.start{display:flex;flex-wrap:wrap;gap:10px}
+.start input{flex:1 1 200px;min-width:0;font:inherit;padding:13px 16px;border:1px solid color-mix(in srgb,var(--paper) 30%,var(--ink));background:transparent;color:var(--paper)}
+.start input::placeholder{color:color-mix(in srgb,var(--paper) 50%,var(--ink))}
+.btn{border:0;padding:13px 20px;background:var(--paper);color:var(--ink);font-weight:500;letter-spacing:.02em}
+.btn:hover{background:var(--accent);color:var(--paper)}
+.btn.sm{padding:8px 14px;font-size:13.5px;background:var(--ink);color:var(--paper)}
+.btn.sm:hover{background:var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.stages{display:flex;gap:0;border-bottom:1px solid color-mix(in srgb,var(--paper) 25%,var(--ink));overflow-x:auto;scrollbar-width:none}
+.stage-panel{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:start}
+.stage-panel .spec{color:var(--ink)}
+.cap{display:grid;gap:14px}
+.cap h3{font-size:clamp(28px,3.4vw,40px);line-height:1.08}
+.cap p{color:color-mix(in srgb,var(--paper) 78%,var(--ink));font-size:16.5px}
+.cap .what{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-inv)}
+.nav-stage{display:flex;gap:10px;flex-wrap:wrap}
+.exp .ghost2{background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 35%,var(--ink));padding:9px 16px;font-size:14px}
+.exp .ghost2:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
+
+/* specimen internals */
+.field{display:grid;gap:4px}
+.field span{font-size:12px;color:var(--muted)}
+.field .v{padding:9px 11px;border:1px solid var(--line);font-size:14.5px;background:var(--paper)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-gap{display:grid;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:3px 10px;border-radius:999px;background:var(--blush);color:var(--accent)}
+.cal{display:grid;grid-template-columns:44px minmax(0,1fr)}
+.hours{display:grid;grid-template-rows:repeat(5,52px)}
+.hours div{font-family:var(--mono);font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:3px}
+.grid{position:relative;display:grid;grid-template-rows:repeat(5,52px)}
+.grid>div:not(.ev){border-top:1px solid var(--line)}
+.ev{position:absolute;left:6px;right:6px;padding:6px 10px;background:var(--blush);border-left:3px solid var(--accent);font-size:13px;line-height:1.3;transition:top .6s cubic-bezier(.2,.8,.2,1),opacity .4s,transform .4s}
 .ev b{display:block;font-weight:600}
 .ev small{color:var(--muted)}
 .ev.moved{background:var(--warn-soft);border-left-color:var(--warn)}
 .ev.pre{opacity:0;transform:translateY(8px)}
-
-/* email */
-.mail-tabs{display:flex;gap:6px}
-.tab{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:6px 12px;font-size:13px}
+.tabs{display:flex;gap:6px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 12px;font-size:12.5px}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.mail-meta{display:grid;gap:3px;font-size:13.5px;color:var(--muted);padding:14px 18px;border-bottom:1px solid var(--line)}
+.mail-meta{display:grid;gap:2px;font-size:13px;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line)}
 .mail-meta b{color:var(--ink);font-weight:500}
-.mail{padding:22px 18px;display:grid;gap:16px;font-size:15.5px}
+.mail{padding:18px 16px;display:grid;gap:14px;font-size:15px}
 .mail .hi{font-family:var(--display);font-size:28px;line-height:1.1}
-.agenda{border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.agenda div{display:grid;grid-template-columns:88px minmax(0,1fr);gap:12px;padding:10px 14px;border-top:1px solid var(--line);font-size:14.5px}
+.agenda{border:1px solid var(--line)}
+.agenda div{display:grid;grid-template-columns:84px minmax(0,1fr);gap:12px;padding:9px 12px;border-top:1px solid var(--line);font-size:14px}
 .agenda div:first-child{border-top:0}
-.agenda .mono{color:var(--muted);padding-top:2px}
-.prep{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.prep div{background:var(--paper);border-radius:10px;padding:12px;font-size:13.5px}
-.prep b{display:block;font-size:14px;margin-bottom:2px}
-.plain{font-family:var(--mono);font-size:13.5px;white-space:pre-wrap;color:var(--muted);line-height:1.6}
-
-/* log + dashboard */
-.log{font-family:var(--mono);font-size:12.5px;display:grid;gap:0}
-.log div{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;padding:9px 0;border-top:1px dashed var(--line);align-items:center}
+.agenda .m{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:2px}
+.plain{font-family:var(--mono);font-size:13px;white-space:pre-wrap;color:var(--muted);line-height:1.6}
+.log{font-family:var(--mono);font-size:12px}
+.log div{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:10px;padding:9px 0;border-top:1px dashed var(--line);align-items:center}
 .log div:first-child{border-top:0}
 .log .new{animation:flash 1.4s ease}
 @keyframes flash{from{background:var(--warn-soft)}to{background:transparent}}
-.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
-.kpi{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
-.kpi .n{font-family:var(--display);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
-.kpi .k{font-size:12.5px;color:var(--muted)}
-.charts{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1px;background:var(--line)}
-.chart{background:var(--surface);padding:16px;display:grid;gap:10px;min-width:0}
-.chart svg{width:100%;height:auto;display:block}
-.hbar{display:grid;gap:10px}
-.hbar div{display:grid;grid-template-columns:78px minmax(0,1fr) 40px;gap:10px;align-items:center;font-size:13.5px}
-.hbar i{display:block;height:10px;border-radius:5px;background:var(--accent)}
-.hbar .num{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
-.sample{font-family:var(--mono);font-size:11px;color:var(--muted);padding:10px 16px;border-top:1px solid var(--line)}
 
-/* digest */
-.digest{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
-.digest section{background:var(--surface);padding:16px;display:grid;gap:6px;align-content:start}
-.digest h4{margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500}
-.digest p{font-size:14.5px}
+/* beliefs */
+.beliefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--ink)}
+.belief{padding:30px 0;border-bottom:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.belief h3{font-size:clamp(26px,3vw,34px);line-height:1.1}
+.belief p{color:var(--muted)}
+.belief.wide{grid-column:span 2;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px 48px;align-items:end}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:56px}
+.pillar{padding:22px 18px 26px 0;border-right:1px solid var(--line);display:grid;gap:6px}
+.pillar:last-child{border-right:0}
+.pillar b{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,44px);font-style:italic;color:var(--accent);line-height:1}
+.pillar span{font-size:15px;color:var(--muted);padding-right:8px}
+.question{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:end;padding-block:56px 64px;border-bottom:1px solid var(--line)}
+.question q{font-family:var(--display);font-size:clamp(30px,4.4vw,52px);line-height:1.08;quotes:"\201C" "\201D"}
+.question p{color:var(--muted)}
+/* notebook */
+.notebook{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.note{background:var(--surface);padding:22px 20px 24px;display:grid;gap:8px;align-content:start}
+.note b{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.15}
+.note span{color:var(--muted);font-size:15px}
+/* pulse */
+.chat{display:grid;gap:10px}
+.msg{max-width:88%;padding:11px 14px;font-size:14.5px;line-height:1.5;border-radius:14px}
+.msg.me{background:var(--blush);color:var(--ink);border-bottom-left-radius:4px}
+.msg.them{background:var(--ink);color:var(--paper);justify-self:end;border-bottom-right-radius:4px}
+.msg small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);margin-bottom:3px;text-transform:uppercase}
+.msg.them small{color:color-mix(in srgb,var(--paper) 60%,var(--ink))}
+.replies{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
+.reply{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:7px 13px;font-size:13.5px}
+.reply:hover,.reply[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 
-/* offer */
-.offer{background:var(--ink);color:var(--paper);border-radius:18px;padding:clamp(24px,5vw,56px);display:grid;gap:28px}
-.offer h2{font-size:clamp(36px,6vw,68px);line-height:1}
-.offer .label{color:color-mix(in srgb,var(--paper) 60%,var(--ink))}
-.terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink))}
-.terms div{padding:16px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink));display:grid;gap:4px;padding-right:20px}
-.terms .v{font-size:17px}
-.offer .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.offer .btn{background:var(--paper);color:var(--ink)}
-.offer .btn:hover{background:var(--accent);color:var(--paper)}
-.addr{font-family:var(--mono);font-size:14px;user-select:all}
-.sig{font-family:var(--display);font-size:26px;font-style:italic}
-footer{padding-block:40px 56px;color:var(--muted);font-size:13.5px}
+/* career */
+.career{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:48px;padding-block:72px 64px}
+.career h2{font-size:clamp(40px,6vw,72px);line-height:1}
+.timeline{list-style:none;margin:0;padding:0;display:grid}
+.timeline li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+.timeline li:last-child{border-bottom:1px solid var(--line)}
+.timeline .yr{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:5px;font-variant-numeric:tabular-nums}
+.timeline .org{font-family:var(--display);font-size:26px;line-height:1.1}
+.timeline .role{color:var(--muted);font-size:15.5px}
+.tools{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;color:var(--muted);font-size:15px}
 
-@media (max-width:820px){
-  .slot{grid-template-columns:1fr;gap:18px;padding-block:48px}
-  .time{position:static;display:flex;gap:12px;align-items:baseline}
-  .split,.charts{grid-template-columns:1fr}
-  .bar nav{display:none}
+/* back page */
+.back{border-top:1px solid var(--ink);padding-block:72px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px;align-items:end}
+.back h2{font-size:clamp(52px,9vw,120px);line-height:.9}
+.back h2 i{color:var(--accent)}
+.contact{display:grid;gap:14px}
+.addr{font-family:var(--mono);font-size:15px;user-select:all}
+.contact .btn{background:var(--ink);color:var(--paper);justify-self:start}
+.contact .btn:hover{background:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:22px 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+
+@media (max-width:900px){
+  .beliefs,.question{grid-template-columns:1fr}
+  .belief.wide{grid-column:auto;grid-template-columns:1fr}
+  .notebook{grid-template-columns:1fr 1fr}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(2){border-right:0}
+  .cover,.letter,.exp-intro,.stage-panel,.career,.back{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr;gap:20px}
+  .feature .num{font-size:44px}
+  .principles{grid-template-columns:1fr}
+  .principle.hero{grid-column:auto}
+  .letter{gap:20px}
 }
-@media (max-width:520px){
-  .row2,.prep,.digest,.terms,.kpis{grid-template-columns:1fr}
-  .hero{padding-block:48px 40px}
+@media (max-width:560px){
+  body{padding-inline:16px}
+  .exp{margin-inline:-16px;padding:56px 16px}
+  .row2,.kpis,.digest,.notebook{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:1fr;gap:4px}
+  .mast nav{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+
+/* four equal areas */
+.quad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+.area{display:grid;grid-template-rows:auto auto auto auto 1fr;align-content:start;gap:14px;padding:32px 28px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.area .k{font-family:var(--body);font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.area h3{font-size:clamp(28px,3vw,36px);line-height:1.08}
+.area>p{color:var(--muted);font-size:16px}
+.mini{background:var(--surface);border:1px solid var(--line);align-self:start;margin-top:4px}
+.mini-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.mini-body{padding:12px 14px;display:grid;gap:7px;font-size:13.5px;min-height:118px;align-content:center}
+.digest-mini b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-right:6px}
+.mini-hi{font-family:var(--display);font-size:24px;line-height:1.1}
+.mini-row{display:grid;grid-template-columns:70px minmax(0,1fr);gap:8px;border-top:1px solid var(--line);padding-top:6px}
+.mini-row span{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:2px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow span{border:1px solid var(--accent);color:var(--accent);padding:6px 10px;font-size:13px}
+.flow i{font-style:normal;color:var(--muted)}
+.mini-data{grid-template-columns:auto auto minmax(0,1fr);gap:18px;align-items:end}
+.mini-data div{display:grid;gap:2px}
+.mini-data .n{font-family:var(--display);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.mini-data svg{width:100%;height:auto;display:block}
+@media (max-width:900px){.quad{grid-template-columns:1fr}.area{padding:28px 18px}}
+@media (max-width:420px){.mini-data{grid-template-columns:1fr 1fr}.mini-data svg{grid-column:span 2}}
+
+/* previews v2 */
+.mini{padding:0;min-height:300px;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--line),0 12px 28px -18px color-mix(in srgb,var(--ink) 35%,transparent)}
+.nl-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.nl-mast{display:flex;justify-content:space-between;align-items:baseline;padding:14px 16px 10px;border-bottom:2px solid var(--ink)}
+.nl-title{font-family:var(--display);font-style:italic;font-size:26px;line-height:1}
+.nl-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.nl-lead{padding:12px 16px;border-bottom:1px solid var(--line)}
+.nl-lead p{font-family:var(--display);font-size:18px;line-height:1.25}
+.nl-grid{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.nl-grid>div{padding:12px 16px}
+.nl-grid>div+div{border-left:1px solid var(--line)}
+.nl-people,.nl-items{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13px;line-height:1.35}
+.nl-people li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;align-items:center}
+.nl-people i,.em-sched i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--blush);color:var(--accent);font-size:9.5px;font-weight:600;display:grid;place-items:center;letter-spacing:.04em}
+.nl-items li{padding-left:12px;position:relative}
+.nl-items li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;background:var(--accent)}
+.nl-foot,.pipe-foot{font-family:var(--mono);font-size:10px;color:var(--muted);padding:8px 16px;border-top:1px solid var(--line);letter-spacing:.04em}
+.em-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--ink);color:var(--paper)}
+.em-brand{font-family:var(--display);font-style:italic;font-size:17px}
+.em-to{font-size:11.5px;opacity:.7}
+.em-body{padding:16px;display:grid;gap:12px;flex:1}
+.em-eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ok)}
+.em-h{font-family:var(--display);font-size:26px;line-height:1.05;margin-top:-4px}
+.em-when{display:grid;grid-template-columns:1.3fr 1fr;background:var(--paper);border:1px solid var(--line)}
+.em-when div{padding:9px 12px;display:grid;gap:1px}
+.em-when div+div{border-left:1px solid var(--line)}
+.em-when b{font-size:13.5px;font-weight:600}
+.em-when span{font-size:12px;color:var(--muted)}
+.em-sched{list-style:none;margin:0;padding:0;display:grid}
+.em-sched li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.em-sched b{display:block;font-size:13px;font-weight:600;line-height:1.25}
+.em-sched span{font-size:12px;color:var(--muted)}
+.em-sched em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.em-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.em-btn{background:var(--accent);color:var(--paper);font-size:12px;font-weight:600;padding:7px 12px;letter-spacing:.02em}
+.em-note{font-size:12px;color:var(--muted)}
+.pipe-top,.dash-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--display);font-size:17px}
+.pipe-steps{list-style:none;margin:0;padding:8px 16px;display:grid;flex:1;position:relative}
+.pipe-steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:9px 0;position:relative}
+.pipe-steps li:not(:last-child)::after{content:"";position:absolute;left:16px;top:38px;bottom:-8px;width:1px;background:var(--accent);opacity:.4}
+.ps-n{width:34px;height:34px;border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:11px;background:var(--surface);position:relative;z-index:1}
+.pipe-steps b{display:block;font-size:14px;font-weight:600}
+.pipe-steps span{font-size:12.5px;color:var(--muted)}
+.pipe-foot{display:flex;gap:14px}
+.dash-meta{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.dash-kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.dash-kpis div{padding:10px 16px;display:grid;gap:1px}
+.dash-kpis div+div{border-left:1px solid var(--line)}
+.dash-kpis .n{font-family:var(--display);font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.dash-kpis span:not(.n){font-size:11.5px;color:var(--muted)}
+.dash-body{display:grid;grid-template-columns:1fr 1.2fr;flex:1}
+.dash-body>div{padding:12px 16px;min-width:0}
+.dash-body>div+div{border-left:1px solid var(--line)}
+.dash-chart svg{width:100%;height:auto;display:block}
+.dash-lvl{display:grid;gap:7px;align-content:start}
+.dash-lvl>div{display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:2px 8px;font-size:12px;align-items:center}
+.dash-lvl>div span{grid-column:1/-1;color:var(--muted)}
+.dash-lvl i{display:block;height:6px;width:var(--w);background:var(--accent);opacity:.55}
+.dash-lvl .hot i{background:var(--warn);opacity:1}
+.dash-lvl b{font-family:var(--mono);font-size:11.5px;text-align:right;font-weight:500}
+.dash-lvl .hot b{color:var(--warn)}
+.dash-action{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center;padding:10px 16px;background:var(--warn-soft);border-top:1px solid var(--line);font-size:12.5px}
+.dash-action b{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);font-weight:500}
+@media (max-width:480px){.nl-grid,.dash-body,.em-when{grid-template-columns:1fr}.nl-grid>div+div,.dash-body>div+div,.em-when div+div{border-left:0;border-top:1px solid var(--line)}}
+
+/* sub sections inside My work */
+.sub-head{display:grid;grid-template-columns:60px minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:baseline;padding-block:56px 22px}
+.sub-head:first-of-type{padding-top:8px}
+.sub-head h3{font-size:clamp(30px,4vw,44px);line-height:1}
+.sub-head p{color:var(--muted)}
+.career-list{padding-bottom:24px}
+@media (max-width:900px){.sub-head{grid-template-columns:1fr;gap:8px}}
+
+/* fun fact + mantra */
+.fact{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--blush);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);padding:22px 18px 16px;margin-top:6px}
+.fact-tag{position:absolute;top:-11px;left:14px;background:var(--accent);color:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px 4px 9px;clip-path:polygon(0 0,100% 0,calc(100% - 7px) 50%,100% 100%,0 100%)}
+.fact b{font-family:var(--display);font-size:52px;line-height:.9;color:var(--accent);font-weight:400}
+.fact div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;grid-column:1/-1}
+.fact p{font-size:15px;line-height:1.4}
+.principle.hero{grid-column:1/-1;padding-block:44px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin-top:8px}
+.principle.hero h3{font-size:clamp(44px,7vw,88px);line-height:.95}
+.principle.hero h3 i{color:var(--accent)}
+.principle.hero p{max-width:44em;font-size:19px;line-height:1.6;color:var(--ink)}
+
+/* bigger sticky masthead */
+.mast-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:-24px;padding-inline:24px;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ink)}
+.mast{display:flex;justify-content:space-between;align-items:center;gap:14px 28px;flex-wrap:wrap;padding-block:18px;border-bottom:0}
+.mast-name{font-family:var(--display);font-size:28px;line-height:1;color:var(--ink);text-decoration:none;display:grid;gap:6px}
+.mast-name span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mast-contact{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mast-link{font-family:var(--mono);font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px}
+.mast-link:hover{color:var(--accent)}
+.mast-cta{background:var(--ink);color:var(--paper);text-decoration:none;font-weight:500;font-size:14px;padding:11px 18px;letter-spacing:.02em}
+.mast-cta:hover{background:var(--accent)}
+@media (max-width:900px){.mast nav{display:none}}
+@media (max-width:560px){.mast-bar{margin-inline:-16px;padding-inline:16px}.mast{padding-block:12px}.mast-name{font-size:22px}.mast-name span{display:none}.mast-link{display:none}.mast-cta{padding:9px 14px;font-size:13px}}
+
+/* ===== Try it ===== */
+.try{margin-top:72px;background:var(--ink);color:var(--paper);margin-inline:-24px;padding:80px 24px}
+.try .wrap{display:grid;gap:64px}
+.try .kicker{color:color-mix(in srgb,var(--paper) 60%,var(--ink))}
+.try-intro{display:grid;gap:18px;max-width:46em}
+.try-intro h2{font-size:clamp(44px,7vw,88px);line-height:.95}
+.try-intro h2 i{color:var(--accent-inv)}
+.try-intro p{font-size:18px;color:color-mix(in srgb,var(--paper) 80%,var(--ink))}
+.try-block{display:grid;gap:22px}
+.try-head{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:start;border-top:1px solid color-mix(in srgb,var(--paper) 25%,var(--ink));padding-top:22px}
+.try-n{font-family:var(--display);font-style:italic;font-size:44px;line-height:.9;color:var(--accent-inv)}
+.try-head h3{font-size:clamp(28px,3.4vw,40px);line-height:1.05;margin-bottom:6px}
+.try-head p{color:color-mix(in srgb,var(--paper) 72%,var(--ink));max-width:40em}
+.try .ghost2{background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 35%,var(--ink));padding:9px 16px;font-size:14px;white-space:nowrap}
+.try .ghost2:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
+
+/* stage */
+.stage{position:relative;height:440px;background:var(--paper);color:var(--ink);overflow:hidden;border:1px solid var(--line)}
+.stage-count{position:absolute;left:0;right:0;top:0;z-index:3;padding:12px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--line);background:var(--surface);transition:color .4s}
+.stage-count b{font-weight:500;color:var(--warn)}
+.stage.done .stage-count b{color:var(--ok)}
+.mails{position:absolute;inset:44px 0 0 0}
+.m{position:absolute;left:var(--x);top:var(--y);width:min(46%,340px);background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 20px -14px rgba(0,0,0,.45);padding:9px 12px;font-size:12.5px;line-height:1.35;transform:rotate(var(--r));transition:left .9s cubic-bezier(.6,0,.3,1) var(--d),top .9s cubic-bezier(.6,0,.3,1) var(--d),transform .9s cubic-bezier(.6,0,.3,1) var(--d),opacity .5s ease calc(var(--d) + .55s)}
+.m b{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:12px}
+.m b em{font-style:normal;font-family:var(--mono);font-weight:400;font-size:10px;color:var(--muted)}
+.m span{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m.u::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:3px;background:var(--warn)}
+.m.pop{opacity:0;transform:rotate(var(--r)) scale(.85)}
+.stage.sort .m{left:calc(50% - min(23%,170px));top:42%;transform:rotate(0) scale(.92);opacity:0}
+.clean{position:absolute;inset:44px 0 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-content:center;padding:24px}
+.cc{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ok);padding:18px;display:grid;gap:6px;opacity:0;transform:translateY(14px);transition:opacity .5s ease calc(var(--i)*.35s),transform .5s ease calc(var(--i)*.35s)}
+.cc-k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ok)}
+.cc b{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.15}
+.cc span:last-child{font-size:13.5px;color:var(--muted)}
+.stage.done .cc{opacity:1;transform:none}
+
+/* audit */
+.audit{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start}
+.audit-q{display:grid;gap:22px}
+#questions{display:grid;gap:22px}
+.aq{display:grid;gap:10px}
+.aq-label{font-family:var(--display);font-size:21px;line-height:1.25}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 30%,var(--ink));padding:8px 14px;font-size:14px;border-radius:999px}
+.opt:hover{border-color:var(--accent-inv)}
+.opt[aria-pressed="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.audit-r{background:var(--paper);color:var(--ink);padding:24px;display:grid;gap:16px;position:sticky;top:110px}
+.ar-score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ar-score b{font-family:var(--display);font-size:72px;line-height:.85;font-weight:400;font-variant-numeric:tabular-nums}
+.ar-score span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.ar-verdict{font-family:var(--display);font-size:26px;line-height:1.15}
+.ar-bars{display:grid;gap:8px}
+.ar-bars div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:center;font-size:12.5px;color:var(--muted)}
+.ar-bars i{display:block;height:7px;background:var(--line);position:relative}
+.ar-bars i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--accent);transition:width .5s}
+.ar-bars i.low::after{background:var(--warn)}
+.ar-recs{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ar-recs li{border-top:1px solid var(--line);padding-top:12px;display:grid;gap:4px}
+.ar-recs b{font-size:15px}
+.ar-recs span{font-size:14.5px;color:var(--muted);line-height:1.5}
+.ar-empty{color:var(--muted);font-size:15px}
+.ar-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;font-size:14px}
+.ar-cta a{background:var(--ink);color:var(--paper);text-decoration:none;padding:9px 14px;font-weight:500}
+.ar-cta a:hover{background:var(--accent)}
+
+/* builder */
+.builder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start}
+.bform{display:grid;gap:14px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.f{display:grid;gap:5px;min-width:0}
+.f>span{font-size:12px;letter-spacing:.04em;color:color-mix(in srgb,var(--paper) 65%,var(--ink))}
+.bform input,.bform select,.bform textarea{font:inherit;font-size:14.5px;width:100%;min-width:0;padding:9px 11px;background:color-mix(in srgb,var(--paper) 7%,var(--ink));border:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink));color:var(--paper);border-radius:0}
+.bform textarea{resize:vertical}
+.bform input:focus,.bform select:focus,.bform textarea:focus{outline:none;border-color:var(--accent-inv)}
+.iv{display:grid;grid-template-columns:1fr 1fr 1.4fr 32px;gap:6px;margin-bottom:6px}
+.iv button{background:transparent;border:1px solid color-mix(in srgb,var(--paper) 22%,var(--ink));color:var(--paper);font-size:16px;line-height:1}
+.iv button:hover{border-color:var(--warn);color:var(--warn)}
+.addrow{justify-self:start;background:transparent;border:1px dashed color-mix(in srgb,var(--paper) 35%,var(--ink));color:var(--paper);padding:7px 12px;font-size:13px}
+.addrow:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
+.bout{display:grid;gap:14px;position:sticky;top:110px}
+.bmail{background:var(--surface);color:var(--ink);box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
+.bm-meta{padding:10px 18px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line);display:grid;gap:2px}
+.bm-meta b{color:var(--ink);font-weight:500}
+.bm-bar{background:var(--ink);color:var(--paper);padding:12px 18px;font-family:var(--display);font-style:italic;font-size:18px}
+.bm-body{padding:20px 18px 22px;display:grid;gap:14px;font-size:14.5px;line-height:1.55}
+.bm-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ok)}
+.bm-h{font-family:var(--display);font-size:30px;line-height:1.05;margin-top:-6px}
+.bm-when{display:grid;grid-template-columns:1.3fr 1fr;border:1px solid var(--line);background:var(--paper)}
+.bm-when div{padding:10px 12px;display:grid;gap:1px;min-width:0}
+.bm-when div+div{border-left:1px solid var(--line)}
+.bm-when b{font-size:14px}
+.bm-when span{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.bm-sched{display:grid}
+.bm-sched div{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.bm-sched em{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:2px}
+.bm-sched span{display:block;color:var(--muted);font-size:13px}
+.bm-sig{font-family:var(--display);font-style:italic;font-size:20px}
+.bactions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn.dark{background:var(--paper);color:var(--ink)}
+.btn.dark:hover{background:var(--accent-inv);color:var(--ink)}
+.btn.ghost3{background:transparent;color:var(--paper);border:1px solid color-mix(in srgb,var(--paper) 35%,var(--ink));text-decoration:none;font-size:15px}
+.btn.ghost3:hover{border-color:var(--accent-inv);color:var(--accent-inv)}
+.bstatus{font-size:13px;color:color-mix(in srgb,var(--paper) 70%,var(--ink))}
+
+@media (max-width:900px){
+  .audit,.builder{grid-template-columns:1fr}
+  .audit-r,.bout{position:static}
+  .try-head{grid-template-columns:44px minmax(0,1fr)}
+  .try-head .ghost2{grid-column:2;justify-self:start}
+  .clean{grid-template-columns:1fr;gap:10px;padding:16px}
+  .cc{padding:12px 14px}
+  .cc b{font-size:18px}
+  .stage{height:480px}
+  .m{width:78%}
+  .stage.sort .m{left:11%}
+}
+@media (max-width:560px){
+  .try{margin-inline:-16px;padding:56px 16px}
+  .frow,.frow.three{grid-template-columns:1fr}
+  .iv{grid-template-columns:1fr 1fr 32px}
+  .iv input:nth-child(3){grid-column:1/3;grid-row:2}
+  .bm-when{grid-template-columns:1fr}
+  .bm-when div+div{border-left:0;border-top:1px solid var(--line)}
+  .stage-count{font-size:10.5px;padding:10px 12px}
+}
+@media (prefers-reduced-motion:reduce){.m,.cc{transition:none!important}}
+
+/* A detailed final state */
+.cc-mail b{font-family:var(--body);font-size:inherit;font-weight:600;line-height:inherit}
+.cc-mail b.ccm-h{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05}
+.cc-mail span:last-child{font-size:inherit}
+.ccm-sched span{color:var(--muted)}
+.cc-mail .ccm-when span{font-size:11.5px;color:var(--muted)}
+.cc-mail .ccm-help b{font-size:11.5px}
+.ccm-sched b{color:var(--ink)}
+.stage{height:600px}
+.clean{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:18px;align-content:center;align-items:start;padding:22px}
+.cc-side{display:grid;gap:14px}
+.cc-mail{padding:0;border-top:0;border:1px solid var(--line);box-shadow:0 18px 36px -24px rgba(0,0,0,.45)}
+.ccm-bar{display:flex;justify-content:space-between;gap:10px;background:var(--ink);color:var(--paper);padding:9px 14px;font-size:11.5px}
+.ccm-bar span:first-child{font-family:var(--display);font-style:italic;font-size:15px}
+.ccm-body{padding:14px 16px;display:grid;gap:9px}
+.ccm-h{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.05}
+.ccm-sub{font-size:12.5px;color:var(--muted);margin-top:-5px}
+.ccm-when{display:grid;grid-template-columns:1.3fr 1fr;border:1px solid var(--line);background:var(--paper)}
+.ccm-when div{padding:7px 10px;display:grid}
+.ccm-when div+div{border-left:1px solid var(--line)}
+.ccm-when b{font-size:12.5px}
+.ccm-when span{font-size:11.5px;color:var(--muted)}
+.ccm-sched div{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;padding:5px 0;border-top:1px solid var(--line);font-size:12px;line-height:1.35}
+.ccm-sched em{font-style:normal;font-family:var(--mono);font-size:10.5px;color:var(--muted);padding-top:1px}
+.ccm-help{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ccm-help div{background:var(--blush);padding:7px 9px;display:grid;gap:2px}
+.ccm-help span{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ccm-help b{font-size:11.5px;font-weight:600;line-height:1.3}
+
+/* builder extras */
+.checks{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+.checks label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.checks input{width:auto;accent-color:var(--accent-inv)}
+.bform .opts .opt{font-size:13.5px;padding:7px 12px}
+.bm-eyebrow.warn{color:var(--warn)}
+.bm-box{background:var(--paper);border:1px solid var(--line);padding:10px 12px;display:grid;gap:2px;font-size:13.5px}
+.bm-box b{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.bm-help{display:grid;border-top:1px solid var(--line)}
+.bm-help div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.bm-help span{color:var(--muted)}
+.bm-help b{font-weight:600}
+@media (max-width:900px){
+  .stage{height:880px}
+  .clean{grid-template-columns:1fr;padding:14px;gap:12px}
+  .ccm-help{grid-template-columns:1fr}
+  .m{width:84%}
+}
+@media (max-width:560px){.bm-help div{grid-template-columns:1fr;gap:2px}}
+
+/* ===== nude & noir + tabs ===== */
+h1,h2{font-family:var(--display);font-weight:800;font-stretch:118%;text-transform:uppercase;letter-spacing:-.015em}
+h3{font-family:var(--display);font-weight:600;font-stretch:100%;letter-spacing:-.01em}
+h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;font-stretch:100%}
+.kicker{font-weight:600;letter-spacing:.18em}
+.sig,.nl-title,.em-brand,.bm-bar,.bm-sig,.ccm-bar span:first-child,.try-n{font-family:var(--serif)!important}
+.question q{font-family:var(--display);font-weight:700;font-stretch:110%;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.pull,.mini-hi{font-family:var(--serif)}
+.kpi .n,.dash-kpis .n,.fact b,.ar-score b,.mini-data .n{font-family:var(--display);font-weight:700;font-stretch:110%}
+.letter .body p:first-child::first-letter{font-family:var(--serif);font-style:italic}
+.timeline .org{font-family:var(--display);font-weight:600}
+.feature .num{font-family:var(--serif)}
+.try-intro h2,.back h2,.principle.hero h3{font-family:var(--display);font-weight:800;font-stretch:118%;text-transform:uppercase}
+.principle.hero h3{line-height:.92}
+.section-head h2{line-height:.92}
+
+/* header */
+.mast-bar{border-bottom:1px solid var(--ink)}
+.mast{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px 28px;padding-block:14px}
+.mast-name{font-family:var(--display);font-weight:800;font-stretch:118%;text-transform:uppercase;font-size:20px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.tabbar{display:flex;justify-content:center;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.tabbar a{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:9px 14px;border-radius:999px;white-space:nowrap}
+.tabbar a:hover{color:var(--ink)}
+.tabbar a[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.mast-contact{display:flex;align-items:center;gap:16px}
+.mast-link{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--accent)}
+.mast-cta{background:var(--accent);color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;text-decoration:none}
+.mast-cta:hover{background:var(--ink);color:var(--paper)}
+
+/* cover with portrait */
+.cover{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:stretch;padding-block:36px 48px}
+.cover-text{display:grid;gap:22px;align-content:center}
+.cover h1{font-size:clamp(60px,9.4vw,138px);line-height:.88;letter-spacing:-.025em}
+.cover h1 i{display:inline;padding:0;color:var(--accent);font-size:1.05em}
+.deck-line{font-size:clamp(19px,2vw,23px);max-width:28em}
+.cover-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.ct{display:flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink);border:1px solid var(--ink);padding:10px 14px;font-size:14px;font-weight:600}
+.ct span{font-size:11px;color:var(--accent);letter-spacing:.1em}
+.ct:hover{background:var(--ink);color:var(--paper)}
+.portrait{margin:0;display:grid;gap:10px}
+.portrait-panel{position:relative;background:var(--sand);min-height:520px;overflow:hidden;border-radius:240px 240px 0 0}
+.portrait-panel img{position:absolute;right:0;bottom:0;height:96%;width:auto;max-width:none}
+.portrait figcaption{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);border-top:1px solid var(--ink);padding-top:8px}
+.portrait figcaption b{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+
+/* beliefs AI card */
+.belief.ai{background:var(--blush);padding:30px 26px;border-bottom:0;margin-top:2px}
+.belief.ai h3{font-size:clamp(28px,3.4vw,40px)}
+
+/* panels + next */
+.panel[hidden]{display:none!important}
+.next-tab{display:flex;justify-content:flex-end;padding-block:40px 64px}
+.next-tab a{font-family:var(--display);font-weight:800;font-stretch:118%;text-transform:uppercase;font-size:clamp(20px,2.4vw,28px);color:var(--ink);text-decoration:none;border-bottom:3px solid var(--accent);padding-bottom:4px}
+.next-tab a span{color:var(--accent)}
+.career-sec .section-head{padding-top:56px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink);text-decoration:none;display:inline-block}
+.btn.line:hover{background:var(--ink);color:var(--paper)}
+.try{background:#141210;color:#F6F2EC}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .try{background:#0C0B0A}}
+:root[data-theme="dark"] .try{background:#0C0B0A}
+.try .opt[aria-pressed="true"]{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
+.try .bform input,.try .bform select,.try .bform textarea{color:#F6F2EC;background:rgba(246,242,236,.06);border-color:rgba(246,242,236,.22)}
+.try .opt,.try .ghost2,.try .addrow,.try .iv button,.try .btn.ghost3{color:#F6F2EC;border-color:rgba(246,242,236,.32)}
+.try .f>span,.try .kicker,.try .bstatus,.try-intro p,.try-head p{color:rgba(246,242,236,.72)}
+.try .btn.dark{background:#F6F2EC;color:#141210}
+.try .audit-r,.try .stage,.try .bmail{color:var(--ink)}
+.try-intro h2 i,.try-n{color:#E3B5A6}
+.try-head{border-top-color:rgba(246,242,236,.25)}
+.try .checks input{accent-color:#E3B5A6}
+
+@media (max-width:900px){
+  .mast nav.tabbar{display:flex}
+  .mast{grid-template-columns:1fr auto;grid-template-areas:"name cta" "tabs tabs"}
+  .mast-name{grid-area:name}.mast-contact{grid-area:cta}.tabbar{grid-area:tabs;justify-content:flex-start}
+  .mast-link{display:none}
+  .cover{grid-template-columns:1fr}
+  .portrait-panel{min-height:420px;max-width:420px;width:100%}
+}
+@media (max-width:560px){
+  .mast-name{font-size:16px}
+  .tabbar a{font-size:11.5px;padding:8px 11px}
+  .cover{padding-block:24px 32px}
+  .portrait-panel{min-height:360px}
+}
+
+.portrait-panel{border-radius:180px 0 0 0;min-height:560px}
+.portrait-panel img{height:100%}
+.mast .tabbar{flex-wrap:nowrap;gap:4px}
+.mast .tabbar a[aria-selected="true"],.mast .tabbar a[aria-selected="true"]:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:900px){.portrait-panel{min-height:460px;border-radius:140px 0 0 0}}
+@media (max-width:560px){.portrait-panel{min-height:400px}}
 </style>
 </head>
 <body>
 
-<header class="bar"><div class="wrap">
-  <span class="who">Melissa Heffler</span>
-  <nav class="label" aria-label="Sections">
-    <a href="#apply">Apply</a><a href="#scheduled">Scheduled</a><a href="#confirmed">Confirmed</a><a href="#rescheduled">Rescheduled</a><a href="#team">Team</a><a href="#offer">Offer</a>
-  </nav>
-</div></header>
-
-<main class="wrap">
-  <section class="hero">
-    <span class="label">Talent Acquisition · Candidate Experience</span>
-    <h1>You're the <em>candidate</em> now.</h1>
-    <p class="lede">I'm Melissa. I run the part of hiring people actually feel: the scheduling, the emails, the "wait, what time is it again?" <b>Instead of telling you about it, I'd rather put you through it.</b> Takes about two minutes.</p>
-    <form class="start" id="startForm">
-      <label for="nameInput" class="label" style="flex-basis:100%">First, what should I call you?</label>
-      <input id="nameInput" type="text" autocomplete="given-name" placeholder="Your first name" maxlength="24">
-      <button class="btn" type="submit">Start my interview</button>
-    </form>
+<header class="mast-bar">
+  <div class="wrap mast">
+    <a class="mast-name" href="#hello">Melissa Heffler</a>
+    <nav class="tabbar" role="tablist" aria-label="Sections">
+      <a role="tab" href="#hello" data-t="hello">Letter &amp; Beliefs</a>
+      <a role="tab" href="#mywork" data-t="mywork">My Work &amp; Try It</a>
+      <a role="tab" href="#careers" data-t="careers">Career &amp; Contact</a>
+    </nav>
+    <div class="mast-contact">
+      <a class="mast-link" href="mailto:mlheffler@gmail.com">Email</a>
+      <a class="mast-link" href="https://www.linkedin.com/in/melissa-heffler-13982768" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="mast-cta" href="/resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+    </div>
+  </div>
+</header>
+<main>
+<div class="panel" data-tab="hello" id="p-hello">
+<div class="wrap">
+  <section class="cover">
+    <div class="cover-text">
+      <span class="kicker a">A portfolio by Melissa Heffler</span>
+      <h1>People <i>over</i> process.</h1>
+      <p class="deck-line">Corporate, made human. For the people on both sides of the offer.</p>
+      <div class="cover-tabs">
+        <a href="#hello" class="ct"><span>01</span>Letter &amp; Beliefs</a>
+        <a href="#mywork" class="ct"><span>02</span>My Work &amp; Try It</a>
+        <a href="#careers" class="ct"><span>03</span>Career &amp; Contact</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <div class="portrait-panel"><img src="/m-gown.webp" alt="Melissa Heffler, smiling, in a black one-shoulder gown" width="274" height="1100"></div>
+      <figcaption><b>Melissa Heffler</b><span>People operations · candidate &amp; employee experience</span></figcaption>
+    </figure>
   </section>
-
-  <!-- 1 -->
-  <section class="slot" id="apply">
-    <div class="time"><span class="t">09:00</span><span class="label">Apply</span></div>
-    <div>
-      <div class="slot-head">
-        <h2>You applied. Someone has to find a time.</h2>
-        <p>This is where most processes get messy. Your recruiter has your availability in their inbox, three interviewers have three different calendars, and nobody wants you on a 14-person reply-all. So <b>the recruiter fills out one request, and it lands with me.</b></p>
-      </div>
-      <div class="split">
-        <div class="panel">
-          <div class="panel-top"><span class="label">Interview Request Builder</span><span class="pill idle">Draft</span></div>
-          <div class="panel-body">
-            <div class="row2">
-              <label class="field"><span>Candidate</span><div class="v" data-name-full>Alex Rivera</div></label>
-              <label class="field"><span>Role</span><div class="v">Senior Product Designer</div></label>
-            </div>
-            <div class="row2">
-              <label class="field"><span>Stage</span><div class="v">Final panel</div></label>
-              <label class="field"><span>Format</span><div class="v">Video, 45 min each</div></label>
-            </div>
-            <div class="field"><span>Panel</span><div class="chips"><span class="chip">Priya S. · Design Lead</span><span class="chip">Marcus T. · PM</span><span class="chip">Dana K. · Eng Manager</span></div></div>
-            <div class="field"><span>Candidate availability</span><div class="v">Tue or Wed, before 1pm ET</div></div>
-            <a class="btn small" href="#scheduled" style="justify-self:start;text-decoration:none">Send to scheduling ↓</a>
-          </div>
-        </div>
-        <div class="note">
-          <h3>What I built</h3>
-          <p>A request builder recruiters fill out once. It drafts the email to me, logs the request, and kicks off everything below. No hunting through threads.</p>
-          <ul><li>One intake, every time</li><li>Candidates and interviewers never share an email</li><li>Every request is logged, so nothing gets lost</li></ul>
-        </div>
-      </div>
+  <section class="letter" id="letter">
+    <div class="side">
+      <span class="kicker a">Before you start</span>
+      <h2>A note from Melissa</h2>
+    </div>
+    <div class="body">
+      <p>I think about my job a bit like a brain surgeon would. I'm on call, always. Probably too much, if I'm honest. But the people on the other end are navigating some of life's most stressful moments: looking for work, starting somewhere new, finding their footing once they're in. And I don't believe in leaving them guessing.</p>
+      <p>I know that weight from the inside. Rereading an email five times before you hit send. Wondering if one more follow-up makes you a pest, or if it's too late to ask a question in week three. So I am the person who takes the weight off. Candidate or colleague, know me and you've got a safety net.</p>
+      <p>At Gap Inc. that meant 1,500+ interviews a year across Global Tech and Corporate Functions. A scheduling system I built myself with AI. Dashboards that influenced leadership decisions, not just informed them. And a weekly digest where a teammate's daughter graduating college got the same spotlight as the hiring update, because why wouldn't it?</p>
+      <p>People over process. We're people, not numbers. Keep going and feel it for yourself.</p>
+      <span class="sig">Melissa</span>
     </div>
   </section>
 
-  <!-- 2 -->
-  <section class="slot" id="scheduled">
-    <div class="time"><span class="t">09:20</span><span class="label">Scheduled</span></div>
-    <div>
-      <div class="slot-head">
-        <h2>Your panel just got built.</h2>
-        <p>Three interviews, back to back, with a buffer so nobody runs late into the next one. Each interviewer gets their own invite with your resume and their focus area. <b>You get one clean confirmation.</b></p>
-      </div>
-      <div class="split">
-        <div class="panel">
-          <div class="panel-top"><span class="label" id="calDay">Tuesday</span><button class="btn ghost small" id="buildBtn" type="button">Build it again</button></div>
-          <div class="panel-body">
-            <div class="cal">
-              <div class="hours"><div>9 AM</div><div>10 AM</div><div>11 AM</div><div>12 PM</div><div>1 PM</div></div>
-              <div class="grid" id="calGrid"><div></div><div></div><div></div><div></div><div></div>
-                <div class="ev" data-ev="0" style="top:28px;height:42px"><b>Priya S. · Portfolio review</b><small>9:30–10:15</small></div>
-                <div class="ev" data-ev="1" style="top:84px;height:42px"><b>Marcus T. · Product thinking</b><small>10:30–11:15</small></div>
-                <div class="ev" data-ev="2" style="top:140px;height:42px"><b>Dana K. · Collaboration</b><small>11:30–12:15</small></div>
+  <section id="believe">
+    <div class="section-head">
+      <h2>What I believe</h2>
+      
+    </div>
+    <div class="beliefs">
+      <div class="belief"><span class="kicker a">Before day one</span><h3>Candidate experience is everything.</h3><p>The first email. The wait between rounds. The "we went another direction." Every one of those moments tells someone how much they matter. Hired or not, I want every candidate to walk away feeling valued.</p></div>
+      <div class="belief"><span class="kicker a">Day one and after</span><h3>The welcome decides who stays.</h3><p>Retention starts on day one. How you're welcomed, and how you're treated once the shine wears off, matters more than any perk ever will.</p></div>
+      <div class="belief"><span class="kicker a">Just because</span><h3>Ask how they're doing. Mean it.</h3><p>A real "how are you?" goes further than people think. Check in for no reason. Let someone vent, and make sure they walk away feeling heard and seen. It's the fastest way I know to close the gap between corporate America and actual humans.</p></div>
+      <div class="belief"><span class="kicker a">Not just at the holiday party</span><h3>Real life belongs at work.</h3><p>Graduations. Birthdays. Someone's big trip. Celebrate your people, your people's people, and everything in between, right alongside the business, every week. That's where work and life actually meet.</p></div>
+      <div class="belief wide"><div style="display:grid;gap:10px"><span class="kicker a">All the way up</span><h3>Leaders are people too.</h3></div><p>The best leaders are visible, reachable, and a reminder that we're all human. Share what's coming before it lands. And when you hold a listening session, show people what changed because of it.</p></div>
+      <div class="belief wide ai"><div style="display:grid;gap:10px"><span class="kicker a">The future I believe in</span><h3>AI for the busywork. <i>People for each other.</i></h3></div><p>I built my automations entirely with AI. They cut my turnaround time in half, but the real win was what they gave back: more time for the conversations, check-ins and small moments that make a person feel seen. That's the future I believe in. AI should take on the busywork so people can show up more fully for each other, not less.</p></div>
+    </div>
+
+    <div class="question">
+      <q>Does this company respect me, my time, and its people?</q>
+      <p>Candidates ask it. Employees ask it too, just more quietly. The answer should be obvious.</p>
+    </div>
+      </section>
+  <div class="next-tab"><a href="#mywork">Next: My Work &amp; Try It <span>→</span></a></div>
+</div>
+</div>
+<div class="panel" data-tab="mywork" id="p-mywork" hidden>
+<div class="wrap">
+  <section id="work">
+    <div class="section-head">
+      <h2>My work</h2>
+      <p>What I do and how I do it. Then try it for yourself.</p>
+    </div>
+    <div class="sub-head"><span class="kicker a">01</span><h3>What I do</h3><p>Each part only works if the others do. That's people over process in practice.</p></div>
+    <div class="quad">
+
+      <article class="area">
+        <span class="k">Employee experience</span>
+        <h3>People who feel seen stay.</h3>
+        <p>I keep people in the loop, celebrate the life that happens outside a calendar invite, and make sure everyone has a way to keep growing.</p>
+        <div class="mini nl">
+          <div class="nl-mast"><span class="nl-title">The Weekly</span><span class="nl-meta" id="digestDate">Fri</span></div>
+          <div class="nl-lead"><span class="nl-tag">This week</span><p>Two hiring events, a new tool going live, and plenty to celebrate.</p></div>
+          <div class="nl-grid">
+            <div><span class="nl-tag">Celebrating</span>
+              <ul class="nl-people"><li><i>DK</i><span>Dana's daughter graduates college Saturday</span></li><li><i>MT</i><span>Happy birthday, Marcus</span></li><li><i>PS</i><span>Priya's off to Lisbon</span></li></ul></div>
+            <div><span class="nl-tag">On the radar</span>
+              <ul class="nl-items"><li>Hiring events Tuesday and Thursday</li><li>Background check builder is live</li><li>Mentorship cohort sign-ups open</li></ul></div>
+          </div>
+          <div class="nl-foot">Sample issue · names are made up</div>
+        </div>
+        <ul class="list">
+          <li><b>A weekly digest people actually read</b><span>Company wins and big news alongside graduations, birthdays and milestones</span></li>
+          <li><b>All-Hands and Town Halls</b><span>Planned and run for Corporate Functions and Global Technology Solutions</span></li>
+          <li><b>Mentorship and skill cohorts</b><span>Internal mentorship and focused groups that build real skills together</span></li>
+          <li><b>Room to grow</b><span>Backing people who take courses, earn certifications, and sign up for programs that make them better at their work</span></li>
+        </ul>
+      </article>
+
+      <article class="area">
+        <span class="k">Candidate experience</span>
+        <h3>Every touchpoint counts. All of them.</h3>
+        <p>I map the candidate journey the way a brand maps a customer's, with communication at every single step. Clarity and warmth are designed in from the start.</p>
+        <div class="mini em">
+          <div class="em-bar"><span class="em-brand">Hiring Team</span><span class="em-to">To: <span data-name-full>Alex Rivera</span></span></div>
+          <div class="em-body">
+            <span class="em-eyebrow">Final round · Confirmed</span>
+            <p class="em-h">You're all set, <span data-name>Alex</span>.</p>
+            <div class="em-when"><div><b id="emDate">Tue, Oct 13</b><span>9:30 AM to 12:15 PM ET</span></div><div><b>Video</b><span>One link, all morning</span></div></div>
+            <ul class="em-sched">
+              <li><i>PS</i><div><b>Priya S., Design Lead</b><span>A project you're proud of</span></div><em>9:30</em></li>
+              <li><i>MT</i><div><b>Marcus T., Product Manager</b><span>How you'd tackle a real problem</span></div><em>10:30</em></li>
+              <li><i>DK</i><div><b>Dana K., Eng Manager</b><span>How you work with engineers</span></div><em>11:30</em></li>
+            </ul>
+            <div class="em-actions"><span class="em-btn">Add to calendar</span><span class="em-note">Questions? Just reply. Good luck!</span></div>
+          </div>
+        </div>
+        <div class="fact"><span class="fact-tag">★ Fun fact</span><div><b>95%</b><p>of candidate action items in my remit were handled in under 24 hours.</p></div></div>
+        <ul class="list">
+          <li><b>1,500+ interviews annually</b><span>My volume and stewardship by the numbers, across Global Tech and Corporate Functions</span></li>
+          <li><b>Communication at every stage</b><span>Clear, warm, consistent and personal from first email to final answer</span></li>
+          <li><b>One thread, start to finish</b><span>No digging through your inbox for scattered emails. Every update stays in one clean place, by design.</span></li>
+        </ul>
+      </article>
+
+      <article class="area">
+        <span class="k">Operations and automation</span>
+        <h3>If it's broken, I build the fix.</h3>
+        <p>No engineering background, no ticket queue. I built a four-part scheduling system with AI in Power Automate and SharePoint, and I'm always looking for ways to level it up. Less time on the tedious means more time for our people, the ones here now and the ones we haven't met yet.</p>
+        <div class="mini pipe">
+          <div class="pipe-top"><span>Interview scheduling system</span><span class="pill idle">Live</span></div>
+          <ol class="pipe-steps">
+            <li><span class="ps-n">01</span><div><b>Intake</b><span>Interview Request Builder. Recruiter submits once.</span></div></li>
+            <li><span class="ps-n">02</span><div><b>Event build</b><span>Panels created on the right calendars, with the right details.</span></div></li>
+            <li><span class="ps-n">03</span><div><b>Communications</b><span>Branded confirmation and invite builders.</span></div></li>
+            <li><span class="ps-n">04</span><div><b>Tracking</b><span>Every schedule and reschedule logged to SharePoint.</span></div></li>
+          </ol>
+          <div class="pipe-foot"><span>Power Automate</span><span>SharePoint</span><span>Outlook</span></div>
+        </div>
+        <ul class="list">
+          <li><b>Scheduling turnaround, cut in half</b><span>Hours of copy-and-paste gone, and that time goes back to candidates and hiring teams</span></li>
+          <li><b>Fewer mistakes people feel</b><span>Right person, right calendar, right details, every time</span></li>
+          <li><b>Nobody falls through the cracks</b><span>Every request is logged, and every candidate gets followed up with</span></li>
+          <li><b>Built for the whole team</b><span>Scalable tools any recruiter can use, not a system that lives on one person's computer</span></li>
+        </ul>
+      </article>
+
+      <article class="area">
+        <span class="k">Data and reporting</span>
+        <h3>Numbers that make people move.</h3>
+        <p>Dashboards and decks that changed what leadership decided, not just what they knew. I let the data tell the story, with the next step impossible to miss. The review ends in a decision, not a shrug.</p>
+        <div class="mini dash">
+          <div class="dash-top"><span>Scheduling Command Center</span><span class="dash-meta">Sample data · 8 weeks</span></div>
+          <div class="dash-kpis">
+            <div><span class="n">246</span><span>Interviews</span></div>
+            <div><span class="n">34</span><span>Reschedules</span></div>
+            <div><span class="n">14%</span><span>Reschedule rate</span></div>
+          </div>
+          <div class="dash-body">
+            <div class="dash-chart"><span class="nl-tag">Interviews per week</span><svg id="weekly" viewBox="0 0 160 60" role="img" aria-label="Interviews per week, sample data"></svg></div>
+            <div class="dash-lvl"><span class="nl-tag">Reschedule rate by level</span>
+              <div><span>Individual contributor</span><i style="--w:41%"></i><b>9%</b></div>
+              <div><span>Senior</span><i style="--w:64%"></i><b>14%</b></div>
+              <div class="hot"><span>Director+</span><i style="--w:100%"></i><b>22%</b></div>
+            </div>
+          </div>
+          <div class="dash-action"><b>Next step</b><span>Director+ panels slip most. Lock interviewer availability before intake.</span></div>
+        </div>
+        <ul class="list">
+          <li><b>Built the data layer from scratch</b><span>With no ATS integration available, I engineered my own source of truth: automated flows capture every scheduling event and write it to structured SharePoint lists, with a full change log for audit</span></li>
+          <li><b>Scheduling Command Center</b><span>Interview volume counted per interviewer, reschedule rates by team and job level, and recruiter workload distribution, consolidated into one executive view</span></li>
+          <li><b>Weekly requisition reporting, automated</b><span>Two raw exports in two formats, reconciled and rebuilt into one cross-functional open requisitions dashboard every week, recovering an hour of manual prep each time</span></li>
+          <li><b>Data leadership acts on</b><span>Clear definitions, clean records and executive-ready decks, so the numbers hold up in the room and point straight to the next decision</span></li>
+        </ul>
+      </article>
+
+    </div>
+  
+    <div class="sub-head" id="how"><span class="kicker a">02</span><h3>How I do it</h3><p>The habits behind the work.</p></div>
+    <div class="principles">
+      <div class="principle"><span class="kicker a">Dependable</span><h3>Your safety net.</h3><p>Whatever falls through the cracks, I've already caught it, and so have my systems. On call, to a fault.</p></div>
+      <div class="principle"><span class="kicker a">Adaptable</span><h3>Change is a challenge. I like that.</h3><p>Priorities move. I'd rather chase a moving target than guard the way we used to do things.</p></div>
+      <div class="principle"><span class="kicker a">Growth mindset</span><h3>Never finished.</h3><p>Every system I build is more garden than monument. I'm continuously tending it, pruning what doesn't work and growing what does.</p></div>
+      <div class="principle hero"><span class="kicker a">The mantra</span><h3>People <i>over</i> process. Always.</h3><p>Call it a mantra. For me it's the test every single decision has to pass. Before I build a tool, send an email, or design a dashboard, I ask one question: who does this help, and how will it make them feel? Process exists to serve people. The moment it asks people to serve it instead is the moment I go to work.</p></div>
+    </div>
+  </section>
+</div>
+<section class="try" id="experience">
+  <div class="wrap">
+    <div class="try-intro">
+      <span class="kicker">Try it</span>
+      <h2>See it. Test yours. <i>Use mine.</i></h2>
+      <p>A sample can't give you the real experience, so here's the next best thing. Watch what I clean up, run a quick check on a process at your own company, and use one of my actual tools.</p>
+    </div>
+
+    <!-- A: animation -->
+    <div class="try-block">
+      <div class="try-head"><span class="try-n">A</span><div><h3>From chaos to clear.</h3><p>One final-round panel, scheduled the usual way, then my way. Watch where every detail ends up.</p></div><button class="ghost2" id="replayBtn" type="button">↻ Replay</button></div>
+      <div class="stage" id="stage" aria-label="Animation: a messy email thread gets cleaned up into one request, one confirmation and one log entry">
+        <div class="stage-count"><span id="cA">14</span> emails · <span id="cB">6</span> people · <span id="cC">3</span> days · <b id="cD">0 answers for the candidate</b></div>
+        <div class="mails" id="mails"></div>
+        <div class="clean">
+          <div class="cc cc-mail" style="--i:1">
+            <div class="ccm-bar"><span>Hiring Team</span><span>To: Jordan Lee · 9:21 AM</span></div>
+            <div class="ccm-body">
+              <span class="cc-k">Final round · Confirmed</span>
+              <b class="ccm-h">See you Tuesday, Jordan.</b>
+              <p class="ccm-sub">Senior Product Designer · Final panel</p>
+              <div class="ccm-when"><div><b>Tue, Oct 13</b><span>9:30 AM to 12:15 PM ET</span></div><div><b>Video</b><span>One link for all three</span></div></div>
+              <div class="ccm-sched">
+                <div><em>9:30–10:15</em><span><b>Priya Shah</b>, Design Lead · A project you're proud of</span></div>
+                <div><em>10:30–11:15</em><span><b>Marcus Torres</b>, Product Manager · A real problem, live</span></div>
+                <div><em>11:30–12:15</em><span><b>Dana Kim</b>, Engineering Manager · Working with engineers</span></div>
+              </div>
+              <div class="ccm-help">
+                <div><span>Role or team questions</span><b>Alex, your recruiter</b></div>
+                <div><span>Logistics or tech, day of</span><b>Melissa, scheduling</b></div>
+                <div><span>Accommodations</span><b>Just reply, no explanation needed</b></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="note">
-          <h3>What I built</h3>
-          <p>The event build. It takes the request, creates each interview on the right calendars with the right details, and adds the right video link. No more copying and pasting the same details into five invites.</p>
-          <p>I count volume the honest way: every interviewer on a panel is one interview. That's how I land at <b style="color:var(--ink)">1,500+ a year</b>.</p>
+          <div class="cc-side">
+            <div class="cc" style="--i:0"><span class="cc-k">Request · 9:02 AM</span><b>Final panel, Jordan Lee</b><span>Submitted once by the recruiter. Panel, format and availability in one place.</span></div>
+            <div class="cc" style="--i:2"><span class="cc-k">Logged · 9:21 AM</span><b>3 interviews scheduled</b><span>Each one on the right calendar with the resume attached. Any change gets tracked.</span></div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- 3 -->
-  <section class="slot" id="confirmed">
-    <div class="time"><span class="t">09:21</span><span class="label">Confirmed</span></div>
-    <div>
-      <div class="slot-head">
-        <h2>Check your inbox.</h2>
-        <p>This is the email that sets the tone for your whole day. Flip between the two. <b>Same information. Very different feeling.</b></p>
-      </div>
-      <div class="panel" style="max-width:720px">
-        <div class="panel-top">
-          <div class="mail-tabs" role="tablist" aria-label="Email version">
-            <button class="tab" role="tab" id="tabAfter" aria-selected="true" type="button">Mine</button>
-            <button class="tab" role="tab" id="tabBefore" aria-selected="false" type="button">The usual</button>
-          </div>
-          <span class="pill ok">Delivered</span>
-        </div>
-        <div class="mail-meta">
-          <span><b>To:</b> <span data-name-full>Alex Rivera</span></span>
-          <span><b>Subject:</b> <span id="subj">You're confirmed, <span data-name>Alex</span>. Here's your day.</span></span>
-        </div>
-        <div id="mailAfter" class="mail">
-          <div class="hi">See you <span class="dayword">Tuesday</span>, <span data-name>Alex</span>.</div>
-          <p>Your final panel for Senior Product Designer is locked in. Three conversations, 45 minutes each, with short breaks in between. Everything you need is below. Nothing you need is buried in a thread.</p>
-          <div class="agenda">
-            <div><span class="mono">9:30 AM ET</span><span><b>Priya S.</b>, Design Lead · Walk us through one project you're proud of</span></div>
-            <div><span class="mono">10:30 AM ET</span><span><b>Marcus T.</b>, Product Manager · How you'd tackle a real problem</span></div>
-            <div><span class="mono">11:30 AM ET</span><span><b>Dana K.</b>, Eng Manager · How you work with engineers</span></div>
-          </div>
-          <div class="prep">
-            <div><b>One link</b>Same video room all morning.</div>
-            <div><b>Bring</b>Your portfolio, ready to share.</div>
-            <div><b>Questions?</b>Reply here. A real person answers.</div>
-          </div>
-        </div>
-        <div id="mailBefore" class="mail" hidden>
-<p class="plain">Hello,
-
-Please see below for your interview details. Calendar invitations will be sent separately.
-
-Date: 10/13
-Interviewers: P. Shah, M. Torres, D. Kim
-Time: 9:30am-12:15pm
-
-Please let us know if you have any questions.
-
-Thank you,
-Recruiting Team</p>
-        </div>
-      </div>
-      <div class="note" style="max-width:720px;margin-top:20px">
-        <p>I built a branded confirmation email builder and a companion calendar invite tool. Recruiters plug in the details and it renders correctly in Outlook. People are nervous before interviews. Small things like knowing who you're meeting and why help a lot.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 -->
-  <section class="slot" id="rescheduled">
-    <div class="time"><span class="t">Mon</span><span class="label">Rescheduled</span></div>
-    <div>
-      <div class="slot-head">
-        <h2>Then life happens.</h2>
-        <p>Someone gets sick or a launch slips. Reschedules are where candidate experience usually falls apart, and where most teams stop counting. <b>I count every one.</b> Go ahead, break something.</p>
-      </div>
-      <div class="split">
-        <div class="panel">
-          <div class="panel-top"><span class="label">Change log</span><button class="btn small" id="reschedBtn" type="button">Marcus can't make it</button></div>
-          <div class="panel-body">
-            <div class="log" id="log">
-              <div><span>09:20</span><span>Panel scheduled · 3 interviews</span><span class="pill ok">Logged</span></div>
-              <div><span>09:21</span><span>Confirmation sent to candidate</span><span class="pill ok">Logged</span></div>
+    <!-- B: audit -->
+    <div class="try-block">
+      <div class="try-head"><span class="try-n">B</span><div><h3>The People over Process audit.</h3><p>Pick a process at your company. Answer five questions honestly. I'll tell you where I'd start.</p></div></div>
+      <div class="audit">
+        <div class="audit-q">
+          <div class="aq">
+            <span class="aq-label">Which process?</span>
+            <div class="opts" role="radiogroup" aria-label="Process" id="procOpts">
+              <button type="button" class="opt" data-proc="interview scheduling" aria-pressed="true">Interview scheduling</button>
+              <button type="button" class="opt" data-proc="onboarding" aria-pressed="false">Onboarding</button>
+              <button type="button" class="opt" data-proc="offer letters" aria-pressed="false">Offer letters</button>
+              <button type="button" class="opt" data-proc="internal comms" aria-pressed="false">Internal comms</button>
+              <button type="button" class="opt" data-proc="performance reviews" aria-pressed="false">Performance reviews</button>
             </div>
           </div>
+          <div id="questions"></div>
         </div>
-        <div class="note">
-          <h3>What I built</h3>
-          <p>A tracker that reads my calendar and logs every schedule and reschedule on its own. A moved panelist counts as a new interview request, because it's real work and it's another email in the candidate's inbox.</p>
-          <p>That data is what turned "reschedules feel high" into a case leadership could act on.</p>
+        <div class="audit-r" id="auditResult" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- C: builder -->
+    <div class="try-block">
+      <div class="try-head"><span class="try-n">C</span><div><h3>Use a sample builder of mine.</h3><p>At work, none of this is typed by hand. A request comes in, and my automations build the event and send the right message on their own. This sample lets you drive it yourself, so you can see the language I've built for every situation, from a first confirmation to a day-of emergency.</p></div></div>
+      <div class="builder">
+        <form class="bform" id="bform" autocomplete="off">
+          <div class="f"><span>What's happening?</span>
+            <div class="opts" id="bType" role="radiogroup" aria-label="Message type">
+              <button type="button" class="opt" data-t="confirm" aria-pressed="true">New confirmation</button>
+              <button type="button" class="opt" data-t="resched" aria-pressed="false">Reschedule</button>
+              <button type="button" class="opt" data-t="swap" aria-pressed="false">Interviewer change</button>
+              <button type="button" class="opt" data-t="tech" aria-pressed="false">Connection trouble</button>
+              <button type="button" class="opt" data-t="emerg" aria-pressed="false">Personal emergency</button>
+            </div>
+          </div>
+
+          <div class="frow" data-show="resched"><label class="f"><span>Why it moved</span><select id="bWhy"><option value="conflict">An interviewer had a conflict</option><option value="cand">The candidate asked to move</option><option value="ours">Something came up on our end</option></select></label>
+            <label class="f"><span>Originally scheduled for</span><input id="bOld" value="Monday at 2:00 PM"></label></div>
+          <div class="frow" data-show="swap"><label class="f"><span>Who can't make it</span><input id="bOut" value="Marcus Torres"></label>
+            <label class="f"><span>Who's stepping in</span><input id="bIn" value="Lee Park"></label></div>
+          <div class="frow" data-show="emerg"><label class="f"><span>Whose emergency?</span><select id="bWho"><option value="cand">The candidate's</option><option value="ours">An interviewer's</option></select></label></div>
+
+          <div class="frow">
+            <label class="f"><span>Candidate first name</span><input id="bFirst" value="Jordan"></label>
+            <label class="f"><span>Last name</span><input id="bLast" value="Lee"></label>
+          </div>
+          <div class="frow">
+            <label class="f"><span>Role</span><input id="bRole" value="Senior Product Designer"></label>
+            <label class="f"><span>Company</span><input id="bCo" value="Your Company"></label>
+          </div>
+          <div data-hide="tech emerg">
+            <div class="frow three">
+              <label class="f"><span>Date</span><input id="bDate" type="date"></label>
+              <label class="f"><span>Start time</span><input id="bTime" type="time" value="09:30"></label>
+              <label class="f"><span>Time zone</span><select id="bTz"><option>ET</option><option>CT</option><option>MT</option><option>PT</option><option>GMT</option></select></label>
+            </div>
+            <div class="frow three" style="margin-top:14px">
+              <label class="f"><span>Each interview</span><select id="bDur"><option value="30">30 min</option><option value="45" selected>45 min</option><option value="60">60 min</option></select></label>
+              <label class="f"><span>Break between</span><select id="bBreak"><option value="0">None</option><option value="10">10 min</option><option value="15" selected>15 min</option></select></label>
+              <label class="f"><span>Format</span><select id="bFmt"><option>Video</option><option>In person</option><option>Phone</option></select></label>
+            </div>
+          </div>
+          <label class="f"><span id="bLocLabel">Video link</span><input id="bLoc" value="https://meet.example.com/final-round"></label>
+          <div class="f" data-hide="tech emerg"><span>Interviewers</span>
+            <div id="ivRows"></div>
+            <button type="button" class="addrow" id="addIv">+ Add interviewer</button>
+          </div>
+          <div class="frow">
+            <label class="f"><span>Recruiter (role questions)</span><input id="bRec" value="Alex Morgan"></label>
+            <label class="f"><span>Day-of contact phone</span><input id="bPhone" value="(555) 010-2026"></label>
+          </div>
+          <div class="f"><span>Include</span>
+            <div class="checks">
+              <label><input type="checkbox" id="kContacts" checked> Who to contact for what</label>
+              <label><input type="checkbox" id="kPrep" checked> What to bring</label>
+              <label><input type="checkbox" id="kAcc" checked> Accommodations</label>
+              <label><input type="checkbox" id="kNote" checked> Personal note</label>
+            </div>
+          </div>
+          <label class="f" id="noteWrap"><span>Personal note</span><textarea id="bNote" rows="2">We're really looking forward to meeting you. Take a breath, be yourself, and remember we want this to go well too.</textarea></label>
+          <label class="f"><span>Your name</span><input id="bFrom" value="Melissa"></label>
+        </form>
+
+        <div class="bout">
+          <div class="bmail" id="bmail"></div>
+          <div class="bactions">
+            <button class="btn dark" type="button" id="copyMail">Copy email</button>
+            <a class="btn ghost3" id="icsLink" download="interview.ics" href="#">Download calendar invite</a>
+            <span class="bstatus" id="bStatus"></span>
+          </div>
         </div>
       </div>
-
-      <div class="panel" style="margin-top:28px">
-        <div class="panel-top"><span class="label">Scheduling Command Center</span><span class="pill idle">Last 8 weeks</span></div>
-        <div class="kpis">
-          <div class="kpi"><span class="n" id="kVol">246</span><span class="k">Interviews scheduled</span></div>
-          <div class="kpi"><span class="n" id="kRes">14%</span><span class="k">Reschedule rate</span></div>
-          <div class="kpi"><span class="n">1.4 days</span><span class="k">Request to confirmed</span></div>
-        </div>
-        <div class="charts">
-          <div class="chart"><span class="label">Interviews per week</span><svg id="weekly" viewBox="0 0 360 170" role="img" aria-label="Interviews per week, sample data"></svg></div>
-          <div class="chart"><span class="label">Reschedule rate by team</span><div class="hbar" id="teams"></div></div>
-        </div>
-        <div class="sample">Sample data for illustration. Real dashboards and numbers stay with the company that owns them.</div>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <div class="next-tab"><a href="#careers">Next: Career &amp; Contact <span>→</span></a></div>
+</div>
+</div>
+<div class="panel" data-tab="careers" id="p-careers" hidden>
+<div class="wrap">
+  <section class="career-sec">
+    <div class="section-head" id="career"><h2>Where I've <i>done it</i></h2><p>Media, baseball, football, retail. Different worlds with one thing in common: ensuring people have what they need to make the work run smoothly.</p></div>
+    <div class="career-list">
+      <ol class="timeline">
+        <li><span class="yr">2021–2026</span><div><div class="org">Gap Inc.</div><div class="role">Senior Talent Acquisition Specialist, Global Technology Solutions</div></div></li>
+        <li><span class="yr">2018–2021</span><div><div class="org">National Football League</div><div class="role">Senior Coordinator, Administration and Facilities</div></div></li>
+        <li><span class="yr">2016–2018</span><div><div class="org">Major League Baseball</div><div class="role">Recruiting and Employee Services Coordinator</div></div></li>
+        <li><span class="yr">2015–2016</span><div><div class="org">AOL</div><div class="role">Executive Projects Assistant</div></div></li>
+        <li><span class="yr">Before that</span><div><div class="org">Viacom</div><div class="role">Intern. Where it started.</div></div></li>
+        <li><span class="yr">2011–2015</span><div><div class="org">Penn State</div><div class="role">Education</div></div></li>
+      </ol>
+      <div class="tools"><span class="kicker" style="flex-basis:100%">Tools</span><span>Greenhouse</span><span>Workday</span><span>Power Automate</span><span>SharePoint</span><span>Microsoft Office</span><span>Google Workspace</span><span>Adobe Creative Suite</span><span>Canva</span><span>SAP Concur</span></div>
+    </div>
+  </section>
+  <section class="back" id="contact">
+    <h2>Let's <i>talk.</i></h2>
+    <div class="contact">
+      <p style="font-size:18px">If this sounds like what your team's been missing, I'd love to hear about it.</p>
+      <span class="addr" id="addr">mlheffler@gmail.com</span>
+      <div class="contact-btns">
+        <button class="btn" id="copyBtn" type="button">Copy my email</button>
+        <a class="btn line" href="https://www.linkedin.com/in/melissa-heffler-13982768" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn line" href="/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       </div>
     </div>
   </section>
-
-  <!-- 5 -->
-  <section class="slot" id="team">
-    <div class="time"><span class="t">Fri</span><span class="label">Team</span></div>
-    <div>
-      <div class="slot-head">
-        <h2>You never see this part.</h2>
-        <p>A good candidate experience depends on the team behind it knowing what's coming. Every week I sent our specialists a digest: what's ahead, what's broken, what's getting fixed. I also ran All-Hands and Town Halls for the functions I supported. <b>It's not glamorous, and it's half the job.</b></p>
-      </div>
-      <div class="panel" style="max-width:820px">
-        <div class="panel-top"><span class="label">The Weekly · Specialist Digest</span><span class="mono" style="color:var(--muted)" id="digestDate">Friday</span></div>
-        <div class="digest">
-          <section><h4>Coming up</h4><p>Two hiring events next week. Panel rooms are booked, and interviewer prep goes out Monday.</p></section>
-          <section><h4>Worth knowing</h4><p>The new background check builder is live. Same flow as the interview request builder.</p></section>
-          <section><h4>Roadblocks</h4><p>Reschedules on one team are running high. I'm meeting with their recruiter to figure out why.</p></section>
-          <section><h4>On the way</h4><p>Reschedule tracking by job level, so we can see where panels slip and why.</p></section>
-        </div>
-        <div class="sample">Illustrative issue, written for this page.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6 -->
-  <section class="slot" id="offer">
-    <div class="time"><span class="t">Today</span><span class="label">Offer</span></div>
-    <div>
-      <div class="offer">
-        <span class="label">Offer letter · Prepared for <span data-name>Alex</span></span>
-        <h2>So that's the job. I'd like to do it for you.</h2>
-        <div class="terms">
-          <div><span class="label">Background</span><span class="v">NFL, MLB, AOL, and Gap Inc. More than ten years on the people side of the business.</span></div>
-          <div><span class="label">Volume</span><span class="v">1,500+ interviews scheduled a year across Product, Design and Tech.</span></div>
-          <div><span class="label">How I build</span><span class="v">Every tool on this page, built with AI. No engineering queue required.</span></div>
-          <div><span class="label">How I work</span><span class="v">People over process. The process exists to make the person's day better.</span></div>
-        </div>
-        <div class="cta">
-          <button class="btn" id="copyBtn" type="button">Copy my email</button>
-          <span class="addr" id="addr">mlheffler@gmail.com</span>
-        </div>
-        <span class="sig">Melissa</span>
-      </div>
-    </div>
-  </section>
+  <footer><span>Melissa Heffler · People over process</span><span>Sample people and numbers throughout. The tools and the opinions are real.</span></footer>
+</div>
+</div>
 </main>
-<footer class="wrap">The candidates, interviewers and numbers here are made up. The tools are real, and so is the email above.</footer>
 
 <script>
 (function(){
-  // dates: next Tuesday from today
+  // ===== tabs =====
+  const TABS=['hello','mywork','careers'];
+  const panels=[...document.querySelectorAll('.panel')];
+  function showTab(t){
+    panels.forEach(p=>p.hidden=p.dataset.tab!==t);
+    document.querySelectorAll('.tabbar a').forEach(a=>a.setAttribute('aria-selected',a.dataset.t===t));
+  }
+  function go(hash,smooth){
+    const id=(hash||'').replace('#','');
+    if(TABS.includes(id)){showTab(id);window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});return true;}
+    const el=id&&document.getElementById(id); if(!el)return false;
+    const p=el.closest('.panel'); if(p)showTab(p.dataset.tab);
+    requestAnimationFrame(()=>el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'}));return true;
+  }
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="#"]'); if(!a)return;
+    const h=a.getAttribute('href'); if(h.length<2)return;
+    if(go(h,true)){e.preventDefault(); if(TABS.includes(h.slice(1))){try{history.replaceState(null,'',h)}catch(err){}}}
+  });
+  if(!go(location.hash,false))showTab('hello');
+  window.addEventListener('hashchange',()=>go(location.hash,false));
+
   const now=new Date();
   const tue=new Date(now); tue.setDate(now.getDate()+((9-now.getDay())%7||7));
-  const fmtLong=d=>d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
-  document.getElementById('calDay').textContent=fmtLong(tue);
-  document.querySelectorAll('.dayword').forEach(e=>e.textContent=tue.toLocaleDateString('en-US',{weekday:'long'}));
   const fri=new Date(now); fri.setDate(now.getDate()+((5-now.getDay()+7)%7));
-  document.getElementById('digestDate').textContent=fri.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
-  const plain=document.querySelector('#mailBefore .plain');
-  plain.textContent=plain.textContent.replace('10/13',(tue.getMonth()+1)+'/'+tue.getDate());
+  const dd=document.getElementById('digestDate'); if(dd) dd.textContent=fri.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+  const ed=document.getElementById('emDate'); if(ed) ed.textContent=tue.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
 
-  // name personalization
-  const input=document.getElementById('nameInput');
-  function setName(n){
-    const first=(n||'').trim().split(/\s+/)[0];
-    const name=first?first.charAt(0).toUpperCase()+first.slice(1):'Alex';
-    document.querySelectorAll('[data-name]').forEach(e=>e.textContent=name);
-    document.querySelectorAll('[data-name-full]').forEach(e=>e.textContent=first?name:'Alex Rivera');
-  }
-  try{const saved=localStorage.getItem('cj-name'); if(saved){input.value=saved; setName(saved);}}catch(e){}
-  input.addEventListener('input',()=>setName(input.value));
-  document.getElementById('startForm').addEventListener('submit',e=>{
-    e.preventDefault(); setName(input.value);
-    try{localStorage.setItem('cj-name',input.value.trim())}catch(err){}
-    document.getElementById('apply').scrollIntoView({behavior:'smooth'});
-  });
+  // mini chart
+  const wk=[28,34,31,40,36,24,29,24],max=42,svg=document.getElementById('weekly'),W=160,H=60;
+  if(svg){const step=W/wk.length,bw=step*.62;let s2='';
+  wk.forEach((v,i)=>{const h=(v/max)*(H-4),x=i*step+(step-bw)/2;s2+=`<rect x="${x}" y="${H-h}" width="${bw}" height="${h}" fill="${i===wk.length-1?'var(--accent)':'var(--blush)'}"/>`;});
+  svg.innerHTML=s2;}
 
-  // build animation
-  const evs=[...document.querySelectorAll('.ev')];
-  document.getElementById('buildBtn').addEventListener('click',()=>{
-    evs.forEach(e=>e.classList.add('pre'));
-    evs.forEach((e,i)=>setTimeout(()=>e.classList.remove('pre'),250+i*280));
-  });
-
-  // email tabs
-  const tA=document.getElementById('tabAfter'),tB=document.getElementById('tabBefore');
-  const mA=document.getElementById('mailAfter'),mB=document.getElementById('mailBefore');
-  const subj=document.getElementById('subj'); const subjHTML=subj.innerHTML;
-  function show(after){
-    tA.setAttribute('aria-selected',after);tB.setAttribute('aria-selected',!after);
-    mA.hidden=!after;mB.hidden=after;
-    if(after){subj.innerHTML=subjHTML; setName(input.value);} else subj.textContent='Interview Confirmation';
-  }
-  tA.onclick=()=>show(true); tB.onclick=()=>show(false);
-
-  // reschedule
-  const btn=document.getElementById('reschedBtn'),log=document.getElementById('log');
-  let moved=false;
-  btn.addEventListener('click',()=>{
-    const ev=evs[1];
-    if(!moved){
-      ev.style.top='196px'; ev.classList.add('moved');
-      ev.querySelector('small').textContent='12:30–1:15 · moved';
-      const t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
-      log.insertAdjacentHTML('beforeend',
-        `<div class="new"><span>${t}</span><span>Marcus T. moved to 12:30 · +1 interview request</span><span class="pill warn">Reschedule</span></div>
-         <div class="new"><span>${t}</span><span>Updated confirmation sent to candidate</span><span class="pill ok">Logged</span></div>`);
-      document.getElementById('kVol').textContent='247';
-      document.getElementById('kRes').textContent='15%';
-      btn.textContent='Put it back'; moved=true;
-    }else{
-      ev.style.top='84px'; ev.classList.remove('moved');
-      ev.querySelector('small').textContent='10:30–11:15';
-      log.querySelectorAll('.new').forEach(n=>n.remove());
-      document.getElementById('kVol').textContent='246';
-      document.getElementById('kRes').textContent='14%';
-      btn.textContent="Marcus can't make it"; moved=false;
-    }
-  });
-
-  // weekly chart
-  const data=[28,34,31,40,36,24,29,24], max=45;
-  const svg=document.getElementById('weekly'), W=360,H=170,L=26,B=24,T=8;
-  const step=(W-L)/data.length, bw=step*0.56; let s='';
-  [0,15,30,45].forEach(v=>{const y=H-B-(v/max)*(H-B-T);
-    s+=`<line x1="${L}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="1"/><text x="${L-6}" y="${y+4}" text-anchor="end" font-size="10" font-family="IBM Plex Mono,monospace" fill="var(--muted)">${v}</text>`;});
-  data.forEach((v,i)=>{const h=(v/max)*(H-B-T), x=L+i*step+(step-bw)/2, y=H-B-h, last=i===data.length-1;
-    s+=`<rect x="${x}" y="${y}" width="${bw}" height="${h}" rx="3" fill="${last?'var(--accent)':'var(--accent-soft)'}"/>`;
-    s+=`<text x="${x+bw/2}" y="${H-8}" text-anchor="middle" font-size="10" font-family="IBM Plex Mono,monospace" fill="var(--muted)">W${i+1}</text>`;
-    if(last) s+=`<text x="${x+bw/2}" y="${y-5}" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--ink)">${v}</text>`;});
-  svg.innerHTML=s;
-
-  // team bars
-  const teams=[['Product',12],['Design',9],['Tech',19],['Corporate',11]];
-  document.getElementById('teams').innerHTML=teams.map(([t,v])=>
-    `<div><span>${t}</span><span><i style="width:${v/20*100}%;${v>15?'background:var(--warn)':''}"></i></span><span class="num">${v}%</span></div>`).join('');
-
-  // copy email
-  document.getElementById('copyBtn').addEventListener('click',async e=>{
-    const a=document.getElementById('addr').textContent;
-    try{await navigator.clipboard.writeText(a); e.target.textContent='Copied';}
-    catch(err){const r=document.createRange(); r.selectNodeContents(document.getElementById('addr')); const sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); e.target.textContent='Selected, press copy';}
+  // copy contact email
+  const cb=document.getElementById('copyBtn');
+  if(cb) cb.addEventListener('click',async e=>{
+    const a=document.getElementById('addr');
+    try{await navigator.clipboard.writeText(a.textContent);e.target.textContent='Copied';}
+    catch(err){const r=document.createRange();r.selectNodeContents(a);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);e.target.textContent='Selected. Press Cmd + C';}
     setTimeout(()=>e.target.textContent='Copy my email',2200);
   });
+
+  // ===== A: chaos to clear =====
+  const mailData=[
+    ["Re: Re: Fwd: availability?","Can she do Tues or Weds? Looping in Dana","9:02",1],
+    ["Panel conflict at 11","Marcus has a launch review, can we shift?","9:14",1],
+    ["Who's sending the invite?","I thought you were…","9:31",0],
+    ["Re: final round??","Candidate asking if we're still on","10:05",1],
+    ["Wrong video link","The one in the invite goes nowhere","10:22",1],
+    ["Which time did we land on?","Seeing three different times in this thread","11:40",0],
+    ["Re: Re: Re: availability?","Actually Weds is bad for me now","1:15",1],
+    ["Following up (again)","Just checking in on next steps!","2:48",1],
+    ["Is this still happening?","Haven't seen anything on my calendar","Thu",0],
+    ["FW: resume","Can someone resend? Can't find it","Thu",1],
+    ["Re: Panel conflict at 11","Can we push to next week?","Fri",1],
+    ["Quick question","Should I prep anything specific?","Fri",1]
+  ];
+  const pos=[[3,4,-3],[50,2,2],[18,15,1.5],[44,20,-2],[6,30,2.5],[52,36,-1.5],[22,44,-1],[2,56,1.5],[48,55,2.5],[26,66,-2.5],[54,72,1],[8,78,-1.5]];
+  const mailsEl=document.getElementById('mails'), stage=document.getElementById('stage');
+  mailsEl.innerHTML=mailData.map((m,i)=>`<div class="m ${m[3]?'u':''}" style="--x:${pos[i][0]}%;--y:${pos[i][1]}%;--r:${pos[i][2]}deg;--d:${(i*0.07).toFixed(2)}s"><b>${m[0]}<em>${m[2]}</em></b><span>${m[1]}</span></div>`).join('');
+  const mails=[...mailsEl.children];
+  const cA=document.getElementById('cA'),cB=document.getElementById('cB'),cC=document.getElementById('cC'),cD=document.getElementById('cD');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timers=[];
+  function setCounts(done){
+    if(done){cA.textContent='1';cB.textContent='1';cC.textContent='0';cD.textContent='0 guessing';
+      cA.parentNode.childNodes[1].textContent=' request · ';cB.nextSibling.textContent=' owner · ';cC.nextSibling.textContent=' days of waiting · ';}
+    else{cA.textContent='14';cB.textContent='6';cC.textContent='3';cD.textContent='0 answers for the candidate';
+      cA.parentNode.childNodes[1].textContent=' emails · ';cB.nextSibling.textContent=' people · ';cC.nextSibling.textContent=' days · ';}
+  }
+  function play(){
+    timers.forEach(clearTimeout);timers=[];
+    stage.classList.remove('sort','done');setCounts(false);
+    if(reduce){stage.classList.add('sort','done');setCounts(true);return;}
+    mails.forEach(m=>m.classList.add('pop'));
+    mails.forEach((m,i)=>timers.push(setTimeout(()=>m.classList.remove('pop'),120+i*140)));
+    timers.push(setTimeout(()=>stage.classList.add('sort'),120+mails.length*140+1400));
+    timers.push(setTimeout(()=>{stage.classList.add('done');setCounts(true);},120+mails.length*140+1400+1900));
+  }
+  document.getElementById('replayBtn').addEventListener('click',play);
+  let played=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;play();o.disconnect();}})},{threshold:.45}).observe(stage);
+  }
+
+  // ===== B: audit =====
+  const qs=[
+    {k:'handoffs',short:'Handoffs',q:p=>`How many people touch ${p} before it's done?`,o:['1 or 2','3 or 4','5 or more']},
+    {k:'email',short:'Email load',q:p=>`How many emails does one round of ${p} usually take?`,o:['A few','A dozen-ish',"I've lost count"]},
+    {k:'waiting',short:'Wait time',q:()=>`How long does someone usually wait for the next step?`,o:['Same day','A few days','Until they chase us']},
+    {k:'tracking',short:'Tracking',q:()=>`If something gets dropped, how do you find out?`,o:["It's logged, we see it",'Someone notices eventually','When someone complains']},
+    {k:'clarity',short:'Clarity',q:()=>`Does the person on the receiving end know what happens next?`,o:["Always, it's in writing",'Usually','Honestly, no']}
+  ];
+  const recs={
+    handoffs:["Cut the handoffs.","Every extra person is another inbox the work can get stuck in. Give one person clear ownership and let everyone else feed into a single request."],
+    email:["Replace the thread with one intake.","If it takes a dozen emails to agree on something, the process is doing the talking instead of the people. One form in, one clear message out."],
+    waiting:["Set a clock and keep it.","I held candidate action items to under 24 hours. People can handle a no. What wears them down is silence."],
+    tracking:["Log it automatically.","If you only find out something broke when someone complains, you're finding out too late. A simple list that captures every request and every change is enough to start."],
+    clarity:["Tell people what's next, every time.","Who, when, why, and what to bring. Clarity is one of the kindest things you can put in an email."]
+  };
+  let proc='interview scheduling'; const ans={};
+  const qEl=document.getElementById('questions'), rEl=document.getElementById('auditResult');
+  function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  function renderQs(){
+    qEl.innerHTML=qs.map((q,i)=>`<div class="aq"><span class="aq-label">${i+1}. ${esc(q.q(proc))}</span><div class="opts" role="radiogroup" aria-label="${esc(q.short)}">${q.o.map((o,j)=>`<button type="button" class="opt" data-q="${q.k}" data-v="${2-j}" aria-pressed="${ans[q.k]===2-j}">${esc(o)}</button>`).join('')}</div></div>`).join('');
+  }
+  function renderResult(){
+    const n=Object.keys(ans).length;
+    if(n<qs.length){
+      rEl.innerHTML=`<span class="kicker" style="color:var(--accent)">Your results</span><p class="ar-verdict">Answer all five and I'll score your ${esc(proc)} process.</p><p class="ar-empty">You'll see how it holds up on handoffs, email load, wait time, tracking and clarity, plus where I'd start fixing it. ${n} of 5 answered.</p>`;
+      return;
+    }
+    const total=Object.values(ans).reduce((a,b)=>a+b,0), score=Math.round(total/10*100);
+    const verdict=score>=80?"People first. Keep tending it.":score>=50?"Solid bones, some friction.":"Right now, the process is running the show.";
+    const weak=qs.filter(q=>ans[q.k]<2).sort((a,b)=>ans[a.k]-ans[b.k]).slice(0,3);
+    const recHtml=weak.length?weak.map(q=>`<li><b>${recs[q.k][0]}</b><span>${recs[q.k][1]}</span></li>`).join(''):`<li><b>You're already doing the hard part.</b><span>My one note: ask the people on the receiving end how it actually feels. The data won't tell you that part.</span></li>`;
+    rEl.innerHTML=`<span class="kicker" style="color:var(--accent)">Your ${esc(proc)} score</span>
+      <div class="ar-score"><b>${score}</b><span>out of 100</span></div>
+      <p class="ar-verdict">${verdict}</p>
+      <div class="ar-bars">${qs.map(q=>`<div><span>${q.short}</span><i class="${ans[q.k]<2?'low':''}" style="--w:${ans[q.k]*50}%"></i></div>`).join('')}</div>
+      <span class="kicker" style="color:var(--accent)">Where I'd start</span>
+      <ul class="ar-recs">${recHtml}</ul>
+      <div class="ar-cta"><span>This is how I'd start the conversation on day one.</span><a href="#contact">Let's talk</a></div>`;
+  }
+  document.getElementById('procOpts').addEventListener('click',e=>{
+    const b=e.target.closest('.opt');if(!b)return;
+    proc=b.dataset.proc;document.querySelectorAll('#procOpts .opt').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    renderQs();renderResult();
+  });
+  qEl.addEventListener('click',e=>{
+    const b=e.target.closest('.opt');if(!b)return;
+    ans[b.dataset.q]=+b.dataset.v;
+    b.parentNode.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    renderResult();
+  });
+  renderQs();renderResult();
+
+  // ===== C: sample builder =====
+  const $=id=>document.getElementById(id);
+  const ivRows=$('ivRows');
+  const ivDefaults=[["Priya Shah","Design Lead","A project you're proud of"],["Marcus Torres","Product Manager","How you'd tackle a real problem"],["Dana Kim","Engineering Manager","How you work with engineers"]];
+  let ivSeq=0, mtype='confirm';
+  function addIv(v){
+    if(ivRows.children.length>=5)return;
+    ivSeq++;
+    const d=document.createElement('div');d.className='iv';
+    d.innerHTML=`<input aria-label="Interviewer name" id="ivn${ivSeq}" placeholder="Name"><input aria-label="Title" id="ivt${ivSeq}" placeholder="Title"><input aria-label="What you'll talk about" id="ivf${ivSeq}" placeholder="What you'll talk about"><button type="button" aria-label="Remove interviewer">×</button>`;
+    const ins=d.querySelectorAll('input');(v||['','','']).forEach((x,i)=>ins[i].value=x);
+    d.querySelector('button').onclick=()=>{d.remove();renderMail();};
+    ivRows.appendChild(d);
+  }
+  ivDefaults.forEach(addIv);
+  $('addIv').onclick=()=>{addIv();renderMail();};
+  const nextTue=new Date();nextTue.setDate(nextTue.getDate()+((9-nextTue.getDay())%7||7));
+  $('bDate').value=nextTue.getFullYear()+'-'+String(nextTue.getMonth()+1).padStart(2,'0')+'-'+String(nextTue.getDate()).padStart(2,'0');
+  const fmt12=(m)=>{let h=Math.floor(m/60)%24,mi=m%60;const ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+String(mi).padStart(2,'0')+' '+ap;};
+  let lastText='',lastHtml='',lastIcs='';
+  function showFields(){
+    document.querySelectorAll('#bform [data-show]').forEach(el=>el.hidden=!el.dataset.show.split(' ').includes(mtype));
+    document.querySelectorAll('#bform [data-hide]').forEach(el=>el.hidden=el.dataset.hide.split(' ').includes(mtype));
+    $('noteWrap').hidden=!$('kNote').checked;
+    $('icsLink').hidden=(mtype==='tech'||mtype==='emerg');
+  }
+  $('bType').addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;mtype=b.dataset.t;
+    $('bType').querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===b));showFields();renderMail();});
+  function data(){
+    const ivs=[...ivRows.children].map(r=>[...r.querySelectorAll('input')].map(i=>i.value.trim())).filter(r=>r[0]);
+    const [hh,mm]=($('bTime').value||'09:30').split(':').map(Number);
+    return {first:$('bFirst').value.trim()||'there',last:$('bLast').value.trim(),role:$('bRole').value.trim()||'the role',co:$('bCo').value.trim()||'our team',
+      date:$('bDate').value,start:hh*60+mm,tz:$('bTz').value,dur:+$('bDur').value,brk:+$('bBreak').value,fmt:$('bFmt').value,loc:$('bLoc').value.trim(),
+      ivs,note:$('bNote').value.trim(),from:$('bFrom').value.trim()||'The hiring team',rec:$('bRec').value.trim(),phone:$('bPhone').value.trim(),
+      why:$('bWhy').value,old:$('bOld').value.trim(),out:$('bOut').value.trim(),inn:$('bIn').value.trim(),who:$('bWho').value,
+      kC:$('kContacts').checked,kP:$('kPrep').checked,kA:$('kAcc').checked,kN:$('kNote').checked};
+  }
+  function renderMail(){
+    const d=data();
+    $('bLocLabel').textContent=d.fmt==='Video'?'Video link':d.fmt==='Phone'?'Phone number':'Address';
+    const dt=d.date?new Date(d.date+'T12:00:00'):nextTue;
+    const dayLong=dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+    const dayShort=dt.toLocaleDateString('en-US',{weekday:'long'});
+    let t=d.start;const sched=d.ivs.map(iv=>{const s=t;t+=d.dur;const row={s,e:t,iv};t+=d.brk;return row;});
+    const end=sched.length?sched[sched.length-1].e:d.start+d.dur;
+    const span=`${fmt12(d.start)} to ${fmt12(end)} ${d.tz}`;
+    const count=sched.length, countWord=['No','One','Two','Three','Four','Five'][count]||count;
+    const breakLine=d.brk?`, with ${d.brk}-minute breaks in between so you can reset`:'';
+    const where=d.fmt==='Video'?(d.loc||'Video link to follow'):d.fmt==='Phone'?(d.loc?`We'll call you at ${d.loc}`:"We'll call you"):(d.loc||'Address to follow');
+
+    // per-type copy
+    let eyebrow,heading,subject,paras=[],showWhen=true,showSched=true,okColor=true;
+    const recName=d.rec||'your recruiter';
+    if(mtype==='confirm'){
+      eyebrow='Interview confirmed';heading=`See you ${dayShort}, ${d.first}.`;subject=`You're confirmed, ${d.first}. Here's your ${dayShort}.`;
+      paras.push(`Your interviews for ${d.role} at ${d.co} are all set. ${countWord} conversation${count===1?'':'s'}, ${d.dur} minutes each${breakLine}. Everything you need is right here, so you won't have to dig for it.`);
+    }else if(mtype==='resched'){
+      eyebrow='Interview rescheduled';heading=`New time, same team, ${d.first}.`;subject=`Updated: your ${d.role} interviews are now ${dayShort}`;okColor=false;
+      const why={conflict:`One of your interviewers had a conflict come up, and we'd rather move than give you anything less than their full attention. I'm sorry for the shuffle, and thank you for being flexible.`,
+        cand:`Thanks for letting us know. Life happens, and it's no trouble at all. We've moved everything to a time that works better for you.`,
+        ours:`Something unexpected came up on our end, so we've moved your interviews. That's on us, not you, and I'm sorry for the change.`}[d.why];
+      paras.push(why);
+      if(d.old)paras.push(`Previously: ${d.old}. Your new time is below, and a fresh calendar invite is attached. Feel free to delete the old one.`);
+    }else if(mtype==='swap'){
+      eyebrow='One small change';heading=`A quick update, ${d.first}.`;subject=`A small change to your ${dayShort} interviews`;okColor=false;
+      paras.push(`${d.out||'One of your interviewers'} can no longer join, so ${d.inn||'a teammate'} will be stepping in for that conversation. Same time, same format, and they're fully up to speed on your background.`);
+      paras.push(`Nothing else has changed. Your updated schedule is below.`);
+    }else if(mtype==='tech'){
+      eyebrow='Day-of help';heading=`No stress, ${d.first}. We'll wait.`;subject=`Having trouble connecting? Here's what to do`;showWhen=false;showSched=false;okColor=false;
+      paras.push(`Technology happens to everyone. If the link isn't working, try leaving and rejoining${d.loc&&d.fmt==='Video'?` from ${d.loc}`:''}, or switch to your phone's browser.`);
+      paras.push(`Still stuck? Reply here or call ${d.phone||'us'} and we'll get you sorted right away. Your interviewers know, and they'll wait. Nobody is holding this against you.`);
+    }else{
+      showWhen=false;showSched=false;okColor=false;
+      if(d.who==='cand'){
+        eyebrow='Take care of yourself';heading=`Please don't worry about us, ${d.first}.`;subject=`Take care of yourself first`;
+        paras.push(`Thank you for letting us know. Please take care of whatever you need to. Your interviews for ${d.role} are on hold, and nothing about your candidacy changes.`);
+        paras.push(`When you're ready, just reply with a few times that work, even if that's next week or later. We'll take it from there.`);
+      }else{
+        eyebrow='Change of plans';heading=`We need to move things, ${d.first}.`;subject=`We need to reschedule your ${d.role} interviews`;
+        paras.push(`One of your interviewers had a personal emergency, and we'd like to postpone rather than rush through your conversations. I'm really sorry for the late notice.`);
+        paras.push(`I'll send a few new times within 24 hours. If you have days that are better or worse for you, reply and I'll work around them.`);
+      }
+    }
+
+    const contacts=[];
+    if(d.kC){contacts.push(['Questions about the role or the team',recName]);contacts.push(['Scheduling, logistics or tech on the day',`${d.from}${d.phone?' · '+d.phone:''}`]);}
+    if(d.kA&&(mtype==='confirm'||mtype==='resched'))contacts.push(['Accommodations','Anything that would make the day easier, just reply. No explanation needed.']);
+    const prep=d.fmt==='Video'?'A quiet spot, a charged laptop, and anything you want to share on screen.':d.fmt==='Phone'?'A quiet spot and good signal. Notes are welcome.':'A photo ID for check-in. Plan to arrive about 10 minutes early.';
+    const showPrep=d.kP&&(mtype==='confirm'||mtype==='resched');
+    const showNote=d.kN&&d.note;
+
+    const html=[];
+    html.push(`<div class="bm-meta"><span><b>To:</b> ${esc(d.first)} ${esc(d.last)}</span><span><b>Subject:</b> ${esc(subject)}</span></div><div class="bm-bar">${esc(d.co)}</div><div class="bm-body">`);
+    html.push(`<span class="bm-eyebrow ${okColor?'':'warn'}">${esc(eyebrow)}</span><p class="bm-h">${esc(heading)}</p>`);
+    paras.forEach(p=>html.push(`<p>${esc(p)}</p>`));
+    if(showWhen)html.push(`<div class="bm-when"><div><b>${esc(dayLong)}</b><span>${esc(span)}</span></div><div><b>${esc(d.fmt)}</b><span>${esc(where)}</span></div></div>`);
+    if(showSched&&sched.length)html.push(`<div class="bm-sched">${sched.map(r=>`<div><em>${fmt12(r.s)}</em><p><b>${esc(r.iv[0])}</b>${r.iv[1]?', '+esc(r.iv[1]):''}${r.iv[2]?`<span>${esc(r.iv[2])}</span>`:''}</p></div>`).join('')}</div>`);
+    if(showPrep)html.push(`<div class="bm-box"><b>What to bring</b><span>${esc(prep)}</span></div>`);
+    if(contacts.length)html.push(`<div class="bm-help">${contacts.map(c=>`<div><span>${esc(c[0])}</span><b>${esc(c[1])}</b></div>`).join('')}</div>`);
+    if(showNote)html.push(`<p>${esc(d.note)}</p>`);
+    const close=mtype==='emerg'?'Thinking of you,':mtype==='tech'?"You've got this,":'Good luck, you\'ve got this.';
+    html.push(`<p>${esc(close)}<br><span class="bm-sig">${esc(d.from)}</span></p></div>`);
+    $('bmail').innerHTML=html.join('');
+
+    // text + html for copying
+    const lines=[`Subject: ${subject}`,'',`Hi ${d.first},`,'',...paras.flatMap(p=>[p,''])];
+    if(showWhen)lines.push(`When: ${dayLong}, ${span}`,`Where: ${d.fmt} · ${where}`,'');
+    if(showSched&&sched.length)lines.push(...sched.map(r=>`${fmt12(r.s)}  ${r.iv[0]}${r.iv[1]?', '+r.iv[1]:''}${r.iv[2]?' · '+r.iv[2]:''}`),'');
+    if(showPrep)lines.push(`What to bring: ${prep}`,'');
+    if(contacts.length)lines.push(...contacts.map(c=>`${c[0]}: ${c[1]}`),'');
+    if(showNote)lines.push(d.note,'');
+    lines.push(close,d.from);
+    lastText=lines.join('\n');
+    const mono='font-family:Courier New,monospace;font-size:12px;color:#6D6870';
+    lastHtml=`<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#151315"><p style="font-family:Georgia,serif;font-size:26px;margin:0 0 12px">${esc(heading)}</p>${paras.map(p=>`<p>${esc(p)}</p>`).join('')}${showWhen?`<p><b>${esc(dayLong)}</b><br>${esc(span)}<br>${esc(d.fmt)} · ${esc(where)}</p>`:''}${showSched&&sched.length?`<table cellpadding="6" style="border-collapse:collapse">${sched.map(r=>`<tr><td style="${mono};vertical-align:top">${fmt12(r.s)}</td><td><b>${esc(r.iv[0])}</b>${r.iv[1]?', '+esc(r.iv[1]):''}${r.iv[2]?`<br><span style="color:#6D6870">${esc(r.iv[2])}</span>`:''}</td></tr>`).join('')}</table>`:''}${showPrep?`<p><b>What to bring:</b> ${esc(prep)}</p>`:''}${contacts.length?`<table cellpadding="6" style="border-collapse:collapse;border-top:1px solid #E4E0E3">${contacts.map(c=>`<tr><td style="${mono};vertical-align:top">${esc(c[0])}</td><td><b>${esc(c[1])}</b></td></tr>`).join('')}</table>`:''}${showNote?`<p>${esc(d.note)}</p>`:''}<p>${esc(close)}<br><i style="font-family:Georgia,serif;font-size:18px">${esc(d.from)}</i></p></div>`;
+
+    // ics
+    const ymd=(d.date||'').replace(/-/g,'');
+    const hm=m=>String(Math.floor(m/60)%24).padStart(2,'0')+String(m%60).padStart(2,'0')+'00';
+    const icsEsc=s=>String(s).replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
+    const desc=sched.map(r=>`${fmt12(r.s)} ${r.iv[0]}${r.iv[1]?', '+r.iv[1]:''}`).join('\n')+(d.kC?`\n\nRole questions: ${recName}\nDay-of help: ${d.from}${d.phone?' '+d.phone:''}`:'');
+    lastIcs=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Melissa Heffler//Sample Builder//EN','BEGIN:VEVENT',
+      'UID:'+Date.now()+'@melissaheffler.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z',
+      'DTSTART:'+ymd+'T'+hm(d.start),'DTEND:'+ymd+'T'+hm(end),
+      'SUMMARY:'+icsEsc(`Interviews: ${d.role} at ${d.co}`),'LOCATION:'+icsEsc(d.loc||d.fmt),'DESCRIPTION:'+icsEsc(desc),
+      'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const a=$('icsLink');
+    try{if(a.dataset.url)URL.revokeObjectURL(a.dataset.url);const u=URL.createObjectURL(new Blob([lastIcs],{type:'text/calendar'}));a.href=u;a.dataset.url=u;}catch(e){}
+    a.download=`interview-${(d.first+'-'+d.last).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'confirmation'}.ics`;
+  }
+  $('bform').addEventListener('input',()=>{showFields();renderMail();});
+  $('bform').addEventListener('change',()=>{showFields();renderMail();});
+  $('bform').addEventListener('submit',e=>e.preventDefault());
+  $('copyMail').addEventListener('click',async()=>{
+    const st=$('bStatus');
+    try{
+      if(window.ClipboardItem){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([lastHtml],{type:'text/html'}),'text/plain':new Blob([lastText],{type:'text/plain'})})]);}
+      else await navigator.clipboard.writeText(lastText);
+      st.textContent='Copied. Paste it into a new email.';
+    }catch(err){
+      try{await navigator.clipboard.writeText(lastText);st.textContent='Copied as plain text.';}
+      catch(e2){const r=document.createRange();r.selectNodeContents($('bmail'));const s=getSelection();s.removeAllRanges();s.addRange(r);st.textContent='Selected. Press Cmd + C to copy.';}
+    }
+    setTimeout(()=>st.textContent='',3500);
+  });
+  showFields();renderMail();
+
 })();
 </script>
 
