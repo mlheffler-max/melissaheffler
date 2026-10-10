@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Melissa Heffler. Corporate, made human. For the people on both sides of the offer.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://melissaheffler.com/peopleoverprocess">
+<meta property="og:image" content="https://melissaheffler.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Melissa Heffler. People over process. Corporate, made human.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://melissaheffler.com/og-image.jpg">
 <meta property="og:title" content="Melissa Heffler · People over process">
 <meta property="og:description" content="Corporate, made human. For the people on both sides of the offer.">
 <style>body{margin:0}img{max-width:100%}</style>
@@ -662,6 +670,10 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
 @media (max-width:900px){.portrait{max-width:300px}.portrait-panel{border-radius:150px 0 0 0}}
 
 @media (max-width:900px){.cover{grid-template-columns:1fr}.portrait{justify-self:start}}
+
+/* replay always animates, even with reduced motion on */
+.stage.force .m{transition:left .9s cubic-bezier(.6,0,.3,1) var(--d),top .9s cubic-bezier(.6,0,.3,1) var(--d),transform .9s cubic-bezier(.6,0,.3,1) var(--d),opacity .5s ease calc(var(--d) + .55s)!important}
+.stage.force .cc{transition:opacity .5s ease calc(var(--i)*.35s),transform .5s ease calc(var(--i)*.35s)!important}
 </style>
 </head>
 <body>
@@ -1108,19 +1120,20 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     else{cA.textContent='14';cB.textContent='6';cC.textContent='3';cD.textContent='0 answers for the candidate';
       cA.parentNode.childNodes[1].textContent=' emails · ';cB.nextSibling.textContent=' people · ';cC.nextSibling.textContent=' days · ';}
   }
-  function play(){
+  function play(force){
     timers.forEach(clearTimeout);timers=[];
     stage.classList.remove('sort','done');setCounts(false);
-    if(reduce){stage.classList.add('sort','done');setCounts(true);return;}
+    stage.classList.toggle('force',!!force);
+    if(reduce&&!force){stage.classList.add('sort','done');setCounts(true);return;}
     mails.forEach(m=>m.classList.add('pop'));
     mails.forEach((m,i)=>timers.push(setTimeout(()=>m.classList.remove('pop'),120+i*140)));
     timers.push(setTimeout(()=>stage.classList.add('sort'),120+mails.length*140+1400));
     timers.push(setTimeout(()=>{stage.classList.add('done');setCounts(true);},120+mails.length*140+1400+1900));
   }
-  document.getElementById('replayBtn').addEventListener('click',play);
+  document.getElementById('replayBtn').addEventListener('click',()=>{const r=stage.getBoundingClientRect();if(r.top<0||r.top>window.innerHeight*0.4)stage.scrollIntoView({behavior:'smooth',block:'start'});play(true);});
   let played=false;
   if('IntersectionObserver' in window){
-    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;play();o.disconnect();}})},{threshold:.45}).observe(stage);
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;play(false);o.disconnect();}})},{threshold:.2}).observe(stage);
   }
 
   // ===== B: audit =====
