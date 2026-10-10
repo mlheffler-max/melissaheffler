@@ -23,17 +23,17 @@
 /* Layout: three tabs under a sticky header. Nude and noir: bone ground, near-black type, nude-rose accent, bold expanded uppercase headlines with one italic serif accent. Older note: a magazine issue. Cover, editor's letter, four features, a principles spread, an interactive feature, a career timeline, back page. */
 :root{
   --paper:#F6F2EC; --surface:#FBF9F6; --ink:#141210; --muted:#6E655D; --line:#E3D9CD;
-  --accent:#B4536B; --blush:#F6DDE3; --accent-inv:#F0B3C0; --sand:#E6DCCF; --ok:#3E6B4E; --ok-soft:#E5EFE6; --warn:#A0561F; --warn-soft:#F7E9DC;
+  --accent:#93695F; --blush:#EFE3DD; --accent-inv:#D9BBB2; --sand:#E6DCCF; --ok:#3E6B4E; --ok-soft:#E5EFE6; --warn:#A0561F; --warn-soft:#F7E9DC;
   --display:"Archivo","Helvetica Neue",Arial,sans-serif; --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
   --body:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
   --mono:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+@media (prefers-color-scheme: dark) and (min-width: 901px){:root:not([data-theme="light"]){
   --paper:#141210; --surface:#1D1A17; --ink:#F3EDE6; --muted:#A9A097; --line:#34302B;
-  --accent:#EFA7B7; --accent-inv:#B4536B; --blush:#3D2229; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}}
+  --accent:#D4AEA4; --accent-inv:#93695F; --blush:#3A2C28; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#141210; --surface:#1D1A17; --ink:#F3EDE6; --muted:#A9A097; --line:#34302B;
-  --accent:#EFA7B7; --accent-inv:#B4536B; --blush:#3D2229; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}
+  --accent:#D4AEA4; --accent-inv:#93695F; --blush:#3A2C28; --sand:#2A2521; --ok:#86C59D; --ok-soft:#1B2A20; --warn:#EBA86D; --warn-soft:#352618; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -616,7 +616,7 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
 .btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink);text-decoration:none;display:inline-block}
 .btn.line:hover{background:var(--ink);color:var(--paper)}
 .try{background:#141210;color:#F6F2EC}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .try{background:#0C0B0A}}
+@media (prefers-color-scheme: dark) and (min-width: 901px){:root:not([data-theme="light"]) .try{background:#0C0B0A}}
 :root[data-theme="dark"] .try{background:#0C0B0A}
 .try .opt[aria-pressed="true"]{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
 .try .bform input,.try .bform select,.try .bform textarea{color:#F6F2EC;background:rgba(246,242,236,.06);border-color:rgba(246,242,236,.22)}
@@ -624,9 +624,9 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
 .try .f>span,.try .kicker,.try .bstatus,.try-intro p,.try-head p{color:rgba(246,242,236,.72)}
 .try .btn.dark{background:#F6F2EC;color:#141210}
 .try .audit-r,.try .stage,.try .bmail{color:var(--ink)}
-.try-intro h2 i,.try-n{color:#F0B3C0}
+.try-intro h2 i,.try-n{color:#D9BBB2}
 .try-head{border-top-color:rgba(246,242,236,.25)}
-.try .checks input{accent-color:#F0B3C0}
+.try .checks input{accent-color:#D9BBB2}
 
 @media (max-width:900px){
   .mast nav.tabbar{display:flex}
@@ -674,6 +674,10 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
 /* replay always animates, even with reduced motion on */
 .stage.force .m{transition:left .9s cubic-bezier(.6,0,.3,1) var(--d),top .9s cubic-bezier(.6,0,.3,1) var(--d),transform .9s cubic-bezier(.6,0,.3,1) var(--d),opacity .5s ease calc(var(--d) + .55s)!important}
 .stage.force .cc{transition:opacity .5s ease calc(var(--i)*.35s),transform .5s ease calc(var(--i)*.35s)!important}
+
+/* portrait v5: full-bleed black-and-white headshot */
+.portrait-panel{aspect-ratio:3/4;background:var(--sand)}
+.portrait-panel img{position:absolute;inset:0;left:0;right:0;top:0;bottom:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 22%;transform:none;-webkit-mask-image:none;mask-image:none}
 </style>
 </head>
 <body>
@@ -709,7 +713,7 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
       </div>
     </div>
     <figure class="portrait">
-      <div class="portrait-panel"><img src="/m-gown.webp" alt="Melissa Heffler, smiling, in a black one-shoulder gown" width="348" height="840"></div>
+      <div class="portrait-panel"><img src="/m-portrait.webp" alt="Black-and-white portrait of Melissa Heffler, smiling" width="900" height="1200"></div>
       <figcaption><b>Melissa Heffler</b><span>People operations · candidate &amp; employee experience</span></figcaption>
     </figure>
   </section>
