@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..800;1,62..125,400..700&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Layout: three tabs under a sticky header. Nude and noir: bone ground, near-black type, nude-rose accent, bold expanded uppercase headlines with one italic serif accent. Older note: a magazine issue. Cover, editor's letter, four features, a principles spread, an interactive feature, a career timeline, back page. */
+/* Layout: everything at first glance (hero with letter and photo, stats strip, Test Drive tile that opens demos full-screen, beliefs and work side by side, compact bands). Earlier: one compact scannable page under a sticky header (hero with stats, beliefs grid, four work cards, a Test Drive switcher, career and contact). Previously: three tabs under a sticky header. Nude and noir: bone ground, near-black type, nude-rose accent, bold expanded uppercase headlines with one italic serif accent. Older note: a magazine issue. Cover, editor's letter, four features, a principles spread, an interactive feature, a career timeline, back page. */
 :root{
   --paper:#F6F2EC; --surface:#FBF9F6; --ink:#141210; --muted:#6E655D; --line:#E3D9CD;
   --accent:#93695F; --blush:#EFE3DD; --accent-inv:#D9BBB2; --sand:#E6DCCF; --ok:#3E6B4E; --ok-soft:#E5EFE6; --warn:#A0561F; --warn-soft:#F7E9DC;
@@ -678,271 +678,1122 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
 /* portrait v5: full-bleed black-and-white headshot */
 .portrait-panel{aspect-ratio:3/4;background:var(--sand)}
 .portrait-panel img{position:absolute;inset:0;left:0;right:0;top:0;bottom:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 22%;transform:none;-webkit-mask-image:none;mask-image:none}
+
+/* ===== v6: one compact page ===== */
+html{scroll-behavior:smooth}
+section[id],main[id]{scroll-margin-top:84px}
+body{font-size:16px}
+.mast .tabbar a{color:var(--muted)}
+.mast .tabbar a:hover{color:var(--ink);background:transparent}
+
+/* hero */
+.hero6{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.85fr);gap:44px;align-items:center;padding-block:40px 36px;border-bottom:1px solid var(--line)}
+.h6-text{display:grid;gap:16px}
+.hero6 h1{font-size:clamp(46px,6.2vw,88px);line-height:.9;letter-spacing:-.02em}
+.hero6 h1 i{color:var(--accent);font-size:1.04em}
+.h6-tag{font-size:clamp(17px,1.7vw,20px);font-weight:500}
+.h6-note{font-size:15.5px;line-height:1.6;color:var(--muted);max-width:40em}
+.sig6{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);margin-left:4px}
+.stats6{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:6px}
+.stats6 div{padding:12px 14px 0 0;display:grid;gap:3px;align-content:start}
+.stats6 div+div{padding-left:14px;border-left:1px solid var(--line)}
+.stats6 b{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:clamp(26px,2.8vw,36px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats6 span{font-size:12.5px;line-height:1.35;color:var(--muted)}
+.portrait6{margin:0;display:grid;gap:8px;justify-self:end;width:100%;max-width:330px}
+.p6-frame{position:relative;aspect-ratio:3/4;border-radius:165px 165px 0 0;overflow:hidden;background:var(--sand)}
+.p6-frame img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 22%}
+.portrait6 figcaption{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--ink);padding-top:7px}
+
+/* sections */
+.sec6{padding-block:40px 8px}
+.sh6{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.sh6 h2,.talk6 h2,.td6-head h2{font-size:clamp(28px,3.4vw,44px);line-height:1}
+.sh6 h2 i,.talk6 h2 i,.td6-head h2 i{color:var(--accent)}
+.sh6 p{color:var(--muted);font-size:15px}
+.k6{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+
+/* beliefs */
+.beliefs6{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.beliefs6>div{background:var(--paper);padding:16px 16px 18px;display:grid;gap:6px;align-content:start}
+.beliefs6 h3{font-size:16.5px;line-height:1.2;font-weight:700}
+.beliefs6 h3 i{color:var(--accent);font-size:1.08em}
+.beliefs6 p{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.beliefs6 .b6-ai{background:var(--blush)}
+
+/* work */
+.work6{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.work6 article{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:16px;display:grid;gap:8px;align-content:start}
+.work6 h3{font-size:18px;line-height:1.15;font-weight:700}
+.work6 ul{margin:2px 0 0;padding-left:16px;display:grid;gap:6px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.work6 li::marker{color:var(--accent)}
+.how6{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.how6 div{display:grid;gap:2px;padding-left:12px;border-left:2px solid var(--ink)}
+.how6 b{font-size:15px}
+.how6 span{font-size:13.5px;color:var(--muted)}
+.mantra6{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;margin-top:26px;padding:22px 24px;background:var(--blush)}
+.mantra6 h3{font-family:var(--display);font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:clamp(24px,2.6vw,34px);line-height:1;white-space:nowrap}
+.mantra6 h3 i{color:var(--accent)}
+.mantra6 p{font-size:16px;max-width:36em}
+
+/* test drive */
+.td6{margin-top:44px;padding-block:44px 52px}
+.td6 .wrap{gap:18px}
+.td6-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.td6-head h2{color:#F6F2EC}
+.td6-head h2 i{color:#D9BBB2}
+.td6-head p{color:rgba(246,242,236,.72);font-size:15px}
+.td6-tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid rgba(246,242,236,.2);padding-bottom:14px}
+.td6-tabs button{background:transparent;color:#F6F2EC;border:1px solid rgba(246,242,236,.3);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600}
+.td6-tabs button:hover{border-color:#D9BBB2}
+.td6-tabs button[aria-selected="true"]{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
+.td6-panel{display:grid;gap:14px}
+.td6-cap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.td6-cap p{color:rgba(246,242,236,.78);font-size:15px;max-width:44em}
+.td6 .stage{height:540px}
+.td6-solo{max-width:620px}
+.td6-solo .mini{min-height:0}
+
+/* career + contact */
+.end6{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:start;padding-block:44px 36px}
+.career6{display:grid;gap:12px}
+.career6 ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.career6 li{background:var(--paper);padding:12px 14px;display:grid;gap:2px}
+.career6 b{font-family:var(--display);font-weight:700;font-size:17px}
+.career6 span{font-size:12.5px;color:var(--muted);line-height:1.35}
+.career6 em{font-style:normal;font-size:11.5px;letter-spacing:.06em;color:var(--accent);font-weight:600}
+.tools6{font-size:13px;color:var(--muted)}
+.talk6{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);padding:22px}
+.talk6 p{font-size:15px}
+footer{padding-block:18px 32px}
+
+@media (max-width:1000px){
+  .beliefs6,.work6,.how6{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .hero6{grid-template-columns:1fr;gap:24px;padding-block:28px}
+  .portrait6{justify-self:start;max-width:240px;order:-1}
+  .end6{grid-template-columns:1fr;gap:24px}
+  .mantra6{grid-template-columns:1fr;gap:10px}
+  .mantra6 h3{white-space:normal}
+  .td6 .stage{height:880px}
+}
+@media (max-width:560px){
+  .stats6{grid-template-columns:1fr 1fr}
+  .stats6 div:nth-child(3){padding-left:0;border-left:0}
+  .stats6 div:nth-child(n+3){border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+  .beliefs6,.work6,.how6{grid-template-columns:1fr}
+  .career6 ol{grid-template-columns:1fr 1fr}
+  .td6-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .td6-tabs button{white-space:nowrap}
+  .portrait6{max-width:200px}
+  .p6-frame{border-radius:100px 100px 0 0}
+}
+
+.talk6 .btn{background:var(--ink);color:var(--paper)}
+.talk6 .btn.line{background:transparent;color:var(--ink)}
+@media (max-width:560px){
+  .beliefs6{grid-template-columns:1fr 1fr}
+  .beliefs6>div{padding:12px}
+  .beliefs6 h3{font-size:14.5px}
+  .beliefs6 p{font-size:12.5px}
+  .beliefs6 .b6-ai{grid-column:1/-1}
+  .portrait6{max-width:170px}
+  .portrait6 figcaption{display:none}
+  .how6{grid-template-columns:1fr 1fr}
+}
+
+/* ===== v7 ===== */
+section[id]{scroll-margin-top:80px}
+/* nav pill for test drive */
+.mast .tabbar a.nav-td{background:var(--accent);color:#fff;border-radius:999px}
+.mast .tabbar a.nav-td:hover{background:var(--ink);color:var(--paper)}
+
+/* hero stats with context */
+.hero6{padding-block:36px 32px}
+.stats7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);margin-top:4px}
+.stats7 div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;padding:14px 18px 14px 0;border-bottom:1px solid var(--line)}
+.stats7 div:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+.stats7 b{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:clamp(30px,3vw,40px);line-height:.95;min-width:2.6em;font-variant-numeric:tabular-nums}
+.stats7 span{font-size:13px;line-height:1.45;color:var(--muted)}
+.stats7 strong{color:var(--ink);font-weight:600}
+.h6-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:6px}
+.td-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:15px 22px;position:relative}
+.td-cta span{transition:transform .2s}
+.td-cta:hover{background:var(--accent)}
+.td-cta:hover span{transform:translateX(4px)}
+.td-cta::after{content:"";position:absolute;inset:-5px;border:1px solid var(--accent);opacity:0;animation:ctaPulse 2.6s ease-out infinite}
+@keyframes ctaPulse{0%{opacity:.8;transform:scale(.98)}70%,100%{opacity:0;transform:scale(1.06)}}
+.h6-hint{font-size:13.5px;color:var(--muted)}
+
+/* letter */
+.letter7{display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px;padding-block:36px;border-bottom:1px solid var(--line)}
+.l7-side{display:grid;gap:8px;align-content:start}
+.l7-side h2{font-size:clamp(26px,2.8vw,34px);line-height:1}
+.l7-side h2 i{color:var(--accent)}
+.l7-body{display:grid;gap:14px;max-width:44em;font-size:17px;line-height:1.65}
+.l7-body p:first-child::first-letter{font-family:var(--serif);font-style:italic;float:left;font-size:3.6em;line-height:.85;padding:4px 8px 0 0;color:var(--accent)}
+.l7-close{font-weight:600}
+.l7-body .sig6{font-size:24px;margin:0}
+
+/* test drive as the star */
+.td6{margin-top:0;padding-block:56px 60px;position:relative;overflow:hidden}
+.td6::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 85% 0%,rgba(217,187,178,.18),transparent 70%);pointer-events:none}
+.td6 .wrap{position:relative;gap:22px}
+.td7-head{display:grid;gap:12px;justify-items:start;max-width:46em}
+.td7-badge{background:#D9BBB2;color:#141210;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px}
+.td7-head h2{font-size:clamp(40px,6vw,80px);line-height:.92;color:#F6F2EC}
+.td7-head h2 i{color:#D9BBB2}
+.td7-head p{font-size:17px;color:rgba(246,242,236,.78)}
+.td7-cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;border:0;padding:0}
+.td7-cards button{display:grid;gap:4px;text-align:left;align-content:start;background:rgba(246,242,236,.05);border:1px solid rgba(246,242,236,.22);border-radius:0;padding:14px 14px 16px;color:#F6F2EC;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.td7-cards button:hover{transform:translateY(-3px);border-color:#D9BBB2}
+.td7-cards em{font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.14em;color:#D9BBB2}
+.td7-cards b{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.15}
+.td7-cards span{font-size:13px;line-height:1.35;color:rgba(246,242,236,.7)}
+.td7-cards button[aria-selected="true"]{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
+.td7-cards button[aria-selected="true"] em{color:var(--accent)}
+.td7-cards button[aria-selected="true"] span{color:#5E5650}
+.td7-stage{background:rgba(246,242,236,.04);border:1px solid rgba(246,242,236,.14);padding:18px}
+
+/* beliefs + work, equal halves */
+.pair7{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-block:44px 8px;align-items:start}
+.p7-col{display:grid;gap:14px;min-width:0}
+.p7-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1}
+.p7-head h2 i{color:var(--accent)}
+.p7-list{display:grid;border-top:2px solid var(--ink)}
+.p7-list>div{padding:12px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.p7-list h3{font-size:16px;line-height:1.25;font-weight:700}
+.p7-list h3 i{color:var(--accent);font-size:1.08em}
+.p7-list p{font-size:14px;color:var(--muted);line-height:1.45}
+.p7-work>div{padding:14px 0}
+.p7-work ul{margin:2px 0 0;padding-left:16px;display:grid;gap:4px;font-size:14px;line-height:1.4;color:var(--muted)}
+.p7-work li::marker{color:var(--accent)}
+.howsec7{padding-top:20px}
+.howsec7 .how6{margin-top:0}
+
+/* floating CTA */
+.td-float{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);text-decoration:none;padding:11px 12px 11px 18px;border-radius:999px;font-size:13.5px;box-shadow:0 14px 34px -12px rgba(0,0,0,.55);white-space:nowrap;animation:floatIn .35s ease}
+.td-float b{background:#D9BBB2;color:#141210;padding:8px 14px;border-radius:999px;font-size:13px}
+.td-float:hover b{background:#F6F2EC}
+@keyframes floatIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+
+@media (max-width:1000px){
+  .td7-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pair7{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:900px){
+  .letter7{grid-template-columns:1fr;gap:12px;padding-block:28px}
+  .stats7{grid-template-columns:1fr}
+  .stats7 div:nth-child(even){padding-left:0;border-left:0}
+}
+@media (max-width:560px){
+  .td7-cards{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x mandatory}
+  .td7-cards button{flex:0 0 66%;scroll-snap-align:start}
+  .td7-stage{padding:10px;margin-inline:-6px}
+  .td-float{font-size:12px;padding:9px 9px 9px 14px}
+  .td-float{gap:8px}
+  .l7-body{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){.td-cta::after{animation:none}}
+
+/* v8: letter + stats side by side */
+.hero6{padding-block:36px 36px}
+.hero6 .h6-text{gap:20px}
+.letter8{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:start}
+.l8-left{display:grid;gap:16px}
+.l8-left .l7-side{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.l8-right{display:grid;gap:10px;position:sticky;top:96px}
+.stats8{grid-template-columns:1fr;border-top:2px solid var(--ink);margin-top:0}
+.stats8 div,.stats8 div:nth-child(even){display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px;align-items:baseline;padding:14px 0;border-left:0;border-bottom:1px solid var(--line)}
+.stats8 b{min-width:0;font-size:clamp(28px,2.6vw,36px)}
+.stats8 span{font-size:13.5px}
+@media (max-width:900px){.letter8{grid-template-columns:1fr;gap:24px}.l8-right{position:static}.stats8 div,.stats8 div:nth-child(even){grid-template-columns:84px minmax(0,1fr)}}
+
+.stats8 div,.stats8 div:nth-child(even){grid-template-columns:118px minmax(0,1fr);align-items:center;gap:16px}
+.stats8 b{font-size:clamp(28px,2.4vw,34px);white-space:nowrap}
+@media (max-width:900px){.stats8 div,.stats8 div:nth-child(even){grid-template-columns:104px minmax(0,1fr)}}
+
+/* ===== v9: everything at first glance ===== */
+section[id]{scroll-margin-top:76px}
+/* hero: headline + full letter beside the photo */
+.hero9{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.75fr);gap:40px;align-items:start;padding-block:32px 22px}
+.h9-text{display:grid;gap:14px}
+.hero9 h1{font-size:clamp(44px,5.4vw,76px);line-height:.9;letter-spacing:-.02em}
+.hero9 h1 i{color:var(--accent);font-size:1.04em}
+.h9-tag{font-size:clamp(16px,1.6vw,19px);font-weight:600}
+.h9-letter{display:grid;gap:10px;font-size:15.5px;line-height:1.62;color:var(--ink);max-width:46em}
+.h9-letter p:first-child::first-letter{font-family:var(--serif);font-style:italic;float:left;font-size:3.3em;line-height:.85;padding:4px 7px 0 0;color:var(--accent)}
+.h9-close{font-weight:600}
+.h9-close .sig6{font-size:21px;font-weight:400;margin-left:6px}
+.portrait9{margin:0;display:grid;gap:14px;justify-items:stretch}
+.portrait9 .p6-frame{border-radius:150px 150px 0 0}
+.td9-cta{justify-content:center}
+
+/* stats strip */
+.stats9{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:1px solid var(--line);margin-bottom:28px}
+.stats9 div{display:grid;gap:4px;align-content:start;padding:14px 16px 16px}
+.stats9 div:first-child{padding-left:0}
+.stats9 div+div{border-left:1px solid var(--line)}
+.stats9 b{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:clamp(28px,2.6vw,36px);line-height:1;font-variant-numeric:tabular-nums}
+.stats9 span{font-size:12.5px;line-height:1.45;color:var(--muted)}
+.stats9 strong{color:var(--ink);font-weight:600;display:block}
+
+/* test drive tile */
+.td9{background:#141210;color:#F6F2EC;position:relative;overflow:hidden;margin-inline:-24px;padding:34px 24px 36px}
+.td9::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 60% at 90% 0%,rgba(217,187,178,.2),transparent 70%);pointer-events:none}
+.td9-inner{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:32px;align-items:center}
+.td9-head{display:grid;gap:10px;justify-items:start}
+.td9-head h2{font-size:clamp(34px,4.4vw,60px);line-height:.92;color:#F6F2EC}
+.td9-head h2 i{color:#D9BBB2}
+.td9-head p{font-size:15.5px;color:rgba(246,242,236,.78)}
+.td9-launch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.td9-launch button{display:grid;gap:3px;text-align:left;align-content:start;background:rgba(246,242,236,.06);border:1px solid rgba(246,242,236,.24);padding:13px 14px 14px;color:#F6F2EC;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.td9-launch button:hover{transform:translateY(-3px);border-color:#D9BBB2;background:rgba(246,242,236,.1)}
+.td9-launch button:first-child{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
+.td9-launch button:first-child span{color:#5E5650}
+.td9-launch button:first-child em{color:var(--accent)}
+.td9-launch em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;color:#D9BBB2}
+.td9-launch b{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.15}
+.td9-launch span{font-size:12.5px;line-height:1.35;color:rgba(246,242,236,.7)}
+
+/* beliefs + work */
+.pair9{padding-block:32px 4px;gap:32px}
+.pair9 .p7-list>div{padding:10px 0}
+.pair9 .p7-work>div{padding:11px 0}
+
+/* mantra + how band */
+.band9{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:center;margin-top:26px;padding:20px 22px;background:var(--blush)}
+.b9-mantra{display:grid;gap:6px}
+.b9-mantra h3{font-family:var(--display);font-weight:800;font-stretch:115%;text-transform:uppercase;font-size:clamp(22px,2.3vw,30px);line-height:1}
+.b9-mantra h3 i{color:var(--accent)}
+.b9-mantra p{font-size:14.5px}
+.b9-how{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.b9-how div{display:grid;gap:1px;padding-left:10px;border-left:2px solid var(--ink)}
+.b9-how b{font-size:14px}
+.b9-how span{font-size:13px;color:var(--muted)}
+.end9{padding-block:32px 24px}
+
+/* modal */
+.td-modal{position:fixed;inset:0;z-index:50;background:rgba(10,9,8,.72);backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:28px 20px;margin:0}
+.td-modal[hidden]{display:none!important}
+.tdm-box{width:min(1120px,100%);background:#141210;color:#F6F2EC;padding:20px;display:grid;gap:16px;box-shadow:0 30px 80px -30px rgba(0,0,0,.8);animation:floatIn2 .25s ease}
+@keyframes floatIn2{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tdm-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tdm-close{background:transparent;color:#F6F2EC;border:1px solid rgba(246,242,236,.35);padding:8px 14px;font-size:13.5px;font-weight:600;border-radius:999px}
+.tdm-close:hover{border-color:#D9BBB2;color:#D9BBB2}
+.td9-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+.td9-tabs button{padding:10px 12px 12px}
+.td9-tabs span{display:none}
+.tdm-box .td7-stage{padding:14px}
+.tdm-box .td6 .stage,.tdm-box .stage{height:520px}
+body.modal-open{overflow:hidden}
+
+@media (max-width:1000px){
+  .td9-inner{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:900px){
+  .hero9{grid-template-columns:1fr;gap:18px;padding-block:22px 18px}
+  .portrait9{grid-template-columns:150px minmax(0,1fr);align-items:end;order:-1}
+  .portrait9 .p6-frame{border-radius:75px 75px 0 0}
+  .stats9{grid-template-columns:1fr 1fr}
+  .stats9 div:nth-child(3){padding-left:0;border-left:0}
+  .stats9 div:nth-child(n+3){border-top:1px solid var(--line)}
+  .band9{grid-template-columns:1fr}
+  .tdm-box .stage{height:880px}
+}
+@media (max-width:560px){
+  .td9{margin-inline:-16px;padding:28px 16px 30px}
+  .td9-launch{grid-template-columns:1fr 1fr}
+  .td9-launch button:first-child{grid-column:1/-1}
+  .b9-how{grid-template-columns:1fr}
+  .td-modal{padding:0}
+  .tdm-box{min-height:100%;padding:14px}
+  .td9-tabs{display:flex;overflow-x:auto;scrollbar-width:none}
+  .td9-tabs button{flex:0 0 auto}
+  .td9-tabs b{white-space:nowrap}
+}
+
+.td9-launch button:first-child{grid-row:span 2;align-content:end;padding:18px}
+.td9-launch button:first-child b{font-size:22px}
+.td9-launch button:first-child::before{content:"Start here";justify-self:start;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#fff;padding:4px 8px;margin-bottom:auto}
+.td9-launch button:first-child{grid-template-rows:1fr auto auto auto}
+.tdm-box .td9-tabs button[aria-selected="true"]{background:#F6F2EC!important;color:#141210!important;border-color:#F6F2EC!important;opacity:1}
+.tdm-box .td9-tabs button:focus{outline:none}
+.tdm-box .td9-tabs button:focus-visible{outline:2px solid #D9BBB2;outline-offset:2px}
+@media (max-width:560px){.td9-launch button:first-child{grid-row:auto;grid-column:1/-1}}
+
+.td-modal .mini{color:var(--ink)}
+.td-modal .mini .kicker{color:var(--muted)}
+
+/* v10: beliefs aligned with work, row by row */
+.align10{padding-block:34px 6px}
+.a10-head{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:end;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.a10-head h2{font-size:clamp(26px,3vw,38px);line-height:1}
+.a10-head h2 i{color:var(--accent)}
+.a10-row{display:grid;grid-template-columns:170px minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;padding-block:16px;border-bottom:1px solid var(--line)}
+.a10-area{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding-top:3px;line-height:1.4}
+.a10-bel{display:grid;gap:10px}
+.a10-bel div{display:grid;gap:2px}
+.a10-bel h3,.a10-do h3{font-size:15.5px;line-height:1.25;font-weight:700}
+.a10-bel h3 i{color:var(--accent);font-size:1.08em}
+.a10-bel p{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.a10-do{display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);padding:12px 14px}
+.a10-do ul{margin:0;padding-left:16px;display:grid;gap:4px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.a10-do li::marker{color:var(--accent)}
+footer{justify-content:flex-start}
+@media (max-width:900px){
+  .a10-head{grid-template-columns:1fr 1fr}
+  .a10-head span{display:none}
+  .a10-row{grid-template-columns:1fr 1fr;gap:14px 20px}
+  .a10-area{grid-column:1/-1}
+}
+@media (max-width:560px){
+  .a10-head{grid-template-columns:1fr}
+  .a10-head h2:last-child{display:none}
+  .a10-row{grid-template-columns:1fr}
+  .a10-do::before{content:"What I do";font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+}
+
+/* ===== Chaos to clear v2 ===== */
+.stage.cx{height:auto;min-height:0;display:grid;grid-template-rows:auto 1fr;background:var(--paper);color:var(--ink);overflow:hidden;border:1px solid var(--line)}
+.cx-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface);position:relative;z-index:4}
+.cx-phases{display:flex;gap:16px;flex-wrap:wrap;position:relative;padding-bottom:10px}
+.cx-phases span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);opacity:.55;transition:opacity .3s,color .3s;display:flex;gap:6px;align-items:baseline}
+.cx-phases span em{font-style:normal;font-size:10.5px;color:var(--accent)}
+.cx-phases span.on{opacity:1;color:var(--ink)}
+.cx-prog{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--line)}
+.cx-prog b{display:block;height:100%;width:0;background:var(--accent);transition:width .6s ease}
+.cx-meters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cx-meters div{background:var(--surface);padding:6px 10px;display:grid;gap:0}
+.cx-meters b{font-family:var(--display);font-weight:800;font-stretch:110%;font-size:24px;line-height:1.05;font-variant-numeric:tabular-nums;transition:color .3s}
+.cx-meters span{font-size:10.5px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+.stage.cx[data-phase="1"] .cx-meters b{color:var(--warn)}
+.stage.cx.p3 .cx-meters b{color:var(--ok)}
+.cx-body{position:relative;height:470px}
+.stage.cx .mails{position:absolute;inset:0;z-index:2}
+.stage.cx .m{width:min(42%,300px);transition:left .8s cubic-bezier(.6,0,.3,1),top .8s cubic-bezier(.6,0,.3,1),transform .8s cubic-bezier(.6,0,.3,1),opacity .45s ease .4s}
+.stage.cx .m.pop{opacity:0;transform:rotate(var(--r)) scale(.85)}
+.stage.cx .m.fly{transform:rotate(0) scale(.18);opacity:0}
+/* pipeline */
+.cx-pipe{position:absolute;left:4%;right:4%;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;opacity:0;transition:opacity .5s,top .7s cubic-bezier(.6,0,.3,1),transform .7s cubic-bezier(.6,0,.3,1);z-index:3}
+.stage.cx.p2 .cx-pipe{opacity:1}
+.stage.cx.p3 .cx-pipe{top:14px;transform:translateY(0) scale(.86);transform-origin:top center}
+.cx-line{position:absolute;left:12.5%;right:12.5%;top:22px;height:2px;background:var(--line);z-index:-1}
+.cx-line b{display:block;height:100%;width:0;background:var(--accent);transition:width .5s ease}
+.cx-node{display:grid;justify-items:center;text-align:center;gap:4px}
+.cx-node i{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;color:var(--muted);transition:all .35s cubic-bezier(.3,1.6,.5,1)}
+.cx-node b{font-size:14px;font-weight:700;color:var(--muted);transition:color .3s}
+.cx-node span{font-size:12px;color:var(--muted);opacity:.6;transition:opacity .3s}
+.cx-node.lit i{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:scale(1.12);box-shadow:0 0 0 6px var(--blush)}
+.cx-node.lit b{color:var(--ink)}
+.cx-node.lit span{opacity:1}
+/* outputs */
+.cx-out{position:absolute;left:16px;right:16px;top:130px;bottom:16px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto 1fr;gap:12px;z-index:3;pointer-events:none}
+.cx-results{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cx-results div,.cx-mailcard,.cx-cal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.stage.cx.p3 .cx-results div,.stage.cx.p3 .cx-mailcard,.stage.cx.p3 .cx-cal{opacity:1;transform:none}
+.stage.cx.p3 .cx-results div:nth-child(2){transition-delay:.12s}
+.stage.cx.p3 .cx-results div:nth-child(3){transition-delay:.24s}
+.stage.cx.p3 .cx-mailcard{transition-delay:.35s}
+.stage.cx.p3 .cx-cal{transition-delay:.5s}
+.cx-results div{background:var(--ink);color:var(--paper);padding:12px 14px;display:grid;gap:2px}
+.cx-results b{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.cx-results b em{font-style:normal;color:var(--accent-inv,#D9BBB2);font-weight:600}
+.cx-results span{font-size:12px;color:color-mix(in srgb,var(--paper) 72%,var(--ink))}
+.cx-mailcard{background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 36px -24px rgba(0,0,0,.45);align-self:start}
+.cx-mailcard .ccm-help{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cx-cal{background:var(--surface);border:1px solid var(--line);display:grid;grid-template-rows:auto 1fr;align-self:stretch}
+.cx-cal-h{display:flex;justify-content:space-between;align-items:baseline;padding:9px 12px;border-bottom:1px solid var(--line)}
+.cx-cal-h b{font-size:13.5px}
+.cx-cal-h span{font-size:11.5px;color:var(--muted)}
+.cx-cal-g{position:relative;display:grid;grid-template-rows:repeat(4,1fr);padding:0 10px 0 48px;min-height:150px}
+.cx-hr{border-top:1px solid var(--line);font-size:10px;color:var(--muted);position:relative}
+.cx-hr{padding-top:2px;margin-left:-40px;padding-left:0}
+.cx-ev{position:absolute;left:48px;right:10px;top:calc(var(--r) * 25% + 12.5% + 2px);height:calc(25% - 6px);background:var(--blush);border-left:3px solid var(--accent);padding:3px 8px;display:flex;gap:8px;align-items:center;font-size:12px;opacity:0;transform:translateX(18px);transition:opacity .4s ease,transform .4s ease}
+.cx-ev b{font-size:12.5px}
+.cx-ev span{color:var(--muted)}
+.stage.cx.p3 .cx-ev{opacity:1;transform:none;transition-delay:calc(.75s + var(--r) * .18s)}
+/* modal sizing */
+.tdm-box .stage.cx{height:auto}
+@media (max-width:900px){
+  .cx-top{grid-template-columns:1fr;gap:10px}
+  .cx-body{height:760px}
+  .stage.cx .m{width:80%}
+  .cx-pipe{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+  .cx-line{display:none}
+  .stage.cx.p3 .cx-pipe{transform:scale(.8)}
+  .cx-out{top:196px;grid-template-columns:1fr;grid-template-rows:auto auto 1fr}
+  .cx-results{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .cx-results div{padding:9px}
+  .cx-results b{font-size:20px}
+  .cx-results span{font-size:10.5px}
+  .tdm-box .stage.cx{height:auto}
+}
+@media (max-width:560px){
+  .cx-phases{gap:10px}
+  .cx-phases span{font-size:10.5px}
+  .cx-meters b{font-size:19px}
+  .cx-meters span{font-size:9px}
+  .cx-node i{width:36px;height:36px}
+  .cx-node b{font-size:12.5px}
+  .cx-node span{font-size:10.5px}
+}
+@media (prefers-reduced-motion:reduce){.stage.cx.force *{transition-property:all!important;transition-duration:.55s!important;transition-timing-function:ease!important}}
+/* count-up stats + launcher preview */
+.td9-launch button:first-child{position:relative}
+.mini-anim{position:absolute;right:14px;top:14px;width:64px;height:44px}
+.mini-anim i{position:absolute;left:0;width:64px;height:9px;border-radius:2px;background:var(--line);animation:miniStack 3.2s ease-in-out infinite}
+.mini-anim i:nth-child(1){top:0;transform:rotate(-6deg) translateX(-6px)}
+.mini-anim i:nth-child(2){top:14px;transform:rotate(4deg) translateX(8px);animation-delay:.1s}
+.mini-anim i:nth-child(3){top:28px;transform:rotate(-3deg) translateX(-2px);animation-delay:.2s}
+.mini-anim i:nth-child(4){top:14px;height:16px;background:var(--accent);opacity:0;animation-name:miniOne}
+@keyframes miniStack{0%,15%{opacity:1}45%,80%{opacity:0;top:14px;transform:none}100%{opacity:1}}
+@keyframes miniOne{0%,40%{opacity:0;transform:scale(.6)}55%,82%{opacity:1;transform:none}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.mini-anim i{animation:none}}
+
+@media (max-width:900px){.cx-body{height:900px}.cx-mailcard .ccm-help{grid-template-columns:1fr}}
+
+/* ===== 05 audit stepper ===== */
+.audit2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.au-step{display:grid;grid-template-rows:auto auto 1fr auto;gap:14px;padding:6px 4px;min-height:420px}
+.au-prog{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.au-prog i{height:4px;background:rgba(246,242,236,.18);transition:background .3s}
+.au-prog i.on{background:#D9BBB2}
+.au-prog i.cur{background:#F6F2EC}
+.au-count{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,242,236,.6)}
+.au-q{display:grid;gap:18px;align-content:start}
+.au-q.in{animation:auIn .38s cubic-bezier(.2,.8,.2,1)}
+.au-q.back{animation:auBack .38s cubic-bezier(.2,.8,.2,1)}
+@keyframes auIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes auBack{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.au-title{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:#F6F2EC}
+.au-sub{color:rgba(246,242,236,.72);font-size:15px;margin-top:-8px}
+.au-opts{display:grid;gap:10px}
+.au-opts button{display:grid;gap:2px;text-align:left;background:rgba(246,242,236,.05);border:1px solid rgba(246,242,236,.25);color:#F6F2EC;padding:14px 16px;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.au-opts button:hover{border-color:#D9BBB2;transform:translateX(4px)}
+.au-opts button b{font-size:16px}
+.au-opts button span{font-size:13px;color:rgba(246,242,236,.62)}
+.au-opts button.sel{background:#F6F2EC;color:#141210;border-color:#F6F2EC}
+.au-opts button.sel span{color:#5E5650}
+.au-procs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.au-procs button{font-size:15px;font-weight:600}
+.au-nav{display:flex;justify-content:space-between}
+.au-nav button{background:transparent;border:0;color:rgba(246,242,236,.65);font-size:13.5px;padding:6px 0}
+.au-nav button:hover{color:#D9BBB2}
+.au-side{background:var(--paper);color:var(--ink);padding:20px;display:grid;gap:16px;align-content:start}
+.au-gauge{position:relative;width:176px;height:176px;justify-self:center}
+.au-gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.au-gauge circle{fill:none;stroke-width:9}
+.g-bg{stroke:var(--line)}
+.g-fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1),stroke .4s}
+.au-score{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:2px}
+.au-score b{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:46px;line-height:1;font-variant-numeric:tabular-nums}
+.au-score span{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);max-width:110px;line-height:1.3}
+.au-bars{display:grid;gap:7px}
+.au-bars div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:10px;align-items:center;font-size:12.5px;color:var(--muted)}
+.au-bars div.done{color:var(--ink)}
+.au-bars i{height:7px;background:var(--line);display:block;overflow:hidden}
+.au-bars b{display:block;height:100%;width:0;background:var(--accent);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.au-bars div.low b{background:var(--warn)}
+.au-hint{font-size:13.5px;color:var(--muted)}
+.au-recs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.au-recs li{display:grid;gap:3px;border-top:1px solid var(--line);padding-top:10px;animation:auRec .5s both;animation-delay:calc(var(--i) * .15s + .2s)}
+@keyframes auRec{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.au-recs b{font-size:14.5px}
+.au-recs span{font-size:13.5px;color:var(--muted);line-height:1.5}
+.au-talk{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;font-size:14px;padding:10px 14px}
+.au-talk:hover{background:var(--accent)}
+
+/* ===== builder auto-play bar + email build ===== */
+.cyc{display:flex;align-items:center;gap:10px;background:rgba(246,242,236,.08);border:1px solid rgba(246,242,236,.18);padding:8px 12px;font-size:13px;color:rgba(246,242,236,.8)}
+.cyc span{font-weight:600;color:#D9BBB2;letter-spacing:.04em}
+.cyc b{color:#F6F2EC}
+.cyc em{margin-left:auto;font-style:normal;font-size:12px;color:rgba(246,242,236,.55)}
+.cyc i{position:relative;flex:0 0 70px;height:3px;background:rgba(246,242,236,.18);overflow:hidden}
+.cyc i::after{content:"";position:absolute;inset:0;background:#D9BBB2;transform-origin:left;transform:scaleX(0)}
+.cyc i.run::after{animation:cycRun 3.4s linear forwards}
+@keyframes cycRun{to{transform:scaleX(1)}}
+.cyc.user i,.cyc.user em{display:none}
+.bmail .bm-body>*{animation:bmRise .45s both}
+.bmail .bm-body>*:nth-child(2){animation-delay:.05s}
+.bmail .bm-body>*:nth-child(3){animation-delay:.1s}
+.bmail .bm-body>*:nth-child(4){animation-delay:.15s}
+.bmail .bm-body>*:nth-child(5){animation-delay:.2s}
+.bmail .bm-body>*:nth-child(6){animation-delay:.25s}
+.bmail .bm-body>*:nth-child(7){animation-delay:.3s}
+.bmail .bm-body>*:nth-child(n+8){animation-delay:.35s}
+@keyframes bmRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ===== The Weekly assembles ===== */
+.nl.play .nl-mast{animation:nlDown .5s both}
+.nl.play .nl-lead{animation:bmRise .5s .25s both}
+.nl.play .nl-grid>div:first-child{animation:bmRise .5s .45s both}
+.nl.play .nl-grid>div:last-child{animation:bmRise .5s .6s both}
+.nl.play .nl-people li{animation:nlPop .45s both}
+.nl.play .nl-people li:nth-child(1){animation-delay:.75s}
+.nl.play .nl-people li:nth-child(2){animation-delay:.9s}
+.nl.play .nl-people li:nth-child(3){animation-delay:1.05s}
+.nl.play .nl-items li{animation:bmRise .4s both}
+.nl.play .nl-items li:nth-child(1){animation-delay:.85s}
+.nl.play .nl-items li:nth-child(2){animation-delay:1s}
+.nl.play .nl-items li:nth-child(3){animation-delay:1.15s}
+.nl.play .nl-people i{animation:nlGlow 1.2s 1.2s both}
+@keyframes nlDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes nlPop{0%{opacity:0;transform:scale(.85)}70%{transform:scale(1.03)}100%{opacity:1;transform:none}}
+@keyframes nlGlow{0%{box-shadow:0 0 0 0 var(--accent)}100%{box-shadow:0 0 0 8px transparent}}
+
+/* ===== Command Center builds ===== */
+.dash.play #weekly rect{transform-box:fill-box;transform-origin:bottom;animation:barUp .7s cubic-bezier(.2,.8,.2,1) both}
+.dash.play #weekly rect:nth-child(1){animation-delay:.1s}.dash.play #weekly rect:nth-child(2){animation-delay:.16s}.dash.play #weekly rect:nth-child(3){animation-delay:.22s}.dash.play #weekly rect:nth-child(4){animation-delay:.28s}
+.dash.play #weekly rect:nth-child(5){animation-delay:.34s}.dash.play #weekly rect:nth-child(6){animation-delay:.4s}.dash.play #weekly rect:nth-child(7){animation-delay:.46s}.dash.play #weekly rect:nth-child(8){animation-delay:.52s}
+@keyframes barUp{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.dash.play .dash-lvl i{animation:lvlGrow .8s cubic-bezier(.2,.8,.2,1) both}
+.dash.play .dash-lvl>div:nth-child(3) i{animation-delay:.7s}.dash.play .dash-lvl>div:nth-child(4) i{animation-delay:.85s}
+.dash.play .dash-lvl>div.hot i{animation:lvlGrow .8s 1s cubic-bezier(.2,.8,.2,1) both,hotPulse 1.4s 1.9s ease-in-out 2}
+@keyframes lvlGrow{from{width:0}}
+@keyframes hotPulse{50%{filter:brightness(1.35)}}
+.dash.play .dash-action{animation:actIn .6s 1.7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes actIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+@media (max-width:900px){
+  .audit2{grid-template-columns:1fr}
+  .au-step{min-height:0}
+  .au-procs{grid-template-columns:1fr}
+  .au-gauge{width:150px;height:150px}
+}
+@media (prefers-reduced-motion:reduce){.au-q.in,.au-q.back,.au-recs li,.bmail .bm-body>*,.nl.play *,.dash.play *{animation:none!important}}
+
+/* ===== believe | do | where ===== */
+.a10-head{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 250px}
+.a10-head h2{font-size:clamp(22px,2.4vw,32px)}
+.a10-grid{display:grid;grid-template-columns:minmax(0,2fr) 250px;gap:28px;align-items:start}
+.a10-rows .a10-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 28px}
+.a10-rows .a10-area{grid-column:1/-1;padding-top:0}
+.a10-where{position:sticky;top:84px;display:grid;gap:12px;padding-top:16px}
+.a10-jobs{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.a10-jobs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.a10-jobs b{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.2}
+.a10-jobs em{font-style:normal;font-size:11.5px;letter-spacing:.04em;color:var(--accent);font-weight:600;align-self:center;text-align:right}
+.a10-jobs span{grid-column:1/-1;font-size:12.5px;color:var(--muted);line-height:1.35}
+.a10-tools{font-size:12px;line-height:1.55;color:var(--muted);margin:0}
+.a10-tools::before{content:"Tools · ";font-weight:700;color:var(--ink)}
+.talk10{padding-block:36px 30px}
+.talk10 .talk6{grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px 32px;padding:26px 28px}
+.talk10 .talk6 h2{grid-row:1/3}
+.talk10 .talk6 p{margin:0}
+.talk10 .talk6 .addr{grid-column:2}
+.talk10 .talk6 .contact-btns{grid-column:3;grid-row:1/3;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:900px){
+  .a10-head{grid-template-columns:1fr 1fr}
+  .a10-head h2:nth-child(3){display:none}
+  .a10-grid{grid-template-columns:1fr}
+  .a10-where{position:static;border-top:2px solid var(--ink);padding-top:14px}
+  .a10-where::before{content:"Where I've done it";font-family:var(--display);font-weight:700;text-transform:uppercase;font-stretch:118%;font-size:22px}
+  .a10-jobs{grid-template-columns:1fr 1fr;column-gap:20px}
+  .talk10 .talk6{grid-template-columns:1fr}
+  .talk10 .talk6 h2,.talk10 .talk6 .addr,.talk10 .talk6 .contact-btns{grid-row:auto;grid-column:auto;justify-content:flex-start}
+}
+@media (max-width:560px){
+  .a10-head{grid-template-columns:1fr}
+  .a10-head h2:nth-child(2){display:none}
+  .a10-rows .a10-row{grid-template-columns:1fr}
+  .a10-jobs{grid-template-columns:1fr}
+}
+.au-q .au-recs li{border-top-color:rgba(246,242,236,.2)}
+.au-q .au-recs b{color:#F6F2EC;font-size:16px}
+.au-q .au-recs span{color:rgba(246,242,236,.7);font-size:14px}
+.au-q .au-talk{background:#F6F2EC;color:#141210;justify-self:start}
+.au-q .au-talk:hover{background:#D9BBB2}
+.au-cta{animation:auRec .5s .8s both}
+
+/* story rail beside Weekly + Command Center */
+.td6-solo.td11{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:center}
+.story{list-style:none;margin:0;padding:0 0 0 22px;display:grid;gap:22px;position:relative}
+.story::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:rgba(246,242,236,.15)}
+.story::after{content:"";position:absolute;left:0;top:6px;width:2px;height:0;background:#D9BBB2}
+.td6-solo.play .story::after{animation:storyLine 2.1s .2s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes storyLine{to{height:calc(100% - 12px)}}
+.story li{display:grid;gap:3px;opacity:.28;transform:translateX(8px)}
+.td6-solo.play .story li{animation:storyIn .55s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * .7s + .3s)}
+@keyframes storyIn{to{opacity:1;transform:none}}
+.story em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;color:#D9BBB2}
+.story b{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;color:#F6F2EC}
+.story span{font-size:14px;line-height:1.5;color:rgba(246,242,236,.68)}
+@media (max-width:900px){.td6-solo.td11{grid-template-columns:1fr;gap:20px}}
+@media (prefers-reduced-motion:reduce){.story li{opacity:1;transform:none}.story::after{height:calc(100% - 12px)}}
+
+.td6-solo.td11{max-width:none}
+.td6-solo.td11 .mini{max-width:none;width:100%;justify-self:stretch}
+@media (max-width:900px){
+  .au-side{order:-1;grid-template-columns:120px minmax(0,1fr);align-items:center;padding:14px;gap:14px}
+  .au-gauge{width:120px!important;height:120px!important}
+  .au-score b{font-size:34px}
+  .au-score span{font-size:9px;max-width:80px}
+  .au-bars div{grid-template-columns:70px minmax(0,1fr);font-size:11.5px}
+  .au-out{grid-column:1/-1}
+  .au-out:empty{display:none}
+  .au-out .au-hint{display:none}
+}
+
+/* ===== builder: watch | wheel ===== */
+.bx-split{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.bx-watch{background:var(--paper);color:var(--ink);padding:18px;display:grid;gap:14px;grid-template-rows:auto 1fr}
+.bx-h em,.bx-wheel>em{font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.bx-h p{font-size:14.5px;color:var(--muted);margin-top:4px}
+.bx-reel{display:grid;grid-template-columns:168px minmax(0,1fr);gap:16px;min-height:430px}
+.bx-types{list-style:none;margin:0;padding:0;display:grid;gap:6px;align-content:start}
+.bx-types li{position:relative;display:grid;gap:1px;padding:10px 12px 12px;border:1px solid var(--line);background:var(--surface);cursor:pointer;opacity:.6;transition:opacity .25s,border-color .25s,transform .25s;overflow:hidden}
+.bx-types li b{font-size:13.5px}
+.bx-types li span{font-size:11.5px;color:var(--muted)}
+.bx-types li i{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.bx-types li.done{opacity:.85}
+.bx-types li.done i{transform:scaleX(1);opacity:.35}
+.bx-types li.on{opacity:1;border-color:var(--ink);transform:translateX(4px)}
+.bx-types li.on i.run{animation:bxRun 5.6s linear forwards}
+@keyframes bxRun{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bx-screen{position:relative;display:grid;grid-template-rows:auto 1fr;gap:10px;min-width:0}
+.bx-trig{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 12px;background:var(--ink);color:var(--paper);opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s}
+.bx-trig.show{opacity:1;transform:none}
+.bx-trig i{width:8px;height:8px;border-radius:50%;background:#D9BBB2;box-shadow:0 0 0 0 rgba(217,187,178,.7);animation:livePulse 1.4s infinite}
+.bx-trig span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;font-weight:700}
+.bx-win{position:relative;overflow:hidden;height:378px;border:1px solid var(--line);background:var(--surface)}
+.bx-win::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
+.bx-mail{box-shadow:none!important;font-size:13px;transform:translateY(0)}
+.bx-mail .bm-body{padding:14px 18px;gap:9px}
+.bx-mail .bm-h{font-size:22px}
+.bx-mail .bm-body>*{opacity:0}
+.bx-mail.build .bm-body>*{animation:bmRise .45s both}
+.bx-mail.build .bm-body>*:nth-child(1){animation-delay:.05s}.bx-mail.build .bm-body>*:nth-child(2){animation-delay:.5s}
+.bx-mail.build .bm-body>*:nth-child(3){animation-delay:1.1s}.bx-mail.build .bm-body>*:nth-child(4){animation-delay:1.3s}
+.bx-mail.build .bm-body>*:nth-child(5){animation-delay:1.5s}.bx-mail.build .bm-body>*:nth-child(6){animation-delay:1.7s}
+.bx-mail.build .bm-body>*:nth-child(n+7){animation-delay:1.9s}
+.bx-mail.scroll{transition:transform 1.4s cubic-bezier(.45,0,.2,1);transform:translateY(var(--sy))}
+.typing::after{content:"";display:inline-block;width:2px;height:1em;background:currentColor;margin-left:2px;vertical-align:-2px;animation:caret .7s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.bx-sent{position:absolute;right:14px;bottom:14px;z-index:3;display:flex;align-items:center;gap:6px;background:var(--ok);color:#fff;font-size:13px;font-weight:700;padding:8px 14px 8px 10px;border-radius:999px;opacity:0;transform:scale(.7);transition:opacity .25s,transform .35s cubic-bezier(.3,1.6,.5,1)}
+.bx-sent b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);font-size:12px}
+.bx-sent span{font-weight:500;opacity:.85}
+.bx-sent.show{opacity:1;transform:none}
+.bx-wheel{border:1px solid rgba(246,242,236,.25);padding:22px;display:grid;gap:14px;align-content:start;background:linear-gradient(160deg,rgba(217,187,178,.12),transparent 60%)}
+.bx-wheel>em{color:#D9BBB2}
+.bx-wheel h3{font-family:var(--display);font-weight:700;font-size:clamp(24px,2.4vw,32px);line-height:1.1;color:#F6F2EC}
+.bx-wheel h3 i{font-family:var(--serif);font-weight:400;color:#D9BBB2}
+.bx-wheel p{font-size:14.5px;line-height:1.55;color:rgba(246,242,236,.75)}
+.bx-wheel ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.bx-wheel li{font-size:14px;color:#F6F2EC;display:flex;gap:10px;align-items:baseline}
+.bx-wheel li::before{content:"✓";color:#D9BBB2;font-weight:700}
+.bx-go{justify-self:start;margin-top:6px;background:#F6F2EC;color:#141210;border:0;font-weight:700;font-size:15px;padding:13px 20px;cursor:pointer;transition:background .2s,transform .2s}
+.bx-go:hover{background:#D9BBB2;transform:translateX(3px)}
+.bx-edbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(246,242,236,.18)}
+.bx-edbar button{background:transparent;border:1px solid rgba(246,242,236,.3);color:#F6F2EC;padding:8px 14px;font-size:13.5px;cursor:pointer}
+.bx-edbar button:hover{border-color:#D9BBB2}
+.bx-edbar span{font-size:13px;color:#D9BBB2}
+.bx-words{display:grid;gap:12px;padding:14px;border:1px dashed rgba(246,242,236,.25)}
+.bx-wh{display:flex;justify-content:space-between;align-items:center}
+.bx-wh span{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D9BBB2}
+.bx-wh button{background:transparent;border:0;color:rgba(246,242,236,.65);font-size:12.5px;text-decoration:underline;cursor:pointer}
+.bx-words small{font-size:11px;opacity:.7}
+.bx-words input[type=color]{height:42px;padding:3px;width:100%;cursor:pointer}
+#bmail [data-ov]{outline:1px dashed transparent;outline-offset:2px;border-radius:2px;cursor:text;transition:outline-color .2s,background .2s}
+#bmail [data-ov]:hover{outline-color:color-mix(in srgb,var(--accent) 60%,transparent)}
+#bmail [data-ov]:focus{outline:2px solid var(--accent);background:color-mix(in srgb,var(--blush) 60%,transparent)}
+.bm-subj{font-style:normal}
+
+/* ===== Command Center ===== */
+.ccx{background:var(--paper);color:var(--ink);padding:16px;display:grid;gap:12px}
+.cc-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.cc-title{display:grid;gap:2px}
+.cc-title b{font-family:var(--display);font-weight:800;font-stretch:112%;text-transform:uppercase;font-size:18px;letter-spacing:.01em}
+.cc-title span{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.cc-title em{font-style:normal}
+.cc-live{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:livePulse 1.6s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
+.cc-range{display:flex;border:1px solid var(--line);background:var(--surface)}
+.cc-range button{background:transparent;border:0;padding:8px 14px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer}
+.cc-range button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.cc-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cc-kpis div{background:var(--surface);padding:12px 14px;display:grid;gap:1px;transition:background .4s}
+.cc-kpis b{font-family:var(--display);font-weight:800;font-stretch:110%;font-size:30px;line-height:1.05;font-variant-numeric:tabular-nums}
+.cc-kpis span{font-size:12.5px;font-weight:600}
+.cc-kpis em{font-style:normal;font-size:11.5px;color:var(--muted)}
+.cc-kpis div.bump{animation:bump .9s ease}
+@keyframes bump{0%{background:var(--blush)}100%{background:var(--surface)}}
+.cc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cc-card{position:relative;background:var(--surface);border:1px solid var(--line);padding:14px;display:grid;gap:12px;align-content:start;opacity:0;transform:translateY(10px)}
+.ccx.play .cc-card{animation:actIn .5s cubic-bezier(.2,.8,.2,1) forwards}
+.ccx.play .cc-card:nth-child(2){animation-delay:.06s}.ccx.play .cc-card:nth-child(3){animation-delay:.12s}.ccx.play .cc-card:nth-child(4){animation-delay:.18s}.ccx.play .cc-card:nth-child(5){animation-delay:.24s}.ccx.play .cc-card:nth-child(6){animation-delay:.3s}.ccx.play .cc-card:nth-child(7){animation-delay:.36s}
+.cc-card header{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.cc-card header b{font-size:14px}
+.cc-card header span{font-size:11.5px;color:var(--muted);text-align:right}
+.cc-vol{grid-column:1/3}
+.cc-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.cc-grid-l{stroke:var(--line);stroke-width:1}
+.cc-ax{font-size:10.5px;fill:var(--muted);font-family:var(--body,inherit)}
+.cc-val{font-size:12px;font-weight:700;fill:var(--ink)}
+.cc-avg{stroke:var(--muted);stroke-dasharray:3 4;stroke-width:1}
+.cc-b path{fill:color-mix(in srgb,var(--accent) 38%,var(--paper));transform-box:fill-box;transform-origin:bottom;transition:fill .2s}
+.cc-b.last path{fill:var(--accent)}
+.cc-b.hov path{fill:var(--ink)}
+.cc-b .hit{fill:transparent}
+.ccx.play .cc-b path{animation:barUp .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d) + .2s)}
+.cc-tip{position:absolute;transform:translate(-50%,-100%);background:var(--ink);color:var(--paper);padding:6px 10px;font-size:12px;pointer-events:none;white-space:nowrap;display:grid;z-index:2}
+.cc-tip span{font-size:11px;opacity:.7}
+.cc-feed ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.cc-feed li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.cc-feed li:last-child{border-bottom:0}
+.cc-feed li.new{animation:feedIn .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes feedIn{from{opacity:0;transform:translateY(-10px);background:var(--blush)}to{opacity:1;transform:none}}
+.cc-feed li i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;background:var(--blush);color:var(--accent)}
+.cc-feed li.cc-f-bg i{background:color-mix(in srgb,var(--ok) 16%,var(--paper));color:var(--ok)}
+.cc-feed li.cc-f-res i{background:color-mix(in srgb,var(--warn) 16%,var(--paper));color:var(--warn)}
+.cc-feed li span{display:grid;line-height:1.3;color:var(--muted);min-width:0}
+.cc-feed li span b{color:var(--ink);font-weight:600}
+.cc-feed li em{font-style:normal;font-size:11px;color:var(--muted);white-space:nowrap}
+.cc-stack{display:flex;gap:2px;height:14px}
+.cc-stack i{display:block;height:100%;flex:0 0 auto;width:var(--w);border-radius:2px}
+.ccx.play .cc-stack i{animation:lvlGrow .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:.35s}
+.s1,.b1{background:color-mix(in srgb,var(--accent) 25%,var(--paper))}
+.s2,.b2{background:color-mix(in srgb,var(--accent) 60%,var(--paper))}
+.s3{background:var(--accent)}
+.b3{background:var(--ok)}
+.b4{background:var(--warn)}
+.sr{background:transparent;border:1.5px dashed var(--warn)}
+.cc-leg{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.cc-leg li{display:grid;grid-template-columns:12px minmax(0,1fr) auto 38px;gap:8px;align-items:center;font-size:12.5px}
+.cc-leg li>i{width:12px;height:12px;border-radius:2px}
+.cc-leg b{font-variant-numeric:tabular-nums}
+.cc-leg em{font-style:normal;color:var(--muted);text-align:right;font-size:11.5px}
+.cc-leg .cc-note{border-top:1px solid var(--line);padding-top:7px;color:var(--muted)}
+.cc-big{display:grid;gap:2px}
+.cc-big b{font-family:var(--display);font-weight:800;font-stretch:110%;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.cc-big span{font-size:12px;color:var(--muted)}
+.cc-hb{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:7px}
+.cc-hb li{display:grid;grid-template-columns:118px minmax(0,1fr) 40px;gap:8px;align-items:center;font-size:12.5px}
+.cc-hb i{display:block;height:8px;background:var(--line);border-radius:2px;overflow:hidden}
+.cc-hb i b{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:2px}
+.ccx.play .cc-hb i b{animation:lvlGrow .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d) + .4s)}
+.cc-hb em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums}
+.cc-bgl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cc-bgl li{display:grid;grid-template-columns:22px auto;grid-template-rows:auto auto;column-gap:8px;align-items:center;background:transparent!important}
+.cc-bgl li i{grid-row:1/3;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:var(--ink);border:1.5px solid var(--line)}
+.cc-bgl li.b3 i{background:var(--ok);border-color:var(--ok);color:#fff}
+.cc-bgl li.b4 i{background:var(--warn);border-color:var(--warn);color:#fff}
+.cc-bgl li.b2 i{border-color:var(--accent);color:var(--accent)}
+.cc-bgl b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1}
+.cc-bgl span{font-size:11.5px;color:var(--muted)}
+.cc-foot{font-size:12.5px;color:var(--muted);margin:0;border-top:1px solid var(--line);padding-top:8px}
+.cc-foot b{color:var(--ink)}
+.cc-hires{grid-column:1/3}
+.cc-hh,.cc-hr{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(4,minmax(0,.8fr)) 110px;gap:8px;align-items:center}
+.cc-hh span{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+.cc-hh span:first-child{text-align:left}
+.cc-hr{padding:8px 0;border-top:1px solid var(--line)}
+.cc-hr>span:first-child{display:grid;line-height:1.3}
+.cc-hr>span:first-child b{font-size:13px}
+.cc-hr>span:first-child em{font-style:normal;font-size:11.5px;color:var(--muted)}
+.cc-hr>i{justify-self:center;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700}
+.cc-hr>i.y{background:var(--accent);color:var(--paper)}
+.cc-hr>i.n{border:1.5px dashed var(--line)}
+.ccx.play .cc-hr>i{animation:nlPop .4s both;animation-delay:calc(var(--d) + .5s)}
+.cc-hr .st{justify-self:end;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--blush);color:var(--accent);white-space:nowrap}
+.cc-hr .st.ok{background:color-mix(in srgb,var(--ok) 15%,var(--paper));color:var(--ok)}
+.cc-hr .st.warn{background:color-mix(in srgb,var(--warn) 15%,var(--paper));color:var(--warn)}
+.cc-hr .st.warn::before{content:"! "}
+.cc-hr .st.ok::before{content:"✓ "}
+.cc-ins{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cc-ins header span{color:color-mix(in srgb,var(--paper) 60%,var(--ink))}
+.cc-insq{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.25;margin:0;animation:bmRise .5s both}
+.cc-next{display:grid;gap:3px;border-left:3px solid #D9BBB2;padding-left:10px;animation:bmRise .5s .2s both}
+.cc-next span{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D9BBB2}
+.cc-next b{font-size:14px;font-weight:500}
+.cc-insdots{display:flex;gap:6px}
+.cc-insdots button{width:22px;height:4px;border:0;padding:0;background:color-mix(in srgb,var(--paper) 30%,var(--ink));cursor:pointer}
+.cc-insdots button.on{background:#D9BBB2}
+@media (max-width:900px){
+  .bx-split{grid-template-columns:1fr}
+  .bx-reel{grid-template-columns:1fr;min-height:0}
+  .bx-types{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto;scrollbar-width:none}
+  .bx-types li span{display:none}
+  .bx-types li.on{transform:none}
+  .bx-win{height:400px}
+  .cc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cc-kpis div:first-child{grid-column:1/-1}
+  .cc-grid{grid-template-columns:1fr}
+  .cc-vol,.cc-hires{grid-column:auto}
+  .cc-hh{display:none}
+  .cc-hr{grid-template-columns:minmax(0,1fr) repeat(4,22px);row-gap:6px}
+  .cc-hr .st{grid-column:1/-1;justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){.cc-card{opacity:1;transform:none}.ccx.play *{animation:none!important}.bx-mail .bm-body>*{opacity:1}}
+
+.theme11{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:8px 40px;align-items:end;padding:28px 0 30px;margin-bottom:26px;border-bottom:1px solid var(--line);position:relative}
+.theme11-k{grid-column:1/-1;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.theme11 h2{font-size:clamp(34px,4.6vw,62px);line-height:.98}
+.theme11 h2 i{display:block;color:var(--accent)}
+.theme11 p{font-size:clamp(16px,1.5vw,19px);line-height:1.45;color:var(--muted);max-width:22em;padding-bottom:6px;border-left:3px solid var(--accent);padding-left:16px}
+@media (max-width:900px){.theme11{grid-template-columns:1fr;padding:20px 0 22px}.theme11 p{padding-bottom:0}}
+
+.res-modal{position:fixed;inset:0;z-index:60;background:rgba(10,9,8,.78);backdrop-filter:blur(4px);overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;padding:24px 16px}
+.res-modal[hidden]{display:none}
+.res-box{width:min(860px,100%);display:grid;gap:12px;animation:floatIn2 .25s ease}
+.res-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#F6F2EC;position:sticky;top:0;z-index:2;padding:6px 0}
+.res-bar b{font-family:var(--display);font-weight:800;font-stretch:112%;text-transform:uppercase;letter-spacing:.04em;font-size:15px}
+.res-acts{display:flex;gap:8px}
+.res-dl{background:#F6F2EC;color:#141210;text-decoration:none;font-weight:700;font-size:13.5px;padding:9px 14px}
+.res-dl:hover{background:#D9BBB2}
+#resClose{background:transparent;border:1px solid rgba(246,242,236,.4);color:#F6F2EC;border-radius:999px;padding:8px 14px;font-size:13.5px;cursor:pointer}
+#resClose:hover{border-color:#D9BBB2}
+.res-paper{background:#fff;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.res-paper img{display:block;width:100%;height:auto}
+.a10-res{font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--accent);justify-self:start;padding-bottom:2px}
+.a10-res:hover{color:var(--accent)}
+.res-hint{display:none}
+@media (max-width:900px){
+  .res-paper{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .res-hint{display:block;position:absolute;right:8px;top:8px;z-index:1;background:rgba(20,18,16,.8);color:#F6F2EC;font-size:11.5px;font-weight:600;padding:5px 9px;border-radius:999px;pointer-events:none}
+  .res-paper.zoom img{width:240%;max-width:none}
+  .res-paper.zoom .res-hint{display:none}
+}
 </style>
 </head>
 <body>
 
 <header class="mast-bar">
   <div class="wrap mast">
-    <a class="mast-name" href="#hello">Melissa Heffler</a>
-    <nav class="tabbar" role="tablist" aria-label="Sections">
-      <a role="tab" href="#hello" data-t="hello">Letter &amp; Beliefs</a>
-      <a role="tab" href="#mywork" data-t="mywork">My Work</a>
-      <a role="tab" href="#testdrive" data-t="testdrive">Test Drive</a>
-      <a role="tab" href="#careers" data-t="careers">Career &amp; Contact</a>
+    <a class="mast-name" href="#top">Melissa Heffler</a>
+    <nav class="tabbar" aria-label="Sections">
+      <a href="#testdrive" class="nav-td">Test Drive</a>
+      <a href="#believe">Beliefs &amp; Work</a>
+      <a href="#contact">Contact</a>
     </nav>
     <div class="mast-contact">
       <a class="mast-link" href="mailto:mlheffler@gmail.com">Email</a>
       <a class="mast-link" href="https://www.linkedin.com/in/melissa-heffler-13982768" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="mast-cta" href="/resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+      <a class="mast-cta" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
   </div>
 </header>
-<main>
-<div class="panel" data-tab="hello" id="p-hello">
+
+<main id="top">
 <div class="wrap">
-  <section class="cover">
-    <div class="cover-text">
+  <section class="hero9" id="letter">
+    <div class="h9-text">
       <h1>People <i>over</i> process.</h1>
-      <p class="deck-line">Corporate, made human. For the people on both sides of the offer.</p>
-      <div class="cover-tabs">
-        <a href="#hello" class="ct"><span>01</span>Letter &amp; Beliefs</a>
-        <a href="#mywork" class="ct"><span>02</span>My Work</a>
-        <a href="#testdrive" class="ct"><span>03</span>Test Drive</a>
-        <a href="#careers" class="ct"><span>04</span>Career &amp; Contact</a>
+      <p class="h9-tag">Corporate, made human. For the people on both sides of the offer.</p>
+      <div class="h9-letter">
+        <p>I think about my job a bit like a brain surgeon would. I'm on call, always. Probably too much, if I'm honest. But the people on the other end are navigating some of life's most stressful moments: looking for work, starting somewhere new, finding their footing once they're in. And I don't believe in leaving them guessing.</p>
+        <p>I know that weight from the inside. Rereading an email five times before you hit send. Wondering if one more follow-up makes you a pest, or if it's too late to ask a question in week three. So I am the person who takes the weight off. Candidate or colleague, know me and you've got a safety net.</p>
+        <p class="h9-close">People over process. Keep scrolling and experience my work for yourself. <span class="sig6">Melissa</span></p>
       </div>
     </div>
-    <figure class="portrait">
-      <div class="portrait-panel"><img src="/m-portrait.webp" alt="Black-and-white portrait of Melissa Heffler, smiling" width="900" height="1200"></div>
-      <figcaption><b>Melissa Heffler</b><span>People operations · candidate &amp; employee experience</span></figcaption>
+    <figure class="portrait9">
+      <div class="p6-frame"><img src="/m-portrait.webp" alt="Black-and-white portrait of Melissa Heffler, smiling" width="900" height="1200"></div>
+      <a class="td-cta td9-cta" href="#testdrive">Take the test drive <span>→</span></a>
     </figure>
   </section>
-  <section class="letter" id="letter">
-    <div class="side">
-      <span class="kicker a">Before you start</span>
-      <h2>A note from Melissa</h2>
-    </div>
-    <div class="body">
-      <p>I think about my job a bit like a brain surgeon would. I'm on call, always. Probably too much, if I'm honest. But the people on the other end are navigating some of life's most stressful moments: looking for work, starting somewhere new, finding their footing once they're in. And I don't believe in leaving them guessing.</p>
-      <p>I know that weight from the inside. Rereading an email five times before you hit send. Wondering if one more follow-up makes you a pest, or if it's too late to ask a question in week three. So I am the person who takes the weight off. Candidate or colleague, know me and you've got a safety net.</p>
-      <p>At Gap Inc. that meant 1,500+ interviews a year across Global Tech and Corporate Functions. A scheduling system I built myself with AI. Dashboards that influenced leadership decisions, not just informed them. And a weekly digest where a teammate's daughter graduating college got the same spotlight as the hiring update, because why wouldn't it?</p>
-      <p>People over process. We're people, not numbers. Keep going and feel it for yourself.</p>
-      <span class="sig">Melissa</span>
-    </div>
-  </section>
-
-  <section id="believe">
-    <div class="section-head">
-      <h2>What I believe</h2>
-      
-    </div>
-    <div class="beliefs">
-      <div class="belief"><span class="kicker a">Before day one</span><h3>Candidate experience is everything.</h3><p>The first email. The wait between rounds. The "we went another direction." Every one of those moments tells someone how much they matter. Hired or not, I want every candidate to walk away feeling valued.</p></div>
-      <div class="belief"><span class="kicker a">Day one and after</span><h3>The welcome decides who stays.</h3><p>Retention starts on day one. How you're welcomed, and how you're treated once the shine wears off, matters more than any perk ever will.</p></div>
-      <div class="belief"><span class="kicker a">Just because</span><h3>Ask how they're doing. Mean it.</h3><p>A real "how are you?" goes further than people think. Check in for no reason. Let someone vent, and make sure they walk away feeling heard and seen. It's the fastest way I know to close the gap between corporate America and actual humans.</p></div>
-      <div class="belief"><span class="kicker a">Not just at the holiday party</span><h3>Real life belongs at work.</h3><p>Graduations. Birthdays. Someone's big trip. Celebrate your people, your people's people, and everything in between, right alongside the business, every week. That's where work and life actually meet.</p></div>
-      <div class="belief wide"><div style="display:grid;gap:10px"><span class="kicker a">All the way up</span><h3>Leaders are people too.</h3></div><p>The best leaders are visible, reachable, and a reminder that we're all human. Share what's coming before it lands. And when you hold a listening session, show people what changed because of it.</p></div>
-      <div class="belief wide ai"><div style="display:grid;gap:10px"><span class="kicker a">The future I believe in</span><h3>AI for the busywork. <i>People for each other.</i></h3></div><p>I built my automations entirely with AI. They cut my turnaround time in half, but the real win was what they gave back: more time for the conversations, check-ins and small moments that make a person feel seen. That's the future I believe in. AI should take on the busywork so people can show up more fully for each other, not less.</p></div>
-    </div>
-
-    <div class="question">
-      <q>Does this company respect me, my time, and its people?</q>
-      <p>Candidates ask it. Employees ask it too, just more quietly. The answer should be obvious.</p>
-    </div>
-      </section>
-  <div class="next-tab"><a href="#mywork">Next: My Work <span>→</span></a></div>
+  <div class="stats9">
+        <div><b>1,500+</b><span><strong>interviews scheduled annually</strong> across Global Tech and Corporate Functions at Gap Inc.</span></div>
+        <div><b>95%</b><span><strong>of candidate action items handled within 24 hours.</strong> Scheduling requests, reschedules, questions and follow-ups in my remit.</span></div>
+        <div><b>75%</b><span><strong>faster from request to confirmed interview.</strong> Powered by a four-part scheduling system I build and run with AI. No engineering team required.</span></div>
+        <div><b>10+</b><span><strong>years in people operations</strong> across Gap Inc., the NFL, MLB and AOL.</span></div>
+      </div>
 </div>
-</div>
-<div class="panel" data-tab="mywork" id="p-mywork" hidden>
+
+<section class="td9" id="testdrive">
+  <div class="wrap td9-inner">
+    <div class="td9-head">
+      <span class="td7-badge">The test drive</span>
+      <h2>Don't take my <i>word</i> for it.</h2>
+      <p>Five demos pulled from the work I do every day. Pick one and give it a go.</p>
+    </div>
+      <div class="td9-launch">
+        <button type="button" data-open="0"><span class="mini-anim" aria-hidden="true"><i></i><i></i><i></i><i></i></span><em>01</em><b>Chaos to clear</b><span>Watch 14 emails become one.</span></button>
+        <button type="button" data-open="1"><em>02</em><b>Confirmation builder</b><span>Watch five emails write themselves.</span></button>
+        <button type="button" data-open="3"><em>03</em><b>The Weekly</b><span>Watch a team digest come together.</span></button>
+        <button type="button" data-open="4"><em>04</em><b>Command Center</b><span>Watch data turn into a decision.</span></button>
+        <button type="button" data-open="2"><em>05</em><b>Process audit</b><span>Score your process, live.</span></button>
+      </div>
+  </div>
+</section>
+
 <div class="wrap">
-  <section id="work">
-    <div class="section-head">
-      <h2>My work</h2>
-      <p>What I do and how I do it. Then take it for a test drive.</p>
+  <section class="align10" id="believe">
+    <div class="theme11"><span class="theme11-k">The through line</span><h2>AI for the busywork. <i>People for each other.</i></h2><p>My automations buy back time for the moments that make someone feel seen.</p></div>
+    <div class="a10-head"><h2>What I <i>believe</i></h2><h2>What I <i>do</i></h2><h2>Where I've <i>done it</i></h2></div>
+    <div class="a10-grid">
+    <div class="a10-rows">
+
+    <div class="a10-row">
+      <span class="a10-area">Candidate experience</span>
+      <div class="a10-bel">
+        <div><h3>Candidate experience is everything.</h3><p>Hired or not, every candidate walks away feeling valued.</p></div>
+        <div><h3>Conversation, not a presentation.</h3><p>The best interviews feel like two people talking.</p></div>
+        <div><h3>Hire for what's missing, not what matches.</h3><p>The best hires bring something the team didn't have yet.</p></div>
+      </div>
+      <div class="a10-do"><h3>Every touchpoint counts.</h3><ul><li>1,500+ interviews annually, 95% of action items handled within 24 hours</li><li>Clear, warm, personal communication at every stage</li><li>One clean thread, so nobody digs through their inbox</li><li>Accuracy through automation: every name, time and link pulls from one source, never retyped</li></ul></div>
     </div>
-    <div class="sub-head"><span class="kicker a">01</span><h3>What I do</h3><p>Each part only works if the others do. That's people over process in practice.</p></div>
-    <div class="quad">
 
-      <article class="area">
-        <span class="k">Employee experience</span>
-        <h3>People who feel seen stay.</h3>
-        <p>I keep people in the loop, celebrate the life that happens outside a calendar invite, and make sure everyone has a way to keep growing.</p>
-        <div class="mini nl">
-          <div class="nl-mast"><span class="nl-title">The Weekly</span><span class="nl-meta" id="digestDate">Fri</span></div>
-          <div class="nl-lead"><span class="nl-tag">This week</span><p>Two hiring events, a new tool going live, and plenty to celebrate.</p></div>
-          <div class="nl-grid">
-            <div><span class="nl-tag">Celebrating</span>
-              <ul class="nl-people"><li><i>DK</i><span>Dana's daughter graduates college Saturday</span></li><li><i>MT</i><span>Happy birthday, Marcus</span></li><li><i>PS</i><span>Priya's off to Lisbon</span></li></ul></div>
-            <div><span class="nl-tag">On the radar</span>
-              <ul class="nl-items"><li>Hiring events Tuesday and Thursday</li><li>Background check builder is live</li><li>Mentorship cohort sign-ups open</li></ul></div>
-          </div>
-          <div class="nl-foot">Sample issue · names are made up</div>
-        </div>
-        <ul class="list">
-          <li><b>A weekly digest people actually read</b><span>Company wins and big news alongside graduations, birthdays and milestones</span></li>
-          <li><b>All-Hands and Town Halls</b><span>Planned and run for Corporate Functions and Global Technology Solutions</span></li>
-          <li><b>Mentorship and skill cohorts</b><span>Internal mentorship and focused groups that build real skills together</span></li>
-          <li><b>Room to grow</b><span>Backing people who take courses, earn certifications, and sign up for programs that make them better at their work</span></li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="k">Candidate experience</span>
-        <h3>Every touchpoint counts. All of them.</h3>
-        <p>I map the candidate journey the way a brand maps a customer's, with communication at every single step. Clarity and warmth are designed in from the start.</p>
-        <div class="mini em">
-          <div class="em-bar"><span class="em-brand">Hiring Team</span><span class="em-to">To: <span data-name-full>Alex Rivera</span></span></div>
-          <div class="em-body">
-            <span class="em-eyebrow">Final round · Confirmed</span>
-            <p class="em-h">You're all set, <span data-name>Alex</span>.</p>
-            <div class="em-when"><div><b id="emDate">Tue, Oct 13</b><span>9:30 AM to 12:15 PM ET</span></div><div><b>Video</b><span>One link, all morning</span></div></div>
-            <ul class="em-sched">
-              <li><i>PS</i><div><b>Priya S., Design Lead</b><span>A project you're proud of</span></div><em>9:30</em></li>
-              <li><i>MT</i><div><b>Marcus T., Product Manager</b><span>How you'd tackle a real problem</span></div><em>10:30</em></li>
-              <li><i>DK</i><div><b>Dana K., Eng Manager</b><span>How you work with engineers</span></div><em>11:30</em></li>
-            </ul>
-            <div class="em-actions"><span class="em-btn">Add to calendar</span><span class="em-note">Questions? Just reply. Good luck!</span></div>
-          </div>
-        </div>
-        <div class="fact"><span class="fact-tag">★ Fun fact</span><div><b>95%</b><p>of candidate action items in my remit were handled in under 24 hours.</p></div></div>
-        <ul class="list">
-          <li><b>1,500+ interviews annually</b><span>My volume and stewardship by the numbers, across Global Tech and Corporate Functions</span></li>
-          <li><b>Communication at every stage</b><span>Clear, warm, consistent and personal from first email to final answer</span></li>
-          <li><b>One thread, start to finish</b><span>No digging through your inbox for scattered emails. Every update stays in one clean place, by design.</span></li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="k">Operations and automation</span>
-        <h3>If it's broken, I build the fix.</h3>
-        <p>No engineering background, no ticket queue. I built a four-part scheduling system with AI in Power Automate and SharePoint, and I'm always looking for ways to level it up. Less time on the tedious means more time for our people, the ones here now and the ones we haven't met yet.</p>
-        <div class="mini pipe">
-          <div class="pipe-top"><span>Interview scheduling system</span><span class="pill idle">Live</span></div>
-          <ol class="pipe-steps">
-            <li><span class="ps-n">01</span><div><b>Intake</b><span>Interview Request Builder. Recruiter submits once.</span></div></li>
-            <li><span class="ps-n">02</span><div><b>Event build</b><span>Panels created on the right calendars, with the right details.</span></div></li>
-            <li><span class="ps-n">03</span><div><b>Communications</b><span>Branded confirmation and invite builders.</span></div></li>
-            <li><span class="ps-n">04</span><div><b>Tracking</b><span>Every schedule and reschedule logged to SharePoint.</span></div></li>
-          </ol>
-          <div class="pipe-foot"><span>Power Automate</span><span>SharePoint</span><span>Outlook</span></div>
-        </div>
-        <ul class="list">
-          <li><b>Scheduling turnaround, cut in half</b><span>Hours of copy-and-paste gone, and that time goes back to candidates and hiring teams</span></li>
-          <li><b>Fewer mistakes people feel</b><span>Right person, right calendar, right details, every time</span></li>
-          <li><b>Nobody falls through the cracks</b><span>Every request is logged, and every candidate gets followed up with</span></li>
-          <li><b>Built for the whole team</b><span>Scalable tools any recruiter can use, not a system that lives on one person's computer</span></li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="k">Data and reporting</span>
-        <h3>Numbers that make people move.</h3>
-        <p>Dashboards and decks that changed what leadership decided, not just what they knew. I let the data tell the story, with the next step impossible to miss. The review ends in a decision, not a shrug.</p>
-        <div class="mini dash">
-          <div class="dash-top"><span>Scheduling Command Center</span><span class="dash-meta">Sample data · 8 weeks</span></div>
-          <div class="dash-kpis">
-            <div><span class="n">246</span><span>Interviews</span></div>
-            <div><span class="n">34</span><span>Reschedules</span></div>
-            <div><span class="n">14%</span><span>Reschedule rate</span></div>
-          </div>
-          <div class="dash-body">
-            <div class="dash-chart"><span class="nl-tag">Interviews per week</span><svg id="weekly" viewBox="0 0 160 60" role="img" aria-label="Interviews per week, sample data"></svg></div>
-            <div class="dash-lvl"><span class="nl-tag">Reschedule rate by level</span>
-              <div><span>Individual contributor</span><i style="--w:41%"></i><b>9%</b></div>
-              <div><span>Senior</span><i style="--w:64%"></i><b>14%</b></div>
-              <div class="hot"><span>Director+</span><i style="--w:100%"></i><b>22%</b></div>
-            </div>
-          </div>
-          <div class="dash-action"><b>Next step</b><span>Director+ panels slip most. Lock interviewer availability before intake.</span></div>
-        </div>
-        <ul class="list">
-          <li><b>Built the data layer from scratch</b><span>With no ATS integration available, I engineered my own source of truth: automated flows capture every scheduling event and write it to structured SharePoint lists, with a full change log for audit</span></li>
-          <li><b>Scheduling Command Center</b><span>Interview volume counted per interviewer, reschedule rates by team and job level, and recruiter workload distribution, consolidated into one executive view</span></li>
-          <li><b>Weekly requisition reporting, automated</b><span>Two raw exports in two formats, reconciled and rebuilt into one cross-functional open requisitions dashboard every week, recovering an hour of manual prep each time</span></li>
-          <li><b>Data leadership acts on</b><span>Clear definitions, clean records and executive-ready decks, so the numbers hold up in the room and point straight to the next decision</span></li>
-        </ul>
-      </article>
-
+    <div class="a10-row">
+      <span class="a10-area">Employee experience</span>
+      <div class="a10-bel">
+        <div><h3>The welcome decides who stays.</h3><p>Retention starts on day one.</p></div>
+        <div><h3>Ask how they're doing. Mean it.</h3><p>Check in for no reason. Let people speak with candor. Make them feel heard.</p></div>
+        <div><h3>Real life belongs at work.</h3><p>Graduations, birthdays, big trips. Celebrated every week, not once a year.</p></div>
+      </div>
+      <div class="a10-do"><h3>People who feel seen stay.</h3><ul><li>A weekly digest: company news plus real-life wins</li><li>All-Hands and Town Halls for Corporate Functions and Global Technology Solutions</li><li>Mentorship and skill cohorts: in-house experts teach colleagues whatever they're curious about</li></ul></div>
     </div>
-  
-    <div class="sub-head" id="how"><span class="kicker a">02</span><h3>How I do it</h3><p>The habits behind the work.</p></div>
-    <div class="principles">
-      <div class="principle"><span class="kicker a">Dependable</span><h3>Your safety net.</h3><p>Whatever falls through the cracks, I've already caught it, and so have my systems. On call, to a fault.</p></div>
-      <div class="principle"><span class="kicker a">Adaptable</span><h3>Change is a challenge. I like that.</h3><p>Priorities move. I'd rather chase a moving target than guard the way we used to do things.</p></div>
-      <div class="principle"><span class="kicker a">Growth mindset</span><h3>Never finished.</h3><p>Every system I build is more garden than monument. I'm continuously tending it, pruning what doesn't work and growing what does.</p></div>
-      <div class="principle hero"><span class="kicker a">The mantra</span><h3>People <i>over</i> process. Always.</h3><p>Call it a mantra. For me it's the test every single decision has to pass. Before I build a tool, send an email, or design a dashboard, I ask one question: who does this help, and how will it make them feel? Process exists to serve people. The moment it asks people to serve it instead is the moment I go to work.</p></div>
+
+    <div class="a10-row">
+      <span class="a10-area">Operations and automation</span>
+      <div class="a10-bel">
+        <div><h3>Process should serve people.</h3><p>The moment it asks people to serve it instead is the moment I go to work.</p></div>
+        <div><h3>One request, not ten emails.</h3><p>If something takes a dozen messages to land, the process is the problem, not the people.</p></div>
+      </div>
+      <div class="a10-do"><h3>If it's broken, I build the fix.</h3><ul><li>A four-part scheduling system I build and run entirely with AI</li><li>Scheduling turnaround 75% faster, with that time handed back to people</li><li>Scalable tools anyone on the People team can pick up</li></ul></div>
+    </div>
+
+    <div class="a10-row">
+      <span class="a10-area">Data and reporting</span>
+      <div class="a10-bel">
+        <div><h3>Getting it done means not waiting.</h3><p>The ATS can't connect to my tools, so I track everything myself instead of waiting on a fix.</p></div>
+        <div><h3>Every number needs a next step.</h3><p>A chart nobody acts on is decoration. Everything I track points to what needs to happen next.</p></div>
+        <div><h3>Nobody should have to ask where things stand.</h3><p>Every week, leaders get a clear snapshot of open roles, without chasing anyone for updates.</p></div>
+      </div>
+      <div class="a10-do"><h3>Numbers that make people move.</h3><ul><li>My own data layer, since the ATS can't connect</li><li>A Command Center that acts as my helm: where every piece of work stands, what's next, and nothing slipping through the cracks</li><li>Weekly requisition reporting, fully automated</li></ul></div>
+    </div>
+    </div>
+    <aside class="a10-where">
+      <ol class="a10-jobs">
+        <li><b>Gap Inc.</b><span>Senior Talent Acquisition Specialist</span><em>2021–Present</em></li>
+        <li><b>NFL</b><span>Senior Coordinator, Admin &amp; Facilities</span><em>2018–2021</em></li>
+        <li><b>MLB</b><span>Recruiting &amp; Employee Services</span><em>2016–2018</em></li>
+        <li><b>AOL</b><span>Executive Projects Assistant</span><em>2015–2016</em></li>
+        <li><b>Viacom</b><span>Intern. Where it started.</span><em>Before that</em></li>
+        <li><b>Penn State</b><span>Education</span><em>2011–2015</em></li>
+      </ol>
+      <a class="a10-res" href="/resume.pdf" target="_blank" rel="noopener">See the full resume →</a>
+      <p class="tools6 a10-tools">Greenhouse · Workday · Power Automate · SharePoint · Microsoft Office · Google Workspace · Adobe Creative Suite · Canva · SAP Concur</p>
+    </aside>
     </div>
   </section>
-  <div class="next-tab"><a href="#testdrive">Next: Take the Test Drive <span>→</span></a></div>
-</div>
-</div>
-<div class="panel" data-tab="testdrive" id="p-testdrive" hidden>
-<section class="try" id="experience">
-  <div class="wrap">
-    <div class="try-intro">
-      <span class="kicker">Test drive</span>
-      <h2>See it. Test yours. <i>Use mine.</i></h2>
-      <p>A sample can't give you the real experience, so here's the next best thing. Watch what I clean up, run a quick check on a process at your own company, and use one of my actual tools.</p>
-    </div>
 
-    <!-- A: animation -->
-    <div class="try-block">
-      <div class="try-head"><span class="try-n">A</span><div><h3>From chaos to clear.</h3><p>One final-round panel, scheduled the usual way, then my way. Watch where every detail ends up.</p></div><button class="ghost2" id="replayBtn" type="button">↻ Replay</button></div>
-      <div class="stage" id="stage" aria-label="Animation: a messy email thread gets cleaned up into one request, one confirmation and one log entry">
-        <div class="stage-count"><span id="cA">14</span> emails · <span id="cB">6</span> people · <span id="cC">3</span> days · <b id="cD">0 answers for the candidate</b></div>
-        <div class="mails" id="mails"></div>
-        <div class="clean">
-          <div class="cc cc-mail" style="--i:1">
-            <div class="ccm-bar"><span>Hiring Team</span><span>To: Jordan Lee · 9:21 AM</span></div>
-            <div class="ccm-body">
-              <span class="cc-k">Final round · Confirmed</span>
-              <b class="ccm-h">See you Tuesday, Jordan.</b>
-              <p class="ccm-sub">Senior Product Designer · Final panel</p>
-              <div class="ccm-when"><div><b>Tue, Oct 13</b><span>9:30 AM to 12:15 PM ET</span></div><div><b>Video</b><span>One link for all three</span></div></div>
-              <div class="ccm-sched">
-                <div><em>9:30–10:15</em><span><b>Priya Shah</b>, Design Lead · A project you're proud of</span></div>
-                <div><em>10:30–11:15</em><span><b>Marcus Torres</b>, Product Manager · A real problem, live</span></div>
-                <div><em>11:30–12:15</em><span><b>Dana Kim</b>, Engineering Manager · Working with engineers</span></div>
-              </div>
-              <div class="ccm-help">
-                <div><span>Role or team questions</span><b>Alex, your recruiter</b></div>
-                <div><span>Logistics or tech, day of</span><b>Melissa, scheduling</b></div>
-                <div><span>Accommodations</span><b>Just reply, no explanation needed</b></div>
+  <section class="sec6 talk10" id="contact">
+    <div class="talk6">
+      <h2>Let's <i>talk.</i></h2>
+      <p>If this sounds like what your team's been missing, I'd love to connect!</p>
+      <span class="addr" id="addr">mlheffler@gmail.com</span>
+      <div class="contact-btns">
+        <button class="btn" id="copyBtn" type="button">Copy my email</button>
+        <a class="btn line" href="https://www.linkedin.com/in/melissa-heffler-13982768" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn line" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </section>
+    <footer><span>Melissa Heffler · People over process</span></footer>
+</div>
+
+<div class="td-modal try" id="tdModal" role="dialog" aria-modal="true" aria-label="Test drive" hidden>
+  <div class="tdm-box">
+    <div class="tdm-top"><span class="td7-badge">The test drive</span><button type="button" class="tdm-close" id="tdClose" aria-label="Close the test drive">Close ✕</button></div>
+    <div class="td6-tabs td7-cards td9-tabs" role="tablist" aria-label="Test drive demos">
+      <button role="tab" type="button" data-td="0" aria-selected="true"><em>01</em><b>Chaos to clear</b><span>Watch 14 emails become one.</span></button>
+      <button role="tab" type="button" data-td="1" aria-selected="false"><em>02</em><b>Confirmation builder</b><span>Watch five emails write themselves.</span></button>
+      <button role="tab" type="button" data-td="3" aria-selected="false"><em>03</em><b>The Weekly</b><span>Watch a team digest come together.</span></button>
+      <button role="tab" type="button" data-td="4" aria-selected="false"><em>04</em><b>Command Center</b><span>Watch data turn into a decision.</span></button>
+      <button role="tab" type="button" data-td="2" aria-selected="false"><em>05</em><b>Process audit</b><span>Score your process, live.</span></button>
+    </div>
+    <div class="td7-stage">
+<div class="td6-panel" data-tp="0">
+      <div class="td6-cap"><p>One final-round panel, scheduled the usual way, then my way.</p><button class="ghost2" id="replayBtn" type="button">↻ Replay</button></div>
+      <div class="stage cx" id="stage" aria-label="Animation: fourteen scattered emails run through Melissa's four-part scheduling system and come out as one confirmation, three scheduled interviews and a 50 percent faster turnaround">
+        <div class="cx-top">
+          <div class="cx-phases">
+            <span data-ph="1"><em>01</em>The usual way</span>
+            <span data-ph="2"><em>02</em>My system</span>
+            <span data-ph="3"><em>03</em>The result</span>
+            <i class="cx-prog"><b id="cxProg"></b></i>
+          </div>
+          <div class="cx-meters">
+            <div><b id="mEmails">0</b><span>emails</span></div>
+            <div><b id="mPeople">0</b><span>people on the thread</span></div>
+            <div><b id="mTime">0h</b><span>request to confirmed</span></div>
+          </div>
+        </div>
+        <div class="cx-body">
+          <div class="mails" id="mails"></div>
+          <div class="cx-pipe" id="cxPipe">
+            <div class="cx-line"><b id="cxLine"></b></div>
+            <div class="cx-node" data-n="0"><i>01</i><b>Intake</b><span>One request, logged</span></div>
+            <div class="cx-node" data-n="1"><i>02</i><b>Event build</b><span>Panel on every calendar</span></div>
+            <div class="cx-node" data-n="2"><i>03</i><b>Communications</b><span>Branded confirmation sent</span></div>
+            <div class="cx-node" data-n="3"><i>04</i><b>Tracking</b><span>Every change recorded</span></div>
+          </div>
+          <div class="cx-out" id="cxOut">
+            <div class="cx-results">
+              <div><b data-to="75" data-suf="%">0%</b><span>faster, request to confirmed</span></div>
+              <div><b>14 <em>→</em> 1</b><span>emails the candidate has to read</span></div>
+              <div><b>6 <em>→</em> 1</b><span>owner, instead of a reply-all</span></div>
+            </div>
+            <div class="cx-mailcard">
+              <div class="ccm-bar"><span>Hiring Team</span><span>To: Jordan Lee</span></div>
+              <div class="ccm-body">
+                <span class="cc-k">Final round · Confirmed</span>
+                <b class="ccm-h">See you Tuesday, Jordan.</b>
+                <p class="ccm-sub">Senior Product Designer · 3 conversations · video</p>
+                <div class="ccm-help">
+                  <div><span>Role questions</span><b>Alex, recruiter</b></div>
+                  <div><span>Day-of help</span><b>Melissa</b></div>
+                  <div><span>Accommodations</span><b>Just reply</b></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="cc-side">
-            <div class="cc" style="--i:0"><span class="cc-k">Request · 9:02 AM</span><b>Final panel, Jordan Lee</b><span>Submitted once by the recruiter. Panel, format and availability in one place.</span></div>
-            <div class="cc" style="--i:2"><span class="cc-k">Logged · 9:21 AM</span><b>3 interviews scheduled</b><span>Each one on the right calendar with the resume attached. Any change gets tracked.</span></div>
+            <div class="cx-cal">
+              <div class="cx-cal-h"><b>Tue, Oct 13</b><span>Final panel</span></div>
+              <div class="cx-cal-g">
+                <span class="cx-hr">9:00</span><span class="cx-hr">10:00</span><span class="cx-hr">11:00</span><span class="cx-hr">12:00</span>
+                <div class="cx-ev" style="--r:0"><b>Priya S.</b><span>Design Lead · 9:30</span></div>
+                <div class="cx-ev" style="--r:1"><b>Marcus T.</b><span>Product · 10:30</span></div>
+                <div class="cx-ev" style="--r:2"><b>Dana K.</b><span>Engineering · 11:30</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- B: audit -->
-    <div class="try-block">
-      <div class="try-head"><span class="try-n">B</span><div><h3>The People over Process audit.</h3><p>Pick a process at your company. Answer five questions honestly. I'll tell you where I'd start.</p></div></div>
-      <div class="audit">
-        <div class="audit-q">
-          <div class="aq">
-            <span class="aq-label">Which process?</span>
-            <div class="opts" role="radiogroup" aria-label="Process" id="procOpts">
-              <button type="button" class="opt" data-proc="interview scheduling" aria-pressed="true">Interview scheduling</button>
-              <button type="button" class="opt" data-proc="onboarding" aria-pressed="false">Onboarding</button>
-              <button type="button" class="opt" data-proc="offer letters" aria-pressed="false">Offer letters</button>
-              <button type="button" class="opt" data-proc="internal comms" aria-pressed="false">Internal comms</button>
-              <button type="button" class="opt" data-proc="performance reviews" aria-pressed="false">Performance reviews</button>
+<div class="td6-panel" data-tp="1" hidden>
+      <div class="bx-split" id="bxSplit">
+        <div class="bx-watch">
+          <div class="bx-h"><em>Sit back and watch</em><p>Five moments that usually mean a scramble. My system writes the email the second something changes.</p></div>
+          <div class="bx-reel">
+            <ol class="bx-types" id="bxTypes">
+              <li data-t="confirm"><b>New confirmation</b><span>Panel booked</span><i></i></li>
+              <li data-t="resched"><b>Reschedule</b><span>Time moved</span><i></i></li>
+              <li data-t="swap"><b>Interviewer change</b><span>Someone swapped in</span><i></i></li>
+              <li data-t="tech"><b>Connection trouble</b><span>Link not working</span><i></i></li>
+              <li data-t="emerg"><b>Personal emergency</b><span>Life happened</span><i></i></li>
+            </ol>
+            <div class="bx-screen">
+              <div class="bx-trig" id="bxTrig"><i></i><span>Trigger</span><b id="bxTrigTxt">Panel booked on 3 calendars</b></div>
+              <div class="bx-win"><div class="bmail bx-mail" id="bxMail"></div></div>
+              <div class="bx-sent" id="bxSent"><b>✓</b> Sent <span id="bxSentT">in 4 seconds</span></div>
             </div>
           </div>
-          <div id="questions"></div>
         </div>
-        <div class="audit-r" id="auditResult" aria-live="polite"></div>
+        <div class="bx-wheel">
+          <em>Take the wheel</em>
+          <h3>Plug in anything. <i>Change everything.</i></h3>
+          <p>Pick a scenario, then make it yours. Swap in a name, a role, your company and your panel. Rewrite the subject, the headline, every line of the message, or click straight into the email and type over it. It updates as you go, so you can see how little it takes.</p>
+          <ul>
+            <li>Every word is editable</li>
+            <li>Your company name and brand color</li>
+            <li>Any panel, up to five interviewers</li>
+            <li>Copy the email or download the calendar invite</li>
+          </ul>
+          <button type="button" class="bx-go" id="bxGo">Take the wheel →</button>
+        </div>
       </div>
-    </div>
-
-    <!-- C: builder -->
-    <div class="try-block">
-      <div class="try-head"><span class="try-n">C</span><div><h3>Use a sample builder of mine.</h3><p>At work, none of this is typed by hand. A request comes in, and my automations build the event and send the right message on their own. This sample lets you drive it yourself, so you can preview my work in action.</p></div></div>
+      <div class="bx-editor" id="bxEditor" hidden>
+      <div class="bx-edbar"><button type="button" id="bxBack">← Sit back and watch</button><span>Tip: click any line in the email to rewrite it.</span></div>
       <div class="builder">
         <form class="bform" id="bform" autocomplete="off">
           <div class="f"><span>What's happening?</span>
@@ -999,6 +1850,14 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
             </div>
           </div>
           <label class="f" id="noteWrap"><span>Personal note</span><textarea id="bNote" rows="2">We're really looking forward to meeting you. Take a breath, be yourself, and remember we want this to go well too.</textarea></label>
+          <div class="bx-words">
+            <div class="bx-wh"><span>The words</span><button type="button" id="bReset">Reset wording</button></div>
+            <label class="f"><span>Subject line</span><input id="oSubject" data-o="subject"></label>
+            <div class="frow"><label class="f"><span>Label above the headline</span><input id="oEyebrow" data-o="eyebrow"></label><label class="f"><span>Headline</span><input id="oHeading" data-o="heading"></label></div>
+            <label class="f"><span>Message <small>(blank line starts a new paragraph)</small></span><textarea id="oBody" data-o="body" rows="5"></textarea></label>
+            <div class="frow"><label class="f"><span>What to bring</span><input id="oPrep" data-o="prep"></label><label class="f"><span>Accommodations line</span><input id="oAcc" data-o="acc"></label></div>
+            <div class="frow"><label class="f"><span>Sign-off</span><input id="oClose" data-o="close"></label><label class="f"><span>Brand color</span><input type="color" id="bBrand" value="#141210"></label></div>
+          </div>
           <label class="f"><span>Your name</span><input id="bFrom" value="Melissa"></label>
         </form>
 
@@ -1011,69 +1870,122 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<div class="wrap">
-  <div class="next-tab"><a href="#careers">Next: Career &amp; Contact <span>→</span></a></div>
-</div>
-</div>
-<div class="panel" data-tab="careers" id="p-careers" hidden>
-<div class="wrap">
-  <section class="career-sec">
-    <div class="section-head" id="career"><h2>Where I've <i>done it</i></h2><p>Media, baseball, football, retail. Different worlds with one thing in common: ensuring people have what they need to make the work run smoothly.</p></div>
-    <div class="career-list">
-      <ol class="timeline">
-        <li><span class="yr">2021–2026</span><div><div class="org">Gap Inc.</div><div class="role">Senior Talent Acquisition Specialist, Global Technology Solutions</div></div></li>
-        <li><span class="yr">2018–2021</span><div><div class="org">National Football League</div><div class="role">Senior Coordinator, Administration and Facilities</div></div></li>
-        <li><span class="yr">2016–2018</span><div><div class="org">Major League Baseball</div><div class="role">Recruiting and Employee Services Coordinator</div></div></li>
-        <li><span class="yr">2015–2016</span><div><div class="org">AOL</div><div class="role">Executive Projects Assistant</div></div></li>
-        <li><span class="yr">Before that</span><div><div class="org">Viacom</div><div class="role">Intern. Where it started.</div></div></li>
-        <li><span class="yr">2011–2015</span><div><div class="org">Penn State</div><div class="role">Education</div></div></li>
-      </ol>
-      <div class="tools"><span class="kicker" style="flex-basis:100%">Tools</span><span>Greenhouse</span><span>Workday</span><span>Power Automate</span><span>SharePoint</span><span>Microsoft Office</span><span>Google Workspace</span><span>Adobe Creative Suite</span><span>Canva</span><span>SAP Concur</span></div>
-    </div>
-  </section>
-  <section class="back" id="contact">
-    <h2>Let's <i>talk.</i></h2>
-    <div class="contact">
-      <p style="font-size:18px">If this sounds like what your team's been missing, I'd love to hear about it.</p>
-      <span class="addr" id="addr">mlheffler@gmail.com</span>
-      <div class="contact-btns">
-        <button class="btn" id="copyBtn" type="button">Copy my email</button>
-        <a class="btn line" href="https://www.linkedin.com/in/melissa-heffler-13982768" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn line" href="/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
       </div>
     </div>
-  </section>
-  <footer><span>Melissa Heffler · People over process</span><span>Sample people and numbers throughout. The tools and the opinions are real.</span></footer>
+<div class="td6-panel" data-tp="2" hidden>
+      <div class="td6-cap"><p>Pick a process at your company. Five quick questions, a live score, and where I'd start on day one.</p></div>
+      <div class="audit2" id="audit2">
+        <div class="au-step">
+          <div class="au-prog" id="auProg"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="au-count" id="auCount">Step 1 of 6</span>
+          <div class="au-q" id="auQ"></div>
+          <div class="au-nav"><button type="button" id="auBack">← Back</button><button type="button" id="auReset">Start over</button></div>
+        </div>
+        <div class="au-side">
+          <div class="au-gauge">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="g-bg" cx="60" cy="60" r="52"></circle><circle class="g-fg" id="auRing" cx="60" cy="60" r="52"></circle></svg>
+            <div class="au-score"><b id="auScore">–</b><span id="auProc">People over Process score</span></div>
+          </div>
+          <div class="au-bars" id="auBars"></div>
+          <div class="au-out" id="auOut" aria-live="polite"><p class="au-hint">Answer honestly. Your score builds live as you go.</p></div>
+        </div>
+      </div>
+    </div>
+<div class="td6-panel" data-tp="3" hidden>
+      <div class="td6-cap"><p>The digest I send every week: what's coming, what's stuck, and who we're celebrating.</p></div>
+      <div class="td6-solo td11"><div class="mini nl">
+          <div class="nl-mast"><span class="nl-title">The Weekly</span><span class="nl-meta" id="digestDate">Fri</span></div>
+          <div class="nl-lead"><span class="nl-tag">This week</span><p>Two hiring events, a new tool going live, and plenty to celebrate.</p></div>
+          <div class="nl-grid">
+            <div><span class="nl-tag">Celebrating</span>
+              <ul class="nl-people"><li><i>DK</i><span>Dana's daughter graduates college Saturday</span></li><li><i>MT</i><span>Happy birthday, Marcus</span></li><li><i>PS</i><span>Priya's off to Lisbon</span></li></ul></div>
+            <div><span class="nl-tag">On the radar</span>
+              <ul class="nl-items"><li>Hiring events Tuesday and Thursday</li><li>Background check builder is live</li><li>Mentorship cohort sign-ups open</li></ul></div>
+          </div>
+          <div class="nl-foot">Sample issue · names are made up</div>
+        </div><ol class="story"><li style="--i:0"><em>01</em><b>Company news, pulled in</b><span>Events, launches and deadlines, so nobody finds out late.</span></li><li style="--i:1"><em>02</em><b>Real life, front and center</b><span>Birthdays, graduations, big trips. The part people actually read.</span></li><li style="--i:2"><em>03</em><b>Out every Friday</b><span>Same day, same format, every single week.</span></li></ol></div>
+    </div>
+<div class="td6-panel" data-tp="4" hidden>
+      <div class="td6-cap"><p>A version of the dashboard I run every day. Every request, email, background check and new hire, in one place. Sample data.</p></div>
+      <div class="ccx" id="cc">
+        <div class="cc-top">
+          <div class="cc-title"><b>Recruiting Command Center</b><span><i class="cc-live"></i>Live · updated <em id="ccAgo">just now</em></span></div>
+          <div class="cc-range" role="tablist" aria-label="Date range">
+            <button type="button" data-r="week" aria-selected="true">This week</button>
+            <button type="button" data-r="month" aria-selected="false">30 days</button>
+            <button type="button" data-r="quarter" aria-selected="false">Quarter</button>
+          </div>
+        </div>
+        <div class="cc-kpis" id="ccKpis"></div>
+        <div class="cc-grid">
+          <section class="cc-card cc-vol"><header><b>Interview requests</b><span>Each interviewer on a request counts as one</span></header><div class="cc-chart" id="ccVol"></div><div class="cc-tip" id="ccTip" hidden></div></section>
+          <section class="cc-card cc-feed"><header><b>Live activity</b><span>What the system just did</span></header><ul id="ccFeed"></ul></section>
+          <section class="cc-card"><header><b>Interview status</b><span>Where every request stands</span></header><div class="cc-pipe" id="ccPipe"></div></section>
+          <section class="cc-card"><header><b>Candidate comms</b><span>Emails my system sends</span></header><div id="ccComms"></div></section>
+          <section class="cc-card"><header><b>Background checks</b><span>From request to clear</span></header><div id="ccBg"></div></section>
+          <section class="cc-card cc-hires"><header><b>New hire status</b><span>Ready for day one?</span></header><div id="ccHires"></div></section>
+          <section class="cc-card cc-ins"><header><b>Insight</b><span id="ccInsN">1 of 3</span></header><div id="ccIns"></div><div class="cc-insdots" id="ccInsDots"></div></section>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
+<div class="res-modal" id="resModal" hidden role="dialog" aria-modal="true" aria-label="Melissa Heffler resume">
+  <div class="res-box">
+    <div class="res-bar"><b>Resume</b><div class="res-acts"><a class="res-dl" href="/resume.pdf" download="Melissa Heffler Resume.pdf">Download PDF ↓</a><button type="button" id="resClose">Close ✕</button></div></div>
+    <div class="res-paper" id="resPaper"><span class="res-hint">Tap to zoom</span><img src="/resume-page.webp" alt="Melissa Heffler's resume" width="1445" height="1870" loading="lazy"></div>
+  </div>
 </div>
+<a class="td-float" id="tdFloat" href="#testdrive" hidden>Don't take my word for it <b>Take the test drive →</b></a>
 </main>
 
 <script>
 (function(){
-  // ===== tabs =====
-  const TABS=['hello','mywork','testdrive','careers'];
-  const panels=[...document.querySelectorAll('.panel')];
-  function showTab(t){
-    panels.forEach(p=>p.hidden=p.dataset.tab!==t);
-    document.querySelectorAll('.tabbar a').forEach(a=>a.setAttribute('aria-selected',a.dataset.t===t));
+  // ===== stat count-ups =====
+  const statEls=[...document.querySelectorAll('.stats9 b')];
+  const statsWrap=document.querySelector('.stats9');
+  if(statsWrap&&'IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    statEls.forEach(b=>{b.dataset.final=b.textContent;});
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(!e.isIntersecting)return;o.disconnect();
+      statEls.forEach(b=>{const f=b.dataset.final, m=f.match(/[\d,]+/); if(!m) return; const to=parseInt(m[0].replace(/,/g,''),10), pre=f.slice(0,m.index), suf=f.slice(m.index+m[0].length), t0=performance.now();
+        const step=now=>{const k=Math.min(1,(now-t0)/1100), v=Math.round(to*(1-Math.pow(1-k,3))); b.textContent=pre+(to>=1000?v.toLocaleString('en-US'):v)+suf; if(k<1) requestAnimationFrame(step);};
+        requestAnimationFrame(step);});
+    });},{threshold:.4}).observe(statsWrap);
   }
-  function go(hash,smooth){
-    const id=(hash||'').replace('#','');
-    if(TABS.includes(id)){showTab(id);window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});return true;}
-    const el=id&&document.getElementById(id); if(!el)return false;
-    const p=el.closest('.panel'); if(p)showTab(p.dataset.tab);
-    requestAnimationFrame(()=>el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'}));return true;
+  // ===== test drive modal =====
+  const modal=document.getElementById('tdModal'), closeBtn=document.getElementById('tdClose');
+  let lastFocus=null, triedTD=false;
+  function openTD(n){
+    lastFocus=document.activeElement; triedTD=true; updFloat();
+    modal.hidden=false; document.body.classList.add('modal-open');
+    const tab=modal.querySelector(`.td6-tabs button[data-td="${n}"]`); if(tab){tab.click();setTimeout(()=>tab.scrollIntoView({inline:'center',block:'nearest'}),30);}
+    modal.scrollTop=0; closeBtn.focus({preventScroll:true});
+    if(String(n)==='0') setTimeout(()=>{const r=document.getElementById('replayBtn'); if(r) r.click();},250);
   }
-  document.addEventListener('click',e=>{
-    const a=e.target.closest('a[href^="#"]'); if(!a)return;
-    const h=a.getAttribute('href'); if(h.length<2)return;
-    if(go(h,true)){e.preventDefault(); if(TABS.includes(h.slice(1))){try{history.replaceState(null,'',h)}catch(err){}}}
-  });
-  if(!go(location.hash,false))showTab('hello');
-  window.addEventListener('hashchange',()=>go(location.hash,false));
+  function closeTD(){modal.hidden=true;document.body.classList.remove('modal-open');if(lastFocus)lastFocus.focus({preventScroll:true});}
+  closeBtn.addEventListener('click',closeTD);
+  modal.addEventListener('click',e=>{if(e.target===modal)closeTD();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeTD();});
+  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openTD(b.dataset.open)));
+  document.querySelectorAll('a[href="#testdrive"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openTD(0);}));
+
+  // ===== floating test drive button =====
+  const tdf=document.getElementById('tdFloat'), tdSec=document.getElementById('testdrive'), heroSec=document.querySelector('.hero9');
+  let pastHero=false, tdVisible=false;
+  function updFloat(){ if(tdf) tdf.hidden=!(pastHero&&!tdVisible&&!triedTD); }
+  if(tdf&&'IntersectionObserver' in window){
+    new IntersectionObserver(es=>{es.forEach(e=>{pastHero=!e.isIntersecting&&e.boundingClientRect.top<0;updFloat();})}).observe(heroSec);
+    new IntersectionObserver(es=>{es.forEach(e=>{tdVisible=e.isIntersecting;updFloat();})},{threshold:.15}).observe(tdSec);
+  }
+  // ===== test drive switcher =====
+  const tdBtns=[...document.querySelectorAll('.td6-tabs button')], tdPanels=[...document.querySelectorAll('.td6-panel')];
+  tdBtns.forEach(btn=>btn.addEventListener('click',()=>{
+    const n=btn.dataset.td;
+    tdBtns.forEach(x=>x.setAttribute('aria-selected',x===btn));
+    tdPanels.forEach(p=>p.hidden=p.dataset.tp!==n);
+    setTimeout(()=>window.dispatchEvent(new CustomEvent('tdshow',{detail:n})),20);
+  }));
 
   const now=new Date();
   const tue=new Date(now); tue.setDate(now.getDate()+((9-now.getDay())%7||7));
@@ -1096,7 +2008,7 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     setTimeout(()=>e.target.textContent='Copy my email',2200);
   });
 
-  // ===== A: chaos to clear =====
+  // ===== A: chaos to clear (three acts) =====
   const mailData=[
     ["Re: Re: Fwd: availability?","Can she do Tues or Weds? Looping in Dana","9:02",1],
     ["Panel conflict at 11","Marcus has a launch review, can we shift?","9:14",1],
@@ -1109,88 +2021,68 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     ["Is this still happening?","Haven't seen anything on my calendar","Thu",0],
     ["FW: resume","Can someone resend? Can't find it","Thu",1],
     ["Re: Panel conflict at 11","Can we push to next week?","Fri",1],
-    ["Quick question","Should I prep anything specific?","Fri",1]
+    ["Quick question","Should I prep anything specific?","Fri",1],
+    ["Re: Quick question","Looping in the hiring manager","Fri",0],
+    ["Re: FW: resume","Attached again, sorry!","Fri",1]
   ];
-  const pos=[[3,4,-3],[50,2,2],[18,15,1.5],[44,20,-2],[6,30,2.5],[52,36,-1.5],[22,44,-1],[2,56,1.5],[48,55,2.5],[26,66,-2.5],[54,72,1],[8,78,-1.5]];
-  const mailsEl=document.getElementById('mails'), stage=document.getElementById('stage');
-  mailsEl.innerHTML=mailData.map((m,i)=>`<div class="m ${m[3]?'u':''}" style="--x:${pos[i][0]}%;--y:${pos[i][1]}%;--r:${pos[i][2]}deg;--d:${(i*0.07).toFixed(2)}s"><b>${m[0]}<em>${m[2]}</em></b><span>${m[1]}</span></div>`).join('');
+  const pos=[[2,4,-3],[52,2,2],[16,16,1.5],[46,20,-2],[4,32,2.5],[56,36,-1.5],[22,44,-1],[0,58,1.5],[50,56,2.5],[26,70,-2.5],[58,74,1],[8,82,-1.5],[34,6,1],[38,88,-2]];
+  const stage=document.getElementById('stage'), mailsEl=document.getElementById('mails');
+  mailsEl.innerHTML=mailData.map((m,i)=>`<div class="m ${m[3]?'u':''}" style="--x:${pos[i][0]}%;--y:${pos[i][1]}%;--r:${pos[i][2]}deg"><b>${m[0]}<em>${m[2]}</em></b><span>${m[1]}</span></div>`).join('');
   const mails=[...mailsEl.children];
-  const cA=document.getElementById('cA'),cB=document.getElementById('cB'),cC=document.getElementById('cC'),cD=document.getElementById('cD');
+  const nodes=[...stage.querySelectorAll('.cx-node')], line=document.getElementById('cxLine'), prog=document.getElementById('cxProg');
+  const phases=[...stage.querySelectorAll('.cx-phases span')];
+  const mE=document.getElementById('mEmails'), mP=document.getElementById('mPeople'), mT=document.getElementById('mTime');
+  const resNum=stage.querySelector('.cx-results b[data-to]');
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timers=[];
-  function setCounts(done){
-    if(done){cA.textContent='1';cB.textContent='1';cC.textContent='0';cD.textContent='0 guessing';
-      cA.parentNode.childNodes[1].textContent=' request · ';cB.nextSibling.textContent=' owner · ';cC.nextSibling.textContent=' days of waiting · ';}
-    else{cA.textContent='14';cB.textContent='6';cC.textContent='3';cD.textContent='0 answers for the candidate';
-      cA.parentNode.childNodes[1].textContent=' emails · ';cB.nextSibling.textContent=' people · ';cC.nextSibling.textContent=' days · ';}
+  let timers=[], rafs=[];
+  const at=(ms,fn)=>timers.push(setTimeout(fn,ms));
+  function countTo(el,from,to,dur,fmt){
+    const t0=performance.now();
+    const step=now=>{const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3), v=Math.round(from+(to-from)*e); el.textContent=fmt?fmt(v):v; if(k<1) rafs.push(requestAnimationFrame(step));};
+    rafs.push(requestAnimationFrame(step));
+  }
+  function setPhase(n){phases.forEach((p,i)=>p.classList.toggle('on',i<n));prog.style.width=(n/3*100)+'%';stage.dataset.phase=n;}
+  function reset(){
+    timers.forEach(clearTimeout);timers=[];rafs.forEach(cancelAnimationFrame);rafs=[];
+    stage.classList.remove('p2','p3','done');setPhase(0);
+    mails.forEach(m=>{m.classList.add('pop');m.classList.remove('fly');m.style.removeProperty('left');m.style.removeProperty('top');});
+    nodes.forEach(n=>n.classList.remove('lit'));line.style.width='0%';
+    mE.textContent='0';mP.textContent='0';mT.textContent='0h';resNum.textContent='0%';
+  }
+  function endState(){
+    reset();stage.classList.add('p2','p3','done');setPhase(3);
+    mails.forEach(m=>{m.classList.add('fly');});nodes.forEach(n=>n.classList.add('lit'));line.style.width='100%';
+    mE.textContent='1';mP.textContent='1';mT.textContent='18h';resNum.textContent='75%';
   }
   function play(force){
-    timers.forEach(clearTimeout);timers=[];
-    stage.classList.remove('sort','done');setCounts(false);
+    reset();
     stage.classList.toggle('force',!!force);
-    if(reduce&&!force){stage.classList.add('sort','done');setCounts(true);return;}
-    mails.forEach(m=>m.classList.add('pop'));
-    mails.forEach((m,i)=>timers.push(setTimeout(()=>m.classList.remove('pop'),120+i*140)));
-    timers.push(setTimeout(()=>stage.classList.add('sort'),120+mails.length*140+1400));
-    timers.push(setTimeout(()=>{stage.classList.add('done');setCounts(true);},120+mails.length*140+1400+1900));
+    if(reduce&&!force){endState();return;}
+    // Act 1: the usual way
+    at(80,()=>{setPhase(1);countTo(mT,0,72,2600,v=>v+'h');});
+    mails.forEach((m,i)=>at(140+i*150,()=>{m.classList.remove('pop');mE.textContent=String(i+1);if(i%2===0)mP.textContent=String(Math.min(6,Math.floor(i/2)+1));}));
+    const a2=140+mails.length*150+700;
+    // Act 2: my system
+    at(a2,()=>{
+      setPhase(2);stage.classList.add('p2');
+      const body=stage.querySelector('.cx-body').getBoundingClientRect(), n0=nodes[0].getBoundingClientRect();
+      const tx=n0.left-body.left+n0.width/2, ty=n0.top-body.top+n0.height/2;
+      mails.forEach((m,i)=>setTimeout(()=>{m.style.left=(tx-m.offsetWidth/2)+'px';m.style.top=(ty-m.offsetHeight/2)+'px';m.classList.add('fly');},i*55));
+      countTo(mE,14,1,1400);countTo(mP,6,1,1400);
+    });
+    nodes.forEach((n,i)=>at(a2+1100+i*520,()=>{n.classList.add('lit');line.style.width=(i/3*100)+'%';}));
+    const a3=a2+1100+4*520+500;
+    // Act 3: the result
+    at(a3,()=>{setPhase(3);stage.classList.add('p3');countTo(mT,72,18,1300,v=>v+'h');countTo(resNum,0,75,1300,v=>v+'%');});
+    at(a3+1500,()=>stage.classList.add('done'));
   }
-  document.getElementById('replayBtn').addEventListener('click',()=>{const r=stage.getBoundingClientRect();if(r.top<0||r.top>window.innerHeight*0.4)stage.scrollIntoView({behavior:'smooth',block:'start'});play(true);});
+  document.getElementById('replayBtn').addEventListener('click',()=>play(true));
   let played=false;
   if('IntersectionObserver' in window){
-    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;play(false);o.disconnect();}})},{threshold:.2}).observe(stage);
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting&&!played){played=true;play(false);o.disconnect();}})},{threshold:.25}).observe(stage);
   }
 
-  // ===== B: audit =====
-  const qs=[
-    {k:'handoffs',short:'Handoffs',q:p=>`How many people touch ${p} before it's done?`,o:['1 or 2','3 or 4','5 or more']},
-    {k:'email',short:'Email load',q:p=>`How many emails does one round of ${p} usually take?`,o:['A few','A dozen-ish',"I've lost count"]},
-    {k:'waiting',short:'Wait time',q:()=>`How long does someone usually wait for the next step?`,o:['Same day','A few days','Until they chase us']},
-    {k:'tracking',short:'Tracking',q:()=>`If something gets dropped, how do you find out?`,o:["It's logged, we see it",'Someone notices eventually','When someone complains']},
-    {k:'clarity',short:'Clarity',q:()=>`Does the person on the receiving end know what happens next?`,o:["Always, it's in writing",'Usually','Honestly, no']}
-  ];
-  const recs={
-    handoffs:["Cut the handoffs.","Every extra person is another inbox the work can get stuck in. Give one person clear ownership and let everyone else feed into a single request."],
-    email:["Replace the thread with one intake.","If it takes a dozen emails to agree on something, the process is doing the talking instead of the people. One form in, one clear message out."],
-    waiting:["Set a clock and keep it.","I held candidate action items to under 24 hours. People can handle a no. What wears them down is silence."],
-    tracking:["Log it automatically.","If you only find out something broke when someone complains, you're finding out too late. A simple list that captures every request and every change is enough to start."],
-    clarity:["Tell people what's next, every time.","Who, when, why, and what to bring. Clarity is one of the kindest things you can put in an email."]
-  };
-  let proc='interview scheduling'; const ans={};
-  const qEl=document.getElementById('questions'), rEl=document.getElementById('auditResult');
   function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-  function renderQs(){
-    qEl.innerHTML=qs.map((q,i)=>`<div class="aq"><span class="aq-label">${i+1}. ${esc(q.q(proc))}</span><div class="opts" role="radiogroup" aria-label="${esc(q.short)}">${q.o.map((o,j)=>`<button type="button" class="opt" data-q="${q.k}" data-v="${2-j}" aria-pressed="${ans[q.k]===2-j}">${esc(o)}</button>`).join('')}</div></div>`).join('');
-  }
-  function renderResult(){
-    const n=Object.keys(ans).length;
-    if(n<qs.length){
-      rEl.innerHTML=`<span class="kicker" style="color:var(--accent)">Your results</span><p class="ar-verdict">Answer all five and I'll score your ${esc(proc)} process.</p><p class="ar-empty">You'll see how it holds up on handoffs, email load, wait time, tracking and clarity, plus where I'd start fixing it. ${n} of 5 answered.</p>`;
-      return;
-    }
-    const total=Object.values(ans).reduce((a,b)=>a+b,0), score=Math.round(total/10*100);
-    const verdict=score>=80?"People first. Keep tending it.":score>=50?"Solid bones, some friction.":"Right now, the process is running the show.";
-    const weak=qs.filter(q=>ans[q.k]<2).sort((a,b)=>ans[a.k]-ans[b.k]).slice(0,3);
-    const recHtml=weak.length?weak.map(q=>`<li><b>${recs[q.k][0]}</b><span>${recs[q.k][1]}</span></li>`).join(''):`<li><b>You're already doing the hard part.</b><span>My one note: ask the people on the receiving end how it actually feels. The data won't tell you that part.</span></li>`;
-    rEl.innerHTML=`<span class="kicker" style="color:var(--accent)">Your ${esc(proc)} score</span>
-      <div class="ar-score"><b>${score}</b><span>out of 100</span></div>
-      <p class="ar-verdict">${verdict}</p>
-      <div class="ar-bars">${qs.map(q=>`<div><span>${q.short}</span><i class="${ans[q.k]<2?'low':''}" style="--w:${ans[q.k]*50}%"></i></div>`).join('')}</div>
-      <span class="kicker" style="color:var(--accent)">Where I'd start</span>
-      <ul class="ar-recs">${recHtml}</ul>
-      <div class="ar-cta"><span>This is how I'd start the conversation on day one.</span><a href="#contact">Let's talk</a></div>`;
-  }
-  document.getElementById('procOpts').addEventListener('click',e=>{
-    const b=e.target.closest('.opt');if(!b)return;
-    proc=b.dataset.proc;document.querySelectorAll('#procOpts .opt').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    renderQs();renderResult();
-  });
-  qEl.addEventListener('click',e=>{
-    const b=e.target.closest('.opt');if(!b)return;
-    ans[b.dataset.q]=+b.dataset.v;
-    b.parentNode.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    renderResult();
-  });
-  renderQs();renderResult();
 
   // ===== C: sample builder =====
   const $=id=>document.getElementById(id);
@@ -1218,7 +2110,7 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     $('noteWrap').hidden=!$('kNote').checked;
     $('icsLink').hidden=(mtype==='tech'||mtype==='emerg');
   }
-  $('bType').addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;mtype=b.dataset.t;
+  $('bType').addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b)return;mtype=b.dataset.t;ov={};
     $('bType').querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===b));showFields();renderMail();});
   function data(){
     const ivs=[...ivRows.children].map(r=>[...r.querySelectorAll('input')].map(i=>i.value.trim())).filter(r=>r[0]);
@@ -1229,8 +2121,12 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
       why:$('bWhy').value,old:$('bOld').value.trim(),out:$('bOut').value.trim(),inn:$('bIn').value.trim(),who:$('bWho').value,
       kC:$('kContacts').checked,kP:$('kPrep').checked,kA:$('kAcc').checked,kN:$('kNote').checked};
   }
-  function renderMail(){
+  let ov={};
+  function renderMail(opt){
+    opt=opt||{}; const T=opt.type||mtype, O=opt.target?{}:ov, ED=!opt.target, skipDom=!!opt.skipDom;
     const d=data();
+    const brand=$('bBrand').value||'#141210'; const lum=(h=>{const n=parseInt(h.slice(1),16);return (0.299*(n>>16)+0.587*(n>>8&255)+0.114*(n&255))/255;})(brand);
+    const barStyle=`background:${brand};color:${lum>.6?'#141210':'#F6F2EC'}`;
     $('bLocLabel').textContent=d.fmt==='Video'?'Video link':d.fmt==='Phone'?'Phone number':'Address';
     const dt=d.date?new Date(d.date+'T12:00:00'):nextTue;
     const dayLong=dt.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
@@ -1245,21 +2141,21 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     // per-type copy
     let eyebrow,heading,subject,paras=[],showWhen=true,showSched=true,okColor=true;
     const recName=d.rec||'your recruiter';
-    if(mtype==='confirm'){
+    if(T==='confirm'){
       eyebrow='Interview confirmed';heading=`See you ${dayShort}, ${d.first}.`;subject=`You're confirmed, ${d.first}. Here's your ${dayShort}.`;
       paras.push(`Your interviews for ${d.role} at ${d.co} are all set. ${countWord} conversation${count===1?'':'s'}, ${d.dur} minutes each${breakLine}. Everything you need is right here, so you won't have to dig for it.`);
-    }else if(mtype==='resched'){
+    }else if(T==='resched'){
       eyebrow='Interview rescheduled';heading=`New time, same team, ${d.first}.`;subject=`Updated: your ${d.role} interviews are now ${dayShort}`;okColor=false;
       const why={conflict:`One of your interviewers had a conflict come up, and we'd rather move than give you anything less than their full attention. I'm sorry for the shuffle, and thank you for being flexible.`,
         cand:`Thanks for letting us know. Life happens, and it's no trouble at all. We've moved everything to a time that works better for you.`,
         ours:`Something unexpected came up on our end, so we've moved your interviews. That's on us, not you, and I'm sorry for the change.`}[d.why];
       paras.push(why);
       if(d.old)paras.push(`Previously: ${d.old}. Your new time is below, and a fresh calendar invite is attached. Feel free to delete the old one.`);
-    }else if(mtype==='swap'){
+    }else if(T==='swap'){
       eyebrow='One small change';heading=`A quick update, ${d.first}.`;subject=`A small change to your ${dayShort} interviews`;okColor=false;
       paras.push(`${d.out||'One of your interviewers'} can no longer join, so ${d.inn||'a teammate'} will be stepping in for that conversation. Same time, same format, and they're fully up to speed on your background.`);
       paras.push(`Nothing else has changed. Your updated schedule is below.`);
-    }else if(mtype==='tech'){
+    }else if(T==='tech'){
       eyebrow='Day-of help';heading=`No stress, ${d.first}. We'll wait.`;subject=`Having trouble connecting? Here's what to do`;showWhen=false;showSched=false;okColor=false;
       paras.push(`Technology happens to everyone. If the link isn't working, try leaving and rejoining${d.loc&&d.fmt==='Video'?` from ${d.loc}`:''}, or switch to your phone's browser.`);
       paras.push(`Still stuck? Reply here or call ${d.phone||'us'} and we'll get you sorted right away. Your interviewers know, and they'll wait. Nobody is holding this against you.`);
@@ -1276,25 +2172,32 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
       }
     }
 
+    if(O.subject!=null)subject=O.subject; if(O.eyebrow!=null)eyebrow=O.eyebrow; if(O.heading!=null)heading=O.heading;
+    if(O.body!=null)paras=O.body.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
     const contacts=[];
-    if(d.kC){contacts.push(['Questions about the role or the team',recName]);contacts.push(['Scheduling, logistics or tech on the day',`${d.from}${d.phone?' · '+d.phone:''}`]);}
-    if(d.kA&&(mtype==='confirm'||mtype==='resched'))contacts.push(['Accommodations','Anything that would make the day easier, just reply. No explanation needed.']);
-    const prep=d.fmt==='Video'?'A quiet spot, a charged laptop, and anything you want to share on screen.':d.fmt==='Phone'?'A quiet spot and good signal. Notes are welcome.':'A photo ID for check-in. Plan to arrive about 10 minutes early.';
-    const showPrep=d.kP&&(mtype==='confirm'||mtype==='resched');
+    if(d.kC){contacts.push([O.c0!=null?O.c0:'Questions about the role or the team',recName,'c0']);contacts.push([O.c1!=null?O.c1:'Scheduling, logistics or tech on the day',`${d.from}${d.phone?' · '+d.phone:''}`,'c1']);}
+    if(d.kA&&(T==='confirm'||T==='resched'))contacts.push([O.c2!=null?O.c2:'Accommodations',O.acc!=null?O.acc:'Anything that would make the day easier, just reply. No explanation needed.','c2','acc']);
+    let prep=d.fmt==='Video'?'A quiet spot, a charged laptop, and anything you want to share on screen.':d.fmt==='Phone'?'A quiet spot and good signal. Notes are welcome.':'A photo ID for check-in. Plan to arrive about 10 minutes early.';
+    if(O.prep!=null)prep=O.prep;
+    const showPrep=d.kP&&(T==='confirm'||T==='resched');
     const showNote=d.kN&&d.note;
 
+    if(O.close!=null)close=O.close;
+    const E=k=>ED?` data-ov="${k}" contenteditable="plaintext-only" spellcheck="false"`:'';
     const html=[];
-    html.push(`<div class="bm-meta"><span><b>To:</b> ${esc(d.first)} ${esc(d.last)}</span><span><b>Subject:</b> ${esc(subject)}</span></div><div class="bm-bar">${esc(d.co)}</div><div class="bm-body">`);
-    html.push(`<span class="bm-eyebrow ${okColor?'':'warn'}">${esc(eyebrow)}</span><p class="bm-h">${esc(heading)}</p>`);
-    paras.forEach(p=>html.push(`<p>${esc(p)}</p>`));
+    html.push(`<div class="bm-meta"><span><b>To:</b> ${esc(d.first)} ${esc(d.last)}</span><span><b>Subject:</b> <i class="bm-subj"${E('subject')}>${esc(subject)}</i></span></div><div class="bm-bar"${E('co')} style="${barStyle}">${esc(d.co)}</div><div class="bm-body">`);
+    html.push(`<span class="bm-eyebrow ${okColor?'':'warn'}"${E('eyebrow')}>${esc(eyebrow)}</span><p class="bm-h"${E('heading')}>${esc(heading)}</p>`);
+    paras.forEach(p=>html.push(`<p${E('p')}>${esc(p)}</p>`));
     if(showWhen)html.push(`<div class="bm-when"><div><b>${esc(dayLong)}</b><span>${esc(span)}</span></div><div><b>${esc(d.fmt)}</b><span>${esc(where)}</span></div></div>`);
     if(showSched&&sched.length)html.push(`<div class="bm-sched">${sched.map(r=>`<div><em>${fmt12(r.s)}</em><p><b>${esc(r.iv[0])}</b>${r.iv[1]?', '+esc(r.iv[1]):''}${r.iv[2]?`<span>${esc(r.iv[2])}</span>`:''}</p></div>`).join('')}</div>`);
-    if(showPrep)html.push(`<div class="bm-box"><b>What to bring</b><span>${esc(prep)}</span></div>`);
-    if(contacts.length)html.push(`<div class="bm-help">${contacts.map(c=>`<div><span>${esc(c[0])}</span><b>${esc(c[1])}</b></div>`).join('')}</div>`);
-    if(showNote)html.push(`<p>${esc(d.note)}</p>`);
-    const close=mtype==='emerg'?'Thinking of you,':mtype==='tech'?"You've got this,":'Good luck, you\'ve got this.';
-    html.push(`<p>${esc(close)}<br><span class="bm-sig">${esc(d.from)}</span></p></div>`);
-    $('bmail').innerHTML=html.join('');
+    if(showPrep)html.push(`<div class="bm-box"><b>What to bring</b><span${E('prep')}>${esc(prep)}</span></div>`);
+    if(contacts.length)html.push(`<div class="bm-help">${contacts.map(c=>`<div><span${E(c[2])}>${esc(c[0])}</span><b${c[3]?E(c[3]):''}>${esc(c[1])}</b></div>`).join('')}</div>`);
+    if(showNote)html.push(`<p${E('note')}>${esc(d.note)}</p>`);
+    let close=T==='emerg'?'Thinking of you,':T==='tech'?"You've got this,":'Good luck, you\'ve got this.';
+    html.push(`<p><span${E('close')}>${esc(close)}</span><br><span class="bm-sig"${E('sig')}>${esc(d.from)}</span></p></div>`);
+    if(opt.target){opt.target.innerHTML=html.join('');return;}
+    if(!skipDom)$('bmail').innerHTML=html.join('');
+    syncWords({subject,eyebrow,heading,body:paras.join('\n\n'),prep,acc:O.acc!=null?O.acc:'Anything that would make the day easier, just reply. No explanation needed.',close});
 
     // text + html for copying
     const lines=[`Subject: ${subject}`,'',`Hi ${d.first},`,'',...paras.flatMap(p=>[p,''])];
@@ -1322,7 +2225,24 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
     try{if(a.dataset.url)URL.revokeObjectURL(a.dataset.url);const u=URL.createObjectURL(new Blob([lastIcs],{type:'text/calendar'}));a.href=u;a.dataset.url=u;}catch(e){}
     a.download=`interview-${(d.first+'-'+d.last).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'confirmation'}.ics`;
   }
-  $('bform').addEventListener('input',()=>{showFields();renderMail();});
+  function syncWords(w){
+    document.querySelectorAll('#bform [data-o]').forEach(el=>{ if(el===document.activeElement) return; const v=w[el.dataset.o]; if(v!=null) el.value=v; });
+  }
+  $('bform').addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset.o; if(k) ov[k]=e.target.value; showFields();renderMail();});
+  $('bReset').addEventListener('click',()=>{ov={};renderMail();});
+  const bmailEl=$('bmail');
+  bmailEl.addEventListener('input',e=>{
+    const el=e.target.closest('[data-ov]'); if(!el) return; const k=el.dataset.ov, v=el.textContent;
+    if(k==='p') ov.body=[...bmailEl.querySelectorAll('[data-ov="p"]')].map(x=>x.textContent).join('\n\n');
+    else if(k==='sig') $('bFrom').value=v;
+    else if(k==='note') $('bNote').value=v;
+    else if(k==='co') $('bCo').value=v;
+    else ov[k]=v;
+    renderMail({skipDom:true});
+  });
+  bmailEl.addEventListener('focusout',()=>setTimeout(()=>{ if(!bmailEl.contains(document.activeElement)) renderMail(); },0));
+  bmailEl.addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.closest('[data-ov]')&&e.target.dataset.ov!=='p'){e.preventDefault();e.target.blur();} });
+  window.__composeMail=(type,target)=>renderMail({type,target});
   $('bform').addEventListener('change',()=>{showFields();renderMail();});
   $('bform').addEventListener('submit',e=>e.preventDefault());
   $('copyMail').addEventListener('click',async()=>{
@@ -1340,6 +2260,242 @@ h1 i,h2 i,h3 i,q i{font-family:var(--serif);font-style:italic;font-weight:400;te
   showFields();renderMail();
 
 })();
+  // ===== 05: process audit, one question at a time =====
+  (function(){
+    const procs=['Interview scheduling','Onboarding','Offer letters','Internal comms','Performance reviews'];
+    const qs=[
+      {k:'handoffs',short:'Handoffs',q:p=>`How many people touch ${p} before it's done?`,o:[['1 or 2','One clear owner'],['3 or 4','Some back-and-forth'],['5 or more','A lot of inboxes']]},
+      {k:'email',short:'Email load',q:p=>`How many emails does one round of ${p} usually take?`,o:[['A few','Quick and clean'],['A dozen-ish','Long threads'],["I've lost count",'Reply-all chaos']]},
+      {k:'waiting',short:'Wait time',q:()=>`How long does someone usually wait for the next step?`,o:[['Same day','Momentum stays'],['A few days','Things stall'],['Until they chase us','Silence']]},
+      {k:'tracking',short:'Tracking',q:()=>`If something gets dropped, how do you find out?`,o:[["It's logged",'You see it right away'],['Someone notices','Eventually'],['Someone complains','Too late']]},
+      {k:'clarity',short:'Clarity',q:()=>`Does the person on the receiving end know what happens next?`,o:[["Always, in writing",'No guessing'],['Usually','Mostly'],['Honestly, no','Left wondering']]}
+    ];
+    const recs={
+      handoffs:["Cut the handoffs.","Every extra person is another inbox the work can get stuck in. Give one person clear ownership and let everyone else feed into a single request."],
+      email:["Replace the thread with one intake.","If it takes a dozen emails to agree on something, the process is doing the talking instead of the people. One form in, one clear message out."],
+      waiting:["Set a clock and keep it.","I hold candidate action items to under 24 hours. People can handle a no. What wears them down is silence."],
+      tracking:["Log it automatically.","If you only find out something broke when someone complains, you're finding out too late. A simple list that captures every request and change is enough to start."],
+      clarity:["Tell people what's next, every time.","Who, when, why, and what to bring. Clarity is one of the kindest things you can put in an email."]
+    };
+    const $=id=>document.getElementById(id);
+    const qEl=$('auQ'), prog=[...$('auProg').children], count=$('auCount'), ring=$('auRing'), scoreEl=$('auScore'), procEl=$('auProc'), bars=$('auBars'), out=$('auOut');
+    if(!qEl) return;
+    const C=2*Math.PI*52; ring.style.strokeDasharray=C; ring.style.strokeDashoffset=C;
+    bars.innerHTML=qs.map(q=>`<div data-k="${q.k}"><span>${q.short}</span><i><b></b></i></div>`).join('');
+    let step=0, proc=null, ans={}, shown=null;
+    function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+    function animScore(to){
+      const from=shown==null?0:shown; shown=to; const t0=performance.now();
+      const stepF=now=>{const k=Math.min(1,(now-t0)/700), v=Math.round(from+(to-from)*(1-Math.pow(1-k,3))); scoreEl.textContent=v; if(k<1) requestAnimationFrame(stepF);};
+      requestAnimationFrame(stepF);
+      ring.style.strokeDashoffset=C*(1-to/100);
+      const col=to>=80?'var(--ok)':to>=50?'var(--accent)':'var(--warn)'; ring.style.stroke=col;
+    }
+    function update(){
+      const keys=Object.keys(ans);
+      bars.querySelectorAll('div').forEach(d=>{const v=ans[d.dataset.k]; const b=d.querySelector('b'); b.style.width=v==null?'0%':(v*50)+'%'; d.classList.toggle('low',v!=null&&v<2); d.classList.toggle('done',v!=null);});
+      if(keys.length){animScore(Math.round(keys.reduce((a,k)=>a+ans[k],0)/(keys.length*2)*100));}
+      else{scoreEl.textContent='–';ring.style.strokeDashoffset=C;shown=null;}
+      procEl.textContent=proc?`${proc} score`:'People over Process score';
+      prog.forEach((p,i)=>{p.classList.toggle('on',i<step);p.classList.toggle('cur',i===step);});
+    }
+    function render(dir){
+      count.textContent=step<6?`Step ${step+1} of 6`:'Your results';
+      $('auBack').hidden=step===0;
+      let html;
+      if(step===0){
+        html=`<h3 class="au-title">Pick a process at your company.</h3><div class="au-opts au-procs">${procs.map(p=>`<button type="button" data-p="${esc(p)}" class="${proc===p?'sel':''}">${esc(p)}</button>`).join('')}</div>`;
+      }else if(step<=5){
+        const q=qs[step-1], pl=proc.toLowerCase();
+        html=`<h3 class="au-title">${esc(q.q(pl))}</h3><div class="au-opts">${q.o.map((o,j)=>`<button type="button" data-v="${2-j}" class="${ans[q.k]===2-j?'sel':''}"><b>${esc(o[0])}</b><span>${esc(o[1])}</span></button>`).join('')}</div>`;
+      }else{
+        const total=Object.values(ans).reduce((a,b)=>a+b,0), score=Math.round(total/10*100);
+        const verdict=score>=80?"People first. Keep tending it.":score>=50?"Solid bones, some friction.":"Right now, the process is running the show.";
+        html=`<h3 class="au-title">${verdict}</h3><p class="au-sub">Here's where I'd start on day one.</p>`;
+        const weak=qs.filter(q=>ans[q.k]<2).sort((a,b)=>ans[a.k]-ans[b.k]).slice(0,3);
+        const recHtml=weak.length?weak.map((q,i)=>`<li style="--i:${i}"><b>${recs[q.k][0]}</b><span>${recs[q.k][1]}</span></li>`).join(''):`<li style="--i:0"><b>You're already doing the hard part.</b><span>My one note: ask the people on the receiving end how it actually feels. The data won't tell you that part.</span></li>`;
+        html+=`<ul class="au-recs">${recHtml}</ul><div class="au-cta"><a href="#contact" class="au-talk">Let's talk about it →</a></div>`;
+        out.innerHTML='';
+      }
+      if(step<6) out.innerHTML='<p class="au-hint">Answer honestly. Your score builds live as you go.</p>';
+      qEl.classList.remove('in','back'); void qEl.offsetWidth; qEl.innerHTML=html; qEl.classList.add(dir==='back'?'back':'in');
+      update();
+      if(step===6){const r=document.querySelector('#audit2 .au-recs');}
+    }
+    qEl.addEventListener('click',e=>{
+      const b=e.target.closest('button'); if(!b||step>5) return;
+      if(step===0){proc=b.dataset.p;}
+      else if(step<=5){ans[qs[step-1].k]=+b.dataset.v;}
+      b.classList.add('sel'); update();
+      setTimeout(()=>{step=Math.min(6,step+1);render('in');},280);
+    });
+    $('auBack').addEventListener('click',()=>{if(step>0){step--;render('back');}});
+    $('auReset').addEventListener('click',()=>{step=0;proc=null;ans={};render('back');});
+    qEl.parentNode.addEventListener('click',e=>{const a=e.target.closest('.au-talk'); if(!a) return; e.preventDefault(); const c=document.getElementById('tdClose'); if(c) c.click(); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),60);});
+    render('in');
+  })();
+
+  // ===== animated demos: replay when shown =====
+  function restart(el,cls){if(!el)return;el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}
+  window.addEventListener('tdshow',e=>{
+    const n=String(e.detail);
+    if(n==='3'){const w=document.querySelector('.td6-panel[data-tp="3"] .nl'); restart(w,'play'); restart(w.parentNode,'play');}
+    if(n==='1') bxStart(); else bxStop();
+    if(n==='4') ccStart(); else ccStop();
+  });
+
+  // ===== Command Center =====
+  const CC=(function(){
+    const root=document.getElementById('cc'); if(!root) return {start(){},stop(){}};
+    const $c=id=>document.getElementById(id);
+    const R={
+      week:{labels:['Mon','Tue','Wed','Thu','Fri'],vol:[44,61,52,48,34],hrs:18,rr:11,bg:[6,9,14,1],unit:'day'},
+      month:{labels:['Wk 1','Wk 2','Wk 3','Wk 4'],vol:[212,236,251,239],hrs:19,rr:12,bg:[6,9,51,3],unit:'week'},
+      quarter:{labels:['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12','W13'],vol:[168,181,177,195,204,188,210,219,226,212,236,251,239],hrs:21,rr:13,bg:[6,9,148,7],unit:'week'}
+    };
+    const hires=[["Senior Product Designer",[1,1,1,1],"Ready"],["Data Analyst",[1,1,1,0],"On track"],["Staff Engineer",[1,0,1,0],"Needs a nudge"],["UX Researcher",[1,1,0,0],"On track"]];
+    const ins=[
+      ["Director+ panels reschedule about twice as often as any other level.","Lock interviewer availability before intake, not after."],
+      ["One new hire starts Monday with a background check still open.","Nudge the vendor today and give the manager a heads-up now."],
+      ["Requests that come in Tuesday confirm fastest.","Front-load final rounds early in the week."]
+    ];
+    const pool=[
+      ['req','New request','Senior PM final round · 4 interviews',4],
+      ['mail','Confirmation sent','Jordan L. · Product Design',0],
+      ['res','Reschedule logged','Panel moved to Thursday · 3 interviews',3],
+      ['bg','Background check cleared','Data Analyst',0],
+      ['mail','Day-of help sent','Connection trouble · 9:28 AM',0],
+      ['hire','Day-one email sent','Senior Product Designer · starts Monday',0],
+      ['mail','Interviewer change sent','Lee P. stepping in',0],
+      ['req','New request','Staff Engineer onsite · 5 interviews',5],
+      ['bg','Background check requested','UX Researcher',0]
+    ];
+    const ico={req:'+',mail:'✉',res:'↻',bg:'✓',hire:'★'};
+    let range='week', timers=[], feedI=0, insI=0, live={req:0,emails:0}, on=false, rendered=false;
+    const fmtN=n=>n.toLocaleString('en-US');
+    function count(el,to,suf,dur){const t0=performance.now();const st=now=>{const k=Math.min(1,(now-t0)/(dur||900));el.textContent=fmtN(Math.round(to*(1-Math.pow(1-k,3))))+(suf||'');if(k<1)requestAnimationFrame(st);};requestAnimationFrame(st);}
+    function model(){
+      const d=R[range], total=d.vol.reduce((a,b)=>a+b,0)+live.req;
+      const sched=21, conf=Math.min(132,total-sched), done=total-sched-conf;
+      const emails=Math.round(total*.77)+live.emails;
+      const types=[['Confirmations',.71],['Reschedule notes',.16],['Interviewer changes',.06],['Day-of help',.07]].map(t=>[t[0],Math.round(emails*t[1])]); types[0][1]=emails-types.slice(1).reduce((a,t)=>a+t[1],0);
+      return {d,total,sched,conf,done,emails,types,resN:Math.round(total*d.rr/100)};
+    }
+    function kpis(m){
+      const k=[[m.total,'','Interview requests','counted per interviewer','req'],[m.conf+m.done,'','Confirmed or done',Math.round((m.conf+m.done)/m.total*100)+'% of requests'],[m.d.hrs,'h','Request to confirmed','avg turnaround'],[m.d.rr,'%','Reschedule rate',m.resN+' interviews moved'],[m.emails,'','Emails sent','zero typed by hand','em']];
+      $c('ccKpis').innerHTML=k.map(x=>`<div${x[4]?` data-k="${x[4]}"`:''}><b data-v="${x[0]}" data-s="${x[1]}">0</b><span>${x[2]}</span><em>${x[3]}</em></div>`).join('');
+      $c('ccKpis').querySelectorAll('b').forEach(b=>count(b,+b.dataset.v,b.dataset.s));
+    }
+    function vol(m){
+      const v=m.d.vol.slice(); v[v.length-1]+=live.req; const mob=($c('ccVol').clientWidth||560)<480;
+      const cw=$c('ccVol').clientWidth||560, W=Math.max(300,Math.min(700,cw)),H=W<480?180:210,pl=34,pb=24,pt=14, max=Math.ceil(Math.max(...v)*1.15/10)*10, n=v.length, step=(W-pl)/n, bw=Math.min(46,step*.6), avg=v.reduce((a,b)=>a+b,0)/n;
+      const y=val=>pt+(H-pt-pb)*(1-val/max);
+      let g='';[0,.5,1].forEach(f=>{const yy=y(max*f);g+=`<line x1="${pl}" x2="${W}" y1="${yy}" y2="${yy}" class="cc-grid-l"/><text x="${pl-6}" y="${yy+4}" class="cc-ax" text-anchor="end">${Math.round(max*f)}</text>`;});
+      const bars=v.map((val,i)=>{const x=pl+i*step+(step-bw)/2, yy=y(val), h=H-pb-yy, last=i===n-1;
+        return `<g class="cc-b${last?' last':''}" data-i="${i}" style="--d:${i*45}ms"><rect class="hit" x="${pl+i*step}" y="${pt}" width="${step}" height="${H-pt-pb}"/><path d="M${x},${H-pb} V${yy+4} q0,-4 4,-4 h${bw-8} q4,0 4,4 V${H-pb} Z"/>${last?`<text x="${x+bw/2}" y="${yy-6}" text-anchor="middle" class="cc-val">${val}</text>`:''}${(!mob||n<8||i%2===0)?`<text x="${x+bw/2}" y="${H-6}" text-anchor="middle" class="cc-ax">${m.d.labels[i]}</text>`:''}</g>`;}).join('');
+      const ay=y(avg);
+      $c('ccVol').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Interview requests per ${m.d.unit}">${g}${bars}<line x1="${pl}" x2="${W}" y1="${ay}" y2="${ay}" class="cc-avg"/><text x="${pl+4}" y="${ay-5}" class="cc-ax">avg ${Math.round(avg)}</text></svg>`;
+      const svg=$c('ccVol').querySelector('svg'), tip=$c('ccTip');
+      svg.querySelectorAll('.cc-b').forEach(b=>{
+        b.addEventListener('pointerenter',()=>{const i=+b.dataset.i;tip.hidden=false;tip.innerHTML=`<b>${fmtN(v[i])}</b> interviews<span>${m.d.unit==='day'?m.d.labels[i]:(range==='quarter'?'Week '+(i+1):m.d.labels[i].replace('Wk','Week'))}</span>`;
+          const r=b.querySelector('path').getBoundingClientRect(), pr=$c('ccVol').parentNode.getBoundingClientRect();tip.style.left=(r.left-pr.left+r.width/2)+'px';tip.style.top=(r.top-pr.top-8)+'px';b.classList.add('hov');});
+        b.addEventListener('pointerleave',()=>{tip.hidden=true;b.classList.remove('hov');});
+      });
+    }
+    function pipe(m){
+      const seg=[['Scheduling',m.sched,'s1'],['Confirmed',m.conf,'s2'],['Completed',m.done,'s3']];
+      $c('ccPipe').innerHTML=`<div class="cc-stack">${seg.map(x=>`<i class="${x[2]}" style="--w:${x[1]/m.total*100}%"></i>`).join('')}</div>`+
+        `<ul class="cc-leg">${seg.map(x=>`<li><i class="${x[2]}"></i><span>${x[0]}</span><b>${fmtN(x[1])}</b><em>${Math.round(x[1]/m.total*100)}%</em></li>`).join('')}<li class="cc-note"><i class="sr"></i><span>Rescheduled along the way</span><b>${fmtN(m.resN)}</b><em>${m.d.rr}%</em></li></ul>`;
+    }
+    function comms(m){
+      const max=Math.max(...m.types.map(t=>t[1]));
+      $c('ccComms').innerHTML=`<div class="cc-big"><b data-v="${m.emails}">0</b><span>sent, each within minutes of the trigger</span></div><ul class="cc-hb">${m.types.map((t,i)=>`<li style="--d:${i*80}ms"><span>${t[0]}</span><i><b style="--w:${t[1]/max*100}%"></b></i><em>${fmtN(t[1])}</em></li>`).join('')}</ul>`;
+      count($c('ccComms').querySelector('.cc-big b'),m.emails);
+    }
+    function bg(m){
+      const b=m.d.bg, tot=b.reduce((a,c)=>a+c,0), lab=[['Requested','○','b1'],['In progress','◐','b2'],['Clear','✓','b3'],['Needs review','!','b4']];
+      $c('ccBg').innerHTML=`<div class="cc-stack">${b.map((v,i)=>`<i class="${lab[i][2]}" style="--w:${v/tot*100}%"></i>`).join('')}</div><ul class="cc-bgl">${b.map((v,i)=>`<li class="${lab[i][2]}"><i>${lab[i][1]}</i><b>${v}</b><span>${lab[i][0]}</span></li>`).join('')}</ul><p class="cc-foot">Average <b>2.4 days</b> from request to clear</p>`;
+    }
+    function hireList(){
+      const nextMon=new Date();nextMon.setDate(nextMon.getDate()+((8-nextMon.getDay())%7||7));
+      const steps=['Offer signed','Background clear','Equipment','Day-one email'];
+      $c('ccHires').innerHTML=`<div class="cc-hh"><span></span>${steps.map(x=>`<span>${x}</span>`).join('')}<span>Status</span></div>`+hires.map((h,r)=>{const dt=new Date(nextMon);dt.setDate(dt.getDate()+(r>1?7:0));
+        return `<div class="cc-hr"><span><b>${h[0]}</b><em>Starts ${dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})}</em></span>${h[1].map((x,i)=>`<i class="${x?'y':'n'}" style="--d:${r*160+i*110}ms" title="${steps[i]}: ${x?'done':'open'}">${x?'✓':''}</i>`).join('')}<span class="st ${h[2]==='Ready'?'ok':h[2]==='Needs a nudge'?'warn':''}">${h[2]}</span></div>`;}).join('');
+    }
+    function insight(){
+      const x=ins[insI%ins.length];
+      $c('ccIns').innerHTML=`<p class="cc-insq">${x[0]}</p><div class="cc-next"><span>Next step</span><b>${x[1]}</b></div>`;
+      $c('ccInsN').textContent=`${insI%ins.length+1} of ${ins.length}`;
+      $c('ccInsDots').innerHTML=ins.map((_,i)=>`<button type="button" aria-label="Insight ${i+1}" class="${i===insI%ins.length?'on':''}" data-i="${i}"></button>`).join('');
+    }
+    function feedPush(first){
+      const e=pool[feedI%pool.length]; feedI++;
+      const ul=$c('ccFeed'), li=document.createElement('li'); li.className='cc-f-'+e[0]+(first?'':' new'); li.dataset.t=Date.now();
+      li.innerHTML=`<i>${ico[e[0]]}</i><span><b>${e[1]}</b>${e[2]}</span><em>now</em>`;
+      ul.prepend(li); while(ul.children.length>6) ul.lastChild.remove();
+      if(!first){
+        if(e[3]){live.req+=e[3]; const k=root.querySelector('[data-k="req"] b'); if(k){k.textContent=fmtN(+k.dataset.v+live.req); k.parentNode.classList.remove('bump'); void k.offsetWidth; k.parentNode.classList.add('bump');}}
+        if(e[0]==='mail'||e[0]==='hire'){live.emails++; const cb=root.querySelector('.cc-big b'); if(cb) cb.textContent=fmtN(+cb.dataset.v+live.emails); const k=root.querySelector('[data-k="em"] b'); if(k){k.textContent=fmtN(+k.dataset.v+live.emails); k.parentNode.classList.remove('bump'); void k.offsetWidth; k.parentNode.classList.add('bump');}}
+      }
+    }
+    function ages(){ $c('ccFeed').querySelectorAll('li').forEach(li=>{const s=Math.round((Date.now()-li.dataset.t)/1000); li.querySelector('em').textContent=s<3?'now':s+'s ago';}); const a=$c('ccAgo'); if(a) a.textContent='just now'; }
+    function render(){ live={req:0,emails:0}; const m=model(); root.classList.remove('play'); void root.offsetWidth; root.classList.add('play'); kpis(m);vol(m);pipe(m);comms(m);bg(m);hireList();insight(); }
+    root.querySelectorAll('.cc-range button').forEach(b=>b.addEventListener('click',()=>{range=b.dataset.r;root.querySelectorAll('.cc-range button').forEach(x=>x.setAttribute('aria-selected',x===b));render();}));
+    $c('ccInsDots').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;insI=+b.dataset.i;insight();});
+    return {
+      start(){ if(on) return; on=true; render(); if(!rendered){ for(let i=0;i<4;i++) feedPush(true); rendered=true; }
+        timers.push(setInterval(()=>feedPush(false),2600)); timers.push(setInterval(ages,1000)); timers.push(setInterval(()=>{insI++;insight();},6500)); },
+      stop(){ on=false; timers.forEach(clearInterval); timers=[]; }
+    };
+  })();
+  function ccStart(){CC.start();} function ccStop(){CC.stop();}
+
+  // ===== builder: sit back and watch / take the wheel =====
+  const bx={split:document.getElementById('bxSplit'),ed:document.getElementById('bxEditor'),types:[...document.querySelectorAll('#bxTypes li')],mail:document.getElementById('bxMail'),trig:document.getElementById('bxTrig'),trigTxt:document.getElementById('bxTrigTxt'),sent:document.getElementById('bxSent'),sentT:document.getElementById('bxSentT')};
+  const bxTrig={confirm:'Panel booked on 3 calendars',resched:'Interviewer declined, panel moved',swap:'New interviewer accepted',tech:'Candidate flagged a bad link',emerg:'Candidate asked to pause'};
+  const bxSec={confirm:'4',resched:'6',swap:'3',tech:'2',emerg:'3'};
+  let bxTimers=[], bxIdx=0, bxOn=false;
+  const bxAt=(ms,fn)=>bxTimers.push(setTimeout(fn,ms));
+  function bxClear(){bxTimers.forEach(clearTimeout);bxTimers=[];}
+  function typeOut(el,ms){ if(!el) return; const full=el.textContent; el.textContent=''; el.classList.add('typing'); let i=0; const step=Math.max(12,Math.min(32,ms/Math.max(1,full.length)));
+    const tick=()=>{ i++; el.textContent=full.slice(0,i); if(i<full.length) bxTimers.push(setTimeout(tick,step)); else el.classList.remove('typing'); }; tick(); }
+  function bxPlay(){
+    if(!bxOn) return;
+    const li=bx.types[bxIdx%bx.types.length], t=li.dataset.t; bxIdx++;
+    bx.types.forEach(x=>{x.classList.toggle('on',x===li); x.classList.toggle('done',bx.types.indexOf(x)<bx.types.indexOf(li));});
+    restart(li.querySelector('i'),'run');
+    bx.sent.classList.remove('show'); bx.trig.classList.remove('show'); bx.mail.classList.remove('build','scroll'); bx.mail.style.removeProperty('--sy');
+    bx.trigTxt.textContent=bxTrig[t]; bx.sentT.textContent=`in ${bxSec[t]} seconds`;
+    window.__composeMail(t,bx.mail);
+    const subj=bx.mail.querySelector('.bm-subj'), h=bx.mail.querySelector('.bm-h');
+    const subjTxt=subj?subj.textContent:'', hTxt=h?h.textContent:'';
+    if(subj) subj.textContent=''; if(h) h.textContent='';
+    bxAt(60,()=>bx.trig.classList.add('show'));
+    bxAt(650,()=>{ void bx.mail.offsetWidth; bx.mail.classList.add('build'); if(subj){subj.textContent=subjTxt;typeOut(subj,900);} });
+    bxAt(1250,()=>{ if(h){h.textContent=hTxt;typeOut(h,700);} });
+    bxAt(2600,()=>{ const win=bx.mail.parentNode, over=bx.mail.scrollHeight-win.clientHeight; if(over>8){bx.mail.style.setProperty('--sy',(-over)+'px');bx.mail.classList.add('scroll');} });
+    bxAt(4200,()=>bx.sent.classList.add('show'));
+    bxAt(5600,bxPlay);
+  }
+  function bxStart(){ if(bxOn||bx.split.hidden) return; bxOn=true; bxIdx=0; bxClear(); bxPlay(); }
+  function bxStop(){ bxOn=false; bxClear(); }
+  bx.types.forEach((li,i)=>li.addEventListener('click',()=>{bxClear();bxOn=true;bxIdx=i;bxPlay();}));
+  document.getElementById('bxGo').addEventListener('click',()=>{ bxStop(); bx.split.hidden=true; bx.ed.hidden=false; const first=document.getElementById('bFirst'); if(first) first.focus({preventScroll:true}); bx.ed.scrollIntoView({block:'start',behavior:'smooth'}); });
+  document.getElementById('bxBack').addEventListener('click',()=>{ bx.ed.hidden=true; bx.split.hidden=false; bxStart(); });
+
+
+  // ===== resume viewer =====
+  (function(){
+    const rm=document.getElementById('resModal'), rc=document.getElementById('resClose'); if(!rm) return;
+    let back=null;
+    const open=e=>{e.preventDefault(); back=document.activeElement; rm.hidden=false; document.body.classList.add('modal-open'); rm.scrollTop=0; rc.focus({preventScroll:true});};
+    const close=()=>{rm.hidden=true; if(document.getElementById('tdModal').hidden) document.body.classList.remove('modal-open'); if(back) back.focus({preventScroll:true});};
+    document.querySelectorAll('a[href="/resume.pdf"],a[href="/resume.pdf"]').forEach(a=>{ if(!a.classList.contains('res-dl')) a.addEventListener('click',open); });
+    rc.addEventListener('click',close);
+    const rp=document.getElementById('resPaper'); rp.addEventListener('click',()=>{ if(window.innerWidth<=900) rp.classList.toggle('zoom'); });
+    rm.addEventListener('click',e=>{if(e.target===rm)close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!rm.hidden)close();});
+  })();
 </script>
 
 </body>
