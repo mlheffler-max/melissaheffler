@@ -1,9 +1,27 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/peopleoverprocess", "permanent": false }
+    {
+      "source": "/",
+      "destination": "/peopleoverprocess",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/peopleoverprocess", "destination": "/portfolio.html" },
-    { "source": "/peopleoverprocess/", "destination": "/portfolio.html" }
+    {
+      "source": "/hello",
+      "destination": "/hello.html"
+    },
+    {
+      "source": "/hello/",
+      "destination": "/hello.html"
+    },
+    {
+      "source": "/peopleoverprocess",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/peopleoverprocess/",
+      "destination": "/portfolio.html"
+    }
   ]
 }
