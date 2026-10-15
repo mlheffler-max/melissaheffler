@@ -2149,6 +2149,7 @@ body.modal-open .lt-float{opacity:0;pointer-events:none}
 .l-env{display:none!important}
 .st-bow{width:58px;height:40px;right:36px;bottom:32px}
 .st-bow::before,.st-bow::after{width:28px;height:22px}
+@media (max-width:720px){body:has(#tdFloat:not([hidden])) .lt-float{bottom:calc(84px + env(safe-area-inset-bottom,0px))}.lt-float{transition:opacity .3s,transform .3s,bottom .3s}}
 /* ===== believe/do tabs, product-page style ===== */
 .bt-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-top:8px}
 .bt-head h2{font-size:clamp(26px,3vw,38px)!important}
@@ -3586,7 +3587,7 @@ body.modal-open .lt-float{opacity:0;pointer-events:none}
   })();
 
   (function(){const f=document.getElementById('ltFloat'),c=document.getElementById('contact'),h=document.querySelector('.hero9'); if(!f||!c||!h) return;
-    let pastHero=false,seeC=false; const u=()=>f.classList.toggle('show',pastHero&&!seeC);
+    let pastHero=false,seeC=false; const u=()=>f.classList.add('show');u();
     new IntersectionObserver(es=>{es.forEach(e=>{pastHero=!e.isIntersecting&&e.boundingClientRect.top<0;u();})}).observe(h);
     new IntersectionObserver(es=>{es.forEach(e=>{seeC=e.isIntersecting;u();})},{threshold:.2}).observe(c);
     f.addEventListener('click',e=>{e.preventDefault();c.scrollIntoView({behavior:'smooth',block:'center'});});
