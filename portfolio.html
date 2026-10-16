@@ -2809,7 +2809,7 @@ body.modal-open .lt-float{opacity:0;pointer-events:none}
   </div>
 </div>
 <a class="lt-float" id="ltFloat" href="#contact"><i></i>Let's talk</a>
-<a class="td-float" id="tdFloat" href="#testdrive" hidden>See how I work <b>Try it on →</b></a>
+<a class="td-float" id="tdFloat" href="#testdrive">See how I work <b>Try it on →</b></a>
 </main>
 
 <script>
@@ -2845,7 +2845,7 @@ body.modal-open .lt-float{opacity:0;pointer-events:none}
   // ===== floating test drive button =====
   const tdf=document.getElementById('tdFloat'), tdSec=document.getElementById('testdrive'), heroSec=document.querySelector('.hero9');
   let pastHero=false, tdVisible=false;
-  function updFloat(){ if(tdf) tdf.hidden=!(pastHero&&!tdVisible&&!triedTD); }
+  function updFloat(){ if(tdf) tdf.hidden=false; }
   if(tdf&&'IntersectionObserver' in window){
     new IntersectionObserver(es=>{es.forEach(e=>{pastHero=!e.isIntersecting&&e.boundingClientRect.top<0;updFloat();})}).observe(heroSec);
     new IntersectionObserver(es=>{es.forEach(e=>{tdVisible=e.isIntersecting;updFloat();})},{threshold:.15}).observe(tdSec);
