@@ -3048,6 +3048,51 @@ h1 i,h2 i,h3 i{font-weight:400!important;letter-spacing:-.02em!important}
   .fx-rail button{min-width:112px;padding:12px 10px}
 }
 #fxNext.glow{background:var(--b);animation:fxPl 1.6s infinite}
+/* data → dashboards */
+.lgc{position:absolute;left:64px;top:196px;width:336px;height:490px;border-radius:14px;background:#fff;box-shadow:0 30px 70px -24px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.07);overflow:hidden}
+.lgh{display:flex;align-items:center;gap:8px;padding:14px 16px;font:800 14px var(--df);border-bottom:1px solid rgba(0,0,0,.07)}
+.lgh em{margin-left:auto;font-style:normal;font:800 9.5px var(--bf);letter-spacing:.14em;color:var(--b2);display:flex;align-items:center;gap:6px}
+.lgh em::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--b);animation:fxPl 1.6s infinite}
+.lgr{display:grid;grid-template-columns:1fr auto;gap:2px 8px;padding:9px 16px;border-bottom:1px solid rgba(0,0,0,.05);font:600 11px var(--bf);animation:spIn 1.6s ease both}
+.lgr b{font:800 12px var(--df)}.lgr span{grid-column:1;color:var(--g2)}.lgr i{grid-row:1 / span 2;grid-column:2;align-self:center;font-style:normal;font:800 9.5px var(--bf);color:var(--b2)}
+.pdot{position:absolute;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--b);box-shadow:0 0 0 4px var(--bs);z-index:6;offset-rotate:0deg}
+.dbw{position:absolute;left:488px;top:196px;width:728px;height:490px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:262px 1fr;gap:14px}
+.dbw .dv{grid-column:1 / -1}
+.dbw .db-c{transition:box-shadow .5s}
+.dbw .db-c.hit{animation:dbHit 1.1s ease}
+@keyframes dbHit{0%{box-shadow:0 0 0 2px var(--b),0 14px 30px -12px rgba(74,143,224,.5)}100%{box-shadow:0 0 0 1px rgba(0,0,0,.06)}}
+.dh2{display:flex;align-items:flex-start;gap:14px}
+.dh2 .up{margin-left:auto;display:flex;align-items:center;gap:6px;font:700 10.5px var(--bf);color:var(--g2)}
+.dh2 .up i{width:7px;height:7px;border-radius:50%;background:var(--b);animation:fxPl 1.6s infinite}
+.dh2 .kpi{font:400 40px/1 var(--sf);font-style:italic;color:var(--b);min-width:60px;text-align:right}
+.dbw .vb{height:150px}.dbw .vb i.lst{transition:height .6s cubic-bezier(.3,1.4,.5,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.rs{display:grid;gap:9px}.rs div{display:grid;grid-template-columns:96px 1fr;align-items:center;font:600 11px var(--bf);color:var(--g1)}
+.rs .t,.rb2 .t,.fn .t{height:12px;border-radius:3px;background:var(--g6);position:relative;overflow:hidden}
+.rs .t i,.rb2 .t i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--g4);transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.rs.in .t i,.rb2.in .t i{transform:none}
+.smp{position:absolute;right:0;bottom:-24px;font:700 10px var(--bf);letter-spacing:.12em;color:var(--g3);text-transform:uppercase}
+.deck{position:absolute;top:196px;width:244px;height:430px;padding:16px;border-radius:12px;background:#fff;box-shadow:0 24px 50px -20px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.07);opacity:0;transform:translateY(30px) rotate(var(--r));transition:all .8s cubic-bezier(.2,.8,.2,1)}
+.deck.in{opacity:1;transform:rotate(var(--r))}
+.dk-h{margin:-16px -16px 14px;padding:14px 16px;border-radius:12px 12px 0 0;background:var(--k);color:#fff}
+.dk-h span{display:block;font:800 8.5px var(--bf);letter-spacing:.14em;color:var(--g4)}.dk-h b{display:block;margin-top:4px;font:800 15px var(--df)}
+.deck small{display:block;margin:10px 0 7px;font:800 8.5px var(--bf);letter-spacing:.14em;color:var(--g2);text-transform:uppercase}
+.fn{display:grid;grid-template-columns:62px 1fr;align-items:center;margin-bottom:5px;font:600 10px var(--bf);color:var(--g1)}
+.fn .t i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--k)}
+.fn:nth-of-type(n+4) .t i{background:var(--b)}
+.deck ul{margin:0;padding:0 0 0 14px;font:600 10.5px/1.45 var(--bf);color:var(--g1)}
+.nxs{position:absolute;left:16px;right:16px;bottom:16px;padding:8px 10px;border-radius:7px;background:var(--bt);color:var(--b2);font:800 10.5px var(--bf)}
+.rb2{display:grid;gap:12px}.rb2 div{display:grid;grid-template-columns:96px 1fr;align-items:center;font:700 12px var(--bf);color:var(--g1)}
+.rb2 .t{height:18px}.rb2 .hi .t i{background:var(--b)}.rb2 .hi{color:var(--b2)}
+.ins{margin-top:22px;padding:12px 14px;border-radius:9px;background:var(--bt);color:var(--b2);font:700 13px var(--bf)}
+.roster{position:absolute;padding:20px 22px;border-radius:14px;background:#fff;box-shadow:0 30px 60px -24px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.07)}
+.roster h6{margin:0 0 12px;font:800 15px var(--df)}
+.rr{display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:9px;font:700 13px var(--bf);transition:all .5s}
+.rr .av{width:32px;height:32px;background:var(--k);color:#fff;font-size:10px}
+.rr em{margin-left:auto;font-style:normal;font:600 11px var(--bf);color:var(--g2)}
+.rr.out{opacity:.3;text-decoration:line-through;transform:translateX(-10px)}
+.rr.new{background:var(--bt);color:var(--b2)}.rr.new .av{background:var(--b)}
+.chg{margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.07);font:400 20px var(--sf);font-style:italic;color:var(--b2);opacity:0;transition:opacity .6s}
+.chg.in{opacity:1}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
@@ -3128,6 +3173,22 @@ h1 i,h2 i,h3 i{font-weight:400!important;letter-spacing:-.02em!important}
   </div>
 </section>
 
+<section class="td9" id="tryit">
+  <div class="wrap td9-inner">
+    <div class="td9-head">
+      <span class="td7-badge">Hands on</span>
+      <h2>Now try it <i>yourself.</i></h2>
+      <p>Five interactive pieces of my real work, including the Command Center dashboard I ran every day. Click any one to try it.</p>
+    </div>
+      <div class="td9-launch">
+        <button type="button" data-open="5"><span class="ti-pv" aria-hidden="true"><span class="ti-pvs"><span><em>Apply</em><b>We got your application</b></span><span><em>Interview</em><b>You're confirmed</b></span><span><em>Change of plans</em><b>Same day, new time</b></span><span><em>Offer</em><b>Your offer, in writing</b></span><span><em>Day one</em><b>Monday, sorted</b></span><span><em>90 days</em><b>How are you, really?</b></span></span></span><span class="ti-play"><i></i><b>Click to try it on</b></span></span><span class="ti-hook">Put your own name in it. See both sides at once.</span><em>01</em><b>Front &amp; back of house</b><span>What they feel up front. What I run behind it.</span><span class="ti-go">Try it on →</span></button>
+        <button type="button" data-open="7"><em>02</em><b>RACI, untangled</b><span>Watch the handoffs collapse into one clean path.</span></button>
+        <button type="button" data-open="4"><em>03</em><b>Command Center</b><span>Every request in one place, and the data audited.</span></button>
+        <button type="button" data-open="0"><em>04</em><b>Chaos to clear</b><span>Fourteen emails become one confirmation.</span></button>
+        <button type="button" data-open="2"><em>05</em><b>Process audit</b><span>Audit your current process, live.</span></button>
+      </div>
+  </div>
+</section>
 
 <div class="wrap talk-band">
   <section class="sec6 talk10" id="contact">
@@ -4432,20 +4493,46 @@ const FXS = [
     X.add(cm,'in',8.2); X.at(8.8, () => { const a = cm.querySelector('.a'); a.style.transitionDuration = '3.6s'; a.style.width = '72%'; const b = cm.querySelector('.b'); b.style.transitionDuration = '.9s'; b.style.width = '18%'; });
     X.add(cm.querySelector('.big'),'in',12.6);
   }},
-{ ch:2, mode:'light', tag:'af', dur:18, say:[[.2,'Every interview *logs itself.*'],[8.2,'And every leader sees *their own searches.*']],
+{ ch:2, mode:'light', tag:'af', dur:12, say:[[.2,'Every interview *logs itself.*'],[6.4,'No spreadsheet. *No one typing.*']],
   build(f,X){ const w = X.h('div','win sp r0','',f); w.style.cssText += 'left:64px;top:196px;width:1152px;height:500px'; X.add(w,'in',.3);
     w.innerHTML = `<div class="wbar"><span class="dots"><i></i><i></i><i></i></span><span class="app">SharePoint · Interview Automation</span></div><div class="sp-h"><b>Interview Log</b><span>All items · updated automatically</span></div>
       <table><thead><tr><th>Interview</th><th>Candidate</th><th>Req</th><th>Panelist</th><th>When</th><th>Status</th><th>Created by</th></tr></thead><tbody></tbody></table>`;
     const tb = w.querySelector('tbody'), row = (r,nw) => { const tr = document.createElement('tr'); if (nw) tr.className = 'nw'; tr.innerHTML = `<td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td><span class="st-p${r[5] === 'Scheduled' ? ' b' : ''}">${r[5]}</span></td><td><span class="byf"><i>PA</i>Flow</span></td>`; tb.prepend(tr); if (tb.children.length > 9) tb.lastChild.remove(); };
     [['HM screen','R. Diaz','R-24830','T. Sato','Mon 10:00','Completed'],['Final round','M. Ortiz','R-24802','G. Ortiz','Mon 2:00','Completed'],['Debrief','A. Moore','R-24795','S. Bell','Tue 9:00','Completed']].forEach(r => row(r));
     [['Panel','Jordan Lee','R-24817','A. Rivera','Wed 1:30','Scheduled'],['Panel','Jordan Lee','R-24817','S. Kim','Wed 2:15','Scheduled'],['Panel','Jordan Lee','R-24817','D. Patel','Wed 3:00','Scheduled'],['Panel','Jordan Lee','R-24817','M. Okafor','Wed 3:45','Scheduled'],['Reschedule','C. Nguyen','R-24799','L. Hart','Thu 11:00','Scheduled'],['HM screen','P. Grant','R-24840','N. Ruiz','Fri 9:30','Scheduled']].forEach((r,i) => X.at(1.2 + i*.9, () => row(r,1)));
-    const d = X.h('div','win r0','',f); d.style.cssText += 'left:96px;top:176px;width:1088px;height:520px;transform:translateY(40px)'; X.at(7.8, () => { d.classList.add('in'); d.style.transform = 'none'; w.style.transition = 'opacity .8s, transform .8s'; w.style.opacity = '0'; w.style.transform = 'scale(.97)'; });
-    d.innerHTML = `<div class="wbar"><span class="dots"><i></i><i></i><i></i></span><span class="app">Scheduling Command Center</span><span class="srch" style="width:auto;margin-left:auto;margin-right:0">Sample data</span></div>
-      <div class="db"><div class="db-c" style="grid-row:span 2"><h6>Interview volume</h6><p>By week · every interview logged automatically</p><div class="vb">${[.42,.5,.58,.55,.66,.62,.74,.7,.8,.86,.83,.93,.88,1].map((v,i) => `<i class="${i === 13 ? 'b' : i > 9 ? 'k' : ''}" style="height:${v*100}%;transition-delay:${i*.05}s"></i>`).join('')}</div>
-        <div style="margin-top:22px"><h6>Leader decks</h6><p>Where every candidate sits and what the recruiter did, per role</p><div class="dks"><div style="--r:-2deg"><b>Sr. Product Designer</b><i class="k" style="width:90%"></i><i style="width:70%"></i><i class="b" style="width:40%"></i><i style="width:60%"></i></div><div><b>Staff Engineer</b><i class="k" style="width:80%"></i><i style="width:64%"></i><i class="b" style="width:52%"></i><i style="width:40%"></i></div><div style="--r:2deg"><b>PM, Checkout</b><i class="k" style="width:86%"></i><i style="width:58%"></i><i class="b" style="width:30%"></i><i style="width:70%"></i></div></div></div></div>
-        <div class="db-c"><h6>Open and filled reqs</h6><p>By business leader · refreshed weekly</p><div class="hb">${[['Design',.8,.6],['Engineering',.95,.7],['Product',.66,.5],['Data',.5,.42],['Content',.36,.3]].map(r => `<span>${r[0]}</span><span class="t"><i style="width:${r[1]*100}%"></i><u style="width:${r[2]*100}%"></u></span>`).join('')}</div></div>
-        <div class="db-c" style="display:flex;align-items:center;gap:14px"><span class="av" style="width:40px;height:40px;background:var(--k);color:#fff">MH</span><span class="av" style="width:40px;height:40px;margin-left:-22px;background:var(--b);color:#fff;box-shadow:0 0 0 3px #fff">VP</span><div><h6>Reviewed 1:1 with each leader</h6><p style="margin:2px 0 0">Every number comes with a next step</p></div></div></div>`;
-    X.add(d.querySelector('.vb'),'in',8.6); X.add(d.querySelector('.hb'),'in',9.2); d.querySelectorAll('.dks div').forEach((x,i) => X.add(x,'in',10.0 + i*.35));
+  }},
+{ ch:2, mode:'light', tag:'af', dur:21, say:[[.2,'Then I turned that data into *live reporting dashboards.*'],[11.0,'And every leader got *a deck built for their searches.*']],
+  build(f,X){ X.h('div','fx-grid','',f);
+    const lg = X.h('div','lgc r0','<div class="lgh"><span class="byf"><i>SP</i></span>Interview Log<em>LIVE</em></div><div class="lgl"></div>',f); X.add(lg,'in',.3);
+    const L = lg.querySelector('.lgl'), R = [['Panel','Jordan Lee','A. Rivera'],['Panel','Jordan Lee','S. Kim'],['HM screen','P. Grant','N. Ruiz'],['Reschedule','C. Nguyen','L. Hart'],['Final round','M. Ortiz','G. Ortiz'],['Panel','Jordan Lee','D. Patel'],['Debrief','A. Moore','S. Bell'],['Portfolio','R. Diaz','C. Wu'],['Panel','Jordan Lee','M. Okafor'],['HM screen','T. Lin','E. Vance']];
+    const P = ['M 400 300 C 450 300, 440 262, 488 262','M 400 440 C 450 440, 440 540, 488 540','M 400 580 C 470 580, 820 640, 852 560'];
+    const svg = X.h('div','fx-abs pipes','<svg width="1280" height="720">' + P.map(d => `<path d="${d}" fill="none" stroke="#C9D9EE" stroke-width="2" stroke-dasharray="4 6"/>`).join('') + '</svg>',f); svg.style.cssText = 'inset:0;opacity:0;transition:opacity .8s'; X.at(1.0, () => svg.style.opacity = 1);
+    const db = X.h('div','dbw r0',`<div class="db-c dv"><div class="dh2"><div><h6>Interview volume</h6><p>By week · counted per interviewer</p></div><span class="up"><i></i>Updated <b class="ago">just now</b></span><b class="kpi">0</b></div><div class="vb">${[.42,.5,.58,.55,.66,.62,.74,.7,.8,.86,.83,.93,.88,.3].map((v,i) => `<i class="${i === 13 ? 'b lst' : i > 9 ? 'k' : ''}" style="height:${v*100}%;transition-delay:${i*.04}s"></i>`).join('')}</div></div>
+      <div class="db-c"><h6>Open and filled reqs</h6><p>By business leader</p><div class="hb">${[['Design',.8,.6],['Engineering',.95,.7],['Product',.66,.5],['Data',.5,.42],['Content',.36,.3]].map(r => `<span>${r[0]}</span><span class="t"><i style="width:${r[1]*100}%"></i><u style="width:${r[2]*100}%"></u></span>`).join('')}</div></div>
+      <div class="db-c"><h6>Reschedule rate</h6><p>By team and job level</p><div class="rs">${[['Design','IC',.32],['Design','Mgr',.18],['Eng','IC',.24],['Eng','Mgr',.12],['Product','IC',.2]].map(r => `<div><span>${r[0]} · ${r[1]}</span><span class="t"><i style="width:${r[2]*250}%"></i></span></div>`).join('')}</div></div>
+      <span class="smp">Sample data</span>`,f); X.add(db,'in',.8);
+    X.add(db.querySelector('.vb'),'in',1.4); X.add(db.querySelector('.hb'),'in',1.8); X.add(db.querySelector('.rs'),'in',2.2);
+    const lst = db.querySelector('.lst'), kpi = db.querySelector('.kpi'), card = [db.querySelector('.dv'),db.children[1],db.children[2]];
+    R.forEach((r,i) => { const t = 1.6 + i*.85; X.at(t, () => { const e = document.createElement('div'); e.className = 'lgr'; e.innerHTML = `<b>${r[0]}</b><span>${r[1]} · ${r[2]}</span><i>✓ logged</i>`; L.prepend(e); if (L.children.length > 9) L.lastChild.remove();
+        const dot = X.h('span','pdot','',f); dot.style.offsetPath = `path('${P[i % 3]}')`; dot.animate([{offsetDistance:'0%',opacity:0},{offsetDistance:'10%',opacity:1},{offsetDistance:'100%',opacity:1}],{duration:900,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'}); setTimeout(() => dot.remove(), 1200); });
+      X.at(t + .9, () => { const c = card[i % 3]; c.classList.remove('hit'); void c.offsetWidth; c.classList.add('hit'); if (i % 3 === 0 || true){ lst.style.height = Math.min(100,30 + (i + 1)*7) + '%'; kpi.textContent = 41 + i; } db.querySelector('.ago').textContent = 'just now'; }); });
+    X.at(10.6, () => { db.style.transition = 'opacity .7s, transform .9s cubic-bezier(.65,0,.25,1)'; db.style.opacity = 0; db.style.transform = 'translateX(60px)'; svg.style.opacity = 0; });
+    const D = [['VP, Design','Sr. Product Designer',[.95,.62,.4,.22,.1],['Screened four new applicants','Panel booked for Jordan L.','Portfolio feedback sent to HM'],'Final round next week'],['VP, Engineering','Staff Engineer',[.9,.55,.34,.16,.06],['Two HM screens completed','Panel moved, all confirmed','Calibration with the HM'],'Two candidates to panel'],['Director, Product','PM, Checkout',[.85,.5,.3,.18,.12],['Offer approved','References in progress','Backup candidate warm'],'Offer out Thursday']];
+    D.forEach((d,i) => { const el = X.h('div','deck',`<div class="dk-h"><span>DECK · ${d[0].toUpperCase()}</span><b>${d[1]}</b></div><small>Where every candidate sits</small>${['Applied','Screened','Panel','Final','Offer'].map((s2,k) => `<div class="fn"><span>${s2}</span><span class="t"><i style="width:${d[2][k]*100}%"></i></span></div>`).join('')}<small>What the recruiter did this week</small><ul>${d[3].map(x => `<li>${x}</li>`).join('')}</ul><div class="nxs">Next step · ${d[4]}</div>`,f);
+      el.style.left = (450 + i*258) + 'px'; el.style.setProperty('--r',((i - 1)*2.2) + 'deg'); X.add(el,'in',11.4 + i*.45); });
+    const rv = X.h('div','fx-abs r0','<span class="av" style="width:36px;height:36px;background:var(--k);color:#fff">MH</span><span class="av" style="width:36px;height:36px;margin-left:-14px;background:var(--b);color:#fff;box-shadow:0 0 0 3px var(--bg)">VP</span><b>Reviewed 1:1 with each leader</b>',f); rv.style.cssText += 'left:450px;top:652px;display:flex;align-items:center;gap:12px;font:800 14px var(--df)'; X.add(rv,'in',14.2);
+  }},
+{ ch:2, mode:'light', tag:'af', dur:15, say:[[.2,'The data didn’t just sit there.'],[5.4,'Leaders used it to *change who sat on panels.*']],
+  build(f,X){ X.h('div','fx-grid','',f); const w = X.h('div','win r0','',f); w.style.cssText += 'left:64px;top:196px;width:640px;height:480px'; X.add(w,'in',.3);
+    const B = [['Panelist A',.22],['Panelist B',.3],['Panelist C',.86],['Panelist D',.18],['Panelist E',.26],['Panelist F',.2]];
+    w.innerHTML = `<div class="wbar"><span class="dots"><i></i><i></i><i></i></span><span class="app">Command Center · Reschedules by panelist</span><span class="srch" style="width:auto;margin-left:auto;margin-right:0">Sample data</span></div><div style="padding:22px 26px"><h6 style="margin:0;font:800 16px var(--df)">Who moves interviews most</h6><p style="margin:3px 0 22px;font:500 12px var(--bf);color:var(--g2)">Last quarter · Senior Product Designer panels</p>
+      <div class="rb2">${B.map((b,i) => `<div class="${i === 2 ? 'hi' : ''}"><span>${b[0]}</span><span class="t"><i style="width:${b[1]*100}%"></i></span></div>`).join('')}</div><div class="ins r0">Panelist C moves far more interviews than anyone else on the panel.</div></div>`;
+    X.add(w.querySelector('.rb2'),'in',.9); X.add(w.querySelector('.ins'),'in',3.0);
+    const pc = X.h('div','roster r0',`<h6>Sr. Product Designer · panel</h6><div class="rr"><span class="av">PA</span>Panelist A<em>Portfolio</em></div><div class="rr"><span class="av">PB</span>Panelist B<em>Craft</em></div><div class="rr sw"><span class="av">PC</span><span class="nm">Panelist C</span><em>Systems</em></div><div class="rr"><span class="av">PE</span>Panelist E<em>Cross-functional</em></div><div class="chg">Changed by leadership after our 1:1</div>`,f);
+    pc.style.cssText += 'left:760px;top:220px;width:456px'; X.add(pc,'in',5.6);
+    X.at(8.0, () => pc.querySelector('.sw').classList.add('out'));
+    X.at(9.0, () => { const r = pc.querySelector('.sw'); r.classList.remove('out'); r.classList.add('new'); r.querySelector('.av').textContent = 'PG'; r.querySelector('.nm').textContent = 'Panelist G'; });
+    X.add(pc.querySelector('.chg'),'in',9.6);
   }},
 /* ---------- 04 SCALE & ADOPTION ---------- */
 { ch:3, mode:'light', tag:'af', dur:16, say:[[.2,'Recruiters switched because it was *faster,* not because they had to.']],
